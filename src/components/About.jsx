@@ -66,7 +66,7 @@ const About = () => {
               <ul className="space-y-3">
                 <li className="bg-white/30 dark:bg-gray-700/30 p-4 rounded-lg">
                   <h5 className="font-medium text-gray-900 dark:text-white">B.Tech in Computer Science</h5>
-                  <p className="text-gray-600 dark:text-gray-300">VIT, Vellore (2020-2024)</p>
+                  <p className="text-gray-600 dark:text-gray-300">Sanjay Ghodawat University, Kolhapur (2022-2026)</p>
                 </li>
               </ul>
             </div>
