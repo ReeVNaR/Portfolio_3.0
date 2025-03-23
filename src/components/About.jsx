@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { HiOutlineChip, HiOutlineLightBulb, HiOutlineCode, HiOutlineBriefcase, HiOutlineAcademicCap, HiOutlineGlobe } from 'react-icons/hi';
+import { HiOutlineChip, HiOutlineLightBulb, HiOutlineCode, HiOutlineAcademicCap, HiOutlineGlobe } from 'react-icons/hi';
 
 const About = () => {
   return (
@@ -120,30 +120,6 @@ const About = () => {
                 </motion.li>
               ))}
             </ul>
-          </motion.div>
-
-          {/* Add Experience Section */}
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-white/50 dark:bg-gray-800/50 p-8 rounded-xl shadow-lg backdrop-blur-sm"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <HiOutlineBriefcase className="text-3xl text-orange-500" />
-              <h4 className="text-xl font-semibold text-gray-900 dark:text-white">Experience</h4>
-            </div>
-            <div className="space-y-4">
-              <div className="p-4 bg-white/30 dark:bg-gray-700/30 rounded-lg">
-                <h5 className="font-medium text-gray-900 dark:text-white">Full Stack Developer Intern</h5>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Tech Company • 2023</p>
-                <ul className="mt-2 space-y-1 text-sm text-gray-600 dark:text-gray-300">
-                  <li>• Developed scalable web applications</li>
-                  <li>• Worked with MERN stack</li>
-                  <li>• Implemented responsive designs</li>
-                </ul>
-              </div>
-            </div>
           </motion.div>
 
           {/* Update Final Quote Card */}
