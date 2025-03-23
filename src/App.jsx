@@ -83,7 +83,7 @@ export default function App() {
                 <div className="group relative w-full h-full transform transition-transform duration-500 hover:scale-105">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
                   <img 
-                    src="/src/assets/profile.jpg" 
+                    src="https://res.cloudinary.com/de3t8l5ul/image/upload/v1742763037/Profile_pfbbvs.jpg"
                     alt="Profile" 
                     className="rounded-full shadow-2xl border-2 border-blue-500/30 relative w-full h-full object-cover backdrop-blur-3xl"
                   />

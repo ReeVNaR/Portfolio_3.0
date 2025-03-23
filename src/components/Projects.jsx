@@ -7,7 +7,7 @@ const projects = [
         id: 1,
         title: "Portfolio 1.0",
         description: "My first portfolio project built with core web technologies. A clean and simple design showcasing my initial journey into web development.",
-        image: "/portfolio_1.0.png", // Updated path
+        image: "https://res.cloudinary.com/de3t8l5ul/image/upload/v1742763039/Portfolio_1.0_kwivca.png",
         tags: ["HTML", "CSS", "JavaScript"],
         githubLink: "https://github.com/ReeVNaR/Portfolio_1.0",
         liveLink: "https://ranveerportfoliogg.netlify.app/"
@@ -16,7 +16,7 @@ const projects = [
         id: 2,
         title: "Portfolio 2.0",
         description: "An enhanced version of my portfolio with improved design and functionality, showcasing my growing skills in web development.",
-        image: "/portfolio_2.0.png", // Updated path
+        image: "https://res.cloudinary.com/de3t8l5ul/image/upload/v1742763036/Portfolio_2.0_r8mnch.png",
         tags: ["HTML", "CSS", "JavaScript"],
         githubLink: "https://github.com/ReeVNaR/Portfolio_2.0",
         liveLink: "https://reevnar.netlify.app/"
@@ -25,7 +25,7 @@ const projects = [
         id: 3,
         title: "Rift Chat",
         description: "A real-time chat application built during my MERN stack learning journey. Features include user authentication, real-time messaging, and basic chat functionalities.",
-        image: "/rift.png", // Updated path
+        image: "https://res.cloudinary.com/de3t8l5ul/image/upload/v1742763035/rift_ozck9u.png",
         tags: ["MongoDB", "Express", "React", "Node.js"],
         githubLink: "https://github.com/ReeVNaR/Rift_Chat_App",
     },
@@ -33,7 +33,7 @@ const projects = [
         id: 4,
         title: "Insta by Ranveer",
         description: "A full-stack Instagram clone built with MERN (MongoDB, Express, React, Node.js) featuring authentication, image uploads, posts, likes & comments. 🚀 For educational purposes only. Not affiliated with Instagram or Meta.",
-        image: "/insta.png", // Updated path
+        image: "https://res.cloudinary.com/de3t8l5ul/image/upload/v1742763035/Insta_m8bwll.png",
         tags: ["React", "Node.js", "MongoDB", "Express", "Vercel", "Render", "Cloudinary"],
         githubLink: "https://github.com/ReeVNaR/Instagram-by-Ranveer",
         liveLink: "https://instagram-by-ranveer.vercel.app/login"
