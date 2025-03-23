@@ -70,21 +70,6 @@ const About = () => {
                 </li>
               </ul>
             </div>
-
-            {/* Add Languages Section */}
-            <div className="border-t border-gray-200 dark:border-gray-700 pt-4 sm:pt-6">
-              <div className="flex items-center gap-3 mb-4">
-                <HiOutlineGlobe className="text-3xl text-green-500" />
-                <h4 className="text-xl font-semibold text-gray-900 dark:text-white">Languages</h4>
-              </div>
-              <div className="flex gap-3 flex-wrap">
-                {['English', 'Hindi', 'Marathi'].map((lang) => (
-                  <span key={lang} className="px-3 py-1 bg-white/50 dark:bg-gray-700/50 rounded-full text-sm">
-                    {lang}
-                  </span>
-                ))}
-              </div>
-            </div>
           </motion.div>
         </div>
 
@@ -120,6 +105,26 @@ const About = () => {
                 </motion.li>
               ))}
             </ul>
+          </motion.div>
+
+          {/* Languages Section - Moved here */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative group p-6 bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-lg backdrop-blur-sm border border-gray-200 dark:border-gray-700/50"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <HiOutlineGlobe className="text-3xl text-green-500" />
+              <h4 className="text-xl font-semibold text-gray-900 dark:text-white">Languages</h4>
+            </div>
+            <div className="flex gap-3 flex-wrap">
+              {['English', 'Hindi', 'Marathi'].map((lang) => (
+                <span key={lang} className="px-3 py-1 bg-white/50 dark:bg-gray-700/50 rounded-full text-sm">
+                  {lang}
+                </span>
+              ))}
+            </div>
           </motion.div>
 
           {/* Update Final Quote Card */}
