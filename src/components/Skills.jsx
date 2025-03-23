@@ -55,8 +55,8 @@ const SkillBar = ({ name, level, icon, color }) => {
 
 const Skills = () => {
   return (
-    <div className="py-8 sm:py-12 md:py-20">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+    <div className="py-6 sm:py-8 md:py-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
         {skills.map((skill) => (
           <SkillBar key={skill.name} {...skill} />
         ))}

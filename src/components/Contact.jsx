@@ -47,9 +47,9 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-[600px] grid md:grid-cols-2 gap-12 items-start">
+    <div className="min-h-[500px] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
       {/* Left Column */}
-      <div className="space-y-8">
+      <div className="space-y-6 md:space-y-8">
         <div className="space-y-4">
           <motion.h3 
             initial={{ opacity: 0, y: 20 }}
@@ -125,7 +125,7 @@ const Contact = () => {
       <motion.form 
         ref={formRef}
         onSubmit={handleSubmit}
-        className="space-y-6 bg-white/50 dark:bg-gray-800/50 p-8 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700/50"
+        className="space-y-4 md:space-y-6 bg-white/50 dark:bg-gray-800/50 p-6 md:p-8 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700/50"
       >
         <div className="space-y-4">
           <div>

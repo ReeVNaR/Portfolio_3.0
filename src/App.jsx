@@ -7,14 +7,28 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
+  const scrollTo = (elementId) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      const offset = 80; // Height of navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <main className="bg-white dark:bg-gray-900">
       <Navbar />
       
       {/* Home Section */}
-      <section id="home" className="min-h-screen pt-16 sm:pt-24 flex items-center justify-center bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
+      <section id="home" className="min-h-screen px-4 pt-20 md:pt-24 flex items-center justify-center bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#3B82F6_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.03]"></div>
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 relative">
+        <div className="container max-w-7xl mx-auto px-2 sm:px-6 py-6 sm:py-12 relative">
           <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-16">
             <div className="w-full md:w-1/2 z-10 text-center md:text-left">
               <span className="px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium inline-block mb-6">
@@ -27,10 +41,16 @@ export default function App() {
                 <TypingEffect />
               </p>
               <div className="flex gap-4 justify-center md:justify-start">
-                <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg hover:shadow-xl hover:scale-105 transition-all duration-200 font-medium">
+                <button 
+                  onClick={() => scrollTo('contact')}
+                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg hover:shadow-xl hover:scale-105 transition-all duration-200 font-medium"
+                >
                   Contact Me
                 </button>
-                <button className="px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all duration-200 font-medium">
+                <button 
+                  onClick={() => scrollTo('projects')}
+                  className="px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all duration-200 font-medium"
+                >
                   View Work
                 </button>
               </div>
@@ -95,7 +115,7 @@ export default function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-12 sm:py-20 bg-gray-50 dark:bg-gray-800">
+      <section id="about" className="py-16 sm:py-20 px-4 bg-gray-50 dark:bg-gray-800">
         <div className="container max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16">About Me</h2>
           <About />
@@ -103,7 +123,7 @@ export default function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="min-h-screen py-20 flex items-center justify-center bg-white dark:bg-gray-900">
+      <section id="skills" className="min-h-screen py-16 sm:py-20 px-4 flex items-center justify-center bg-white dark:bg-gray-900">
         <div className="container max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-12">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
@@ -115,7 +135,7 @@ export default function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-800">
+      <section id="projects" className="min-h-screen py-16 sm:py-20 px-4 flex items-center justify-center bg-gray-50 dark:bg-gray-800">
         <div className="container max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-8">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
@@ -127,7 +147,7 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="min-h-screen py-20 flex items-center justify-center bg-white dark:bg-gray-900">
+      <section id="contact" className="min-h-screen py-16 sm:py-20 px-4 flex items-center justify-center bg-white dark:bg-gray-900">
         <div className="container max-w-7xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-12">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">

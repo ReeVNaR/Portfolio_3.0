@@ -4,14 +4,14 @@ import { HiOutlineChip, HiOutlineLightBulb, HiOutlineCode, HiOutlineBriefcase, H
 const About = () => {
   return (
     <motion.div 
-      className="flex items-center justify-center py-8 sm:py-16"
+      className="flex items-center justify-center py-6 sm:py-8 md:py-16"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false }}
       transition={{ duration: 0.6 }}
     >
       <motion.div 
-        className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 overflow-visible px-4 sm:px-0"
+        className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 overflow-visible px-2 sm:px-4"
         variants={{
           hidden: { opacity: 0, y: 20 },
           visible: { opacity: 1, y: 0 }

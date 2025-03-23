@@ -42,7 +42,7 @@ const projects = [
 
 const ProjectList = ({ selectedId, onSelect }) => {
   return (
-    <div className="h-[40vh] md:h-[70vh] overflow-y-auto space-y-3 bg-white/30 dark:bg-gray-800/30 p-3 sm:p-4 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 hide-scrollbar">
+    <div className="h-[30vh] sm:h-[40vh] md:h-[70vh] overflow-y-auto space-y-3 bg-white/30 dark:bg-gray-800/30 p-3 sm:p-4 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 hide-scrollbar">
       {projects.map((project) => (
         <motion.div
           key={project.id}
@@ -158,7 +158,7 @@ const Projects = () => {
   const selectedProject = projects.find(p => p.id === selectedId);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[300px,1fr] gap-4 sm:gap-6 h-[80vh] sm:h-[600px]">
+    <div className="grid grid-cols-1 md:grid-cols-[300px,1fr] gap-6 h-auto sm:h-[80vh] md:h-[600px]">
       <ProjectList selectedId={selectedId} onSelect={setSelectedId} />
       <div className="bg-white/5 dark:bg-gray-800/5 rounded-xl backdrop-blur-sm border border-white/10 dark:border-gray-700/50 shadow-2xl">
         <ProjectDetail project={selectedProject} />
