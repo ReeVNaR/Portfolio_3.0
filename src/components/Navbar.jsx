@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
 
 const MenuButton = ({ isOpen, onClick }) => (
@@ -34,69 +34,93 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollTo = (elementId) => {
-    document.getElementById(elementId)?.scrollIntoView({ behavior: 'smooth' });
+  const handleNavClick = (elementId) => {
+    setIsMobileMenuOpen(false);
+    const element = document.getElementById(elementId);
+    if (element) {
+      const offset = 80; // Height of navbar
+      setTimeout(() => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
-    }`}>
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-16">
-          <span className="text-2xl font-bold text-gray-900 dark:text-white">
-            RG
-          </span>
-          
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6">
-            {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollTo(item)}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 capitalize"
-              >
-                {item}
-              </button>
-            ))}
-            <div className="border-l border-gray-200 dark:border-gray-700 h-6 mx-2" />
-            <ThemeToggle />
-          </div>
-
-          {/* Mobile Menu Button */}
-          <MenuButton isOpen={isMobileMenuOpen} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
-        </div>
-      </div>
-
-      {/* Mobile Menu Dropdown */}
-      <motion.div
-        initial={false}
-        animate={{
-          height: isMobileMenuOpen ? 'auto' : 0,
-          opacity: isMobileMenuOpen ? 1 : 0
-        }}
-        transition={{ duration: 0.3 }}
-        className="md:hidden overflow-hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-700"
+    <>
+      <nav 
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+          isScrolled || isMobileMenuOpen ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        }`}
+        style={{ transform: 'translateZ(0)' }}
       >
-        <div className="container max-w-7xl mx-auto px-4 py-4 space-y-3">
-          {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
-            <button
-              key={item}
-              onClick={() => {
-                document.getElementById(item)?.scrollIntoView({ behavior: 'smooth' });
-                setIsMobileMenuOpen(false);
-              }}
-              className="block w-full text-left py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 capitalize"
-            >
-              {item}
-            </button>
-          ))}
-          <div className="pt-3 border-t border-gray-200 dark:border-gray-700">
-            <ThemeToggle />
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            <span className="text-2xl font-bold text-gray-900 dark:text-white">
+              RG
+            </span>
+            
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-6">
+              {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => handleNavClick(item)}
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 capitalize"
+                >
+                  {item}
+                </button>
+              ))}
+              <div className="border-l border-gray-200 dark:border-gray-700 h-6 mx-2" />
+              <ThemeToggle />
+            </div>
+
+            {/* Mobile Menu Button */}
+            <MenuButton isOpen={isMobileMenuOpen} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
           </div>
         </div>
-      </motion.div>
-    </nav>
+
+        {/* Mobile Menu Dropdown */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden overflow-hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-700"
+            >
+              <div className="container max-w-7xl mx-auto px-4 py-4 space-y-3">
+                {['home', 'about', 'skills', 'projects', 'contact'].map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => handleNavClick(item)}
+                    className="block w-full text-left py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 capitalize"
+                  >
+                    {item}
+                  </button>
+                ))}
+                <div className="pt-3 border-t border-gray-200 dark:border-gray-700">
+                  <ThemeToggle />
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+      {/* Overlay for mobile menu */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[90] md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+    </>
   );
 };
 
