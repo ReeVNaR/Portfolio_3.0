@@ -37,7 +37,7 @@ const About = () => {
             </div>
             <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               A passionate full-stack developer and AI enthusiast. I specialize in building scalable web applications, 
-              mobile apps, and AI-driven solutions using modern technologies like React, MERN stack, and Python.
+              and AI-driven solutions using modern technologies like MERN stack, and Python.
             </p>
 
             <motion.div 
