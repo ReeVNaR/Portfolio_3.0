@@ -89,7 +89,7 @@ const About = () => {
               </h4>
             </div>
             <ul className="space-y-4">
-              {['Cloud storage solutions (Cloudinary)', 'AI-driven applications', 'Advanced front-end frameworks'].map((item, index) => (
+              {['React and tailwind', 'AI-driven applications (Python)', 'Advanced front-end frameworks (Next.js)'].map((item, index) => (
                 <motion.li 
                   key={item}
                   initial={{ opacity: 0, x: 20 }}
