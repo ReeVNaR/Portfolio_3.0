@@ -52,7 +52,7 @@ const About = () => {
                 <HiOutlineLightBulb className="text-3xl text-blue-500" />
                 <p className="text-gray-700 dark:text-gray-200 leading-relaxed">
                   I love solving complex problems, whether it's designing AI models for image analysis, 
-                  optimizing databases, or creating seamless user experiences.
+                  optimizing python codes, or creating seamless user experiences.
                 </p>
               </div>
             </motion.div>
