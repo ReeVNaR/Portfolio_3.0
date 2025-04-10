@@ -81,7 +81,10 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <MenuButton isOpen={isMobileMenuOpen} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
+            <div className="md:hidden flex items-center space-x-4">
+              <ThemeToggle />
+              <MenuButton isOpen={isMobileMenuOpen} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
+            </div>
           </div>
         </div>
 
@@ -105,9 +108,6 @@ const Navbar = () => {
                     {item}
                   </button>
                 ))}
-                <div className="pt-3 border-t border-gray-200 dark:border-gray-700">
-                  <ThemeToggle />
-                </div>
               </div>
             </motion.div>
           )}
