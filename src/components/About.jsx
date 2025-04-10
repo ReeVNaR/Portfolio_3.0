@@ -120,7 +120,7 @@ const About = () => {
             </div>
             <div className="flex gap-3 flex-wrap">
               {['English', 'Hindi', 'Marathi'].map((lang) => (
-                <span key={lang} className="px-3 py-1 bg-white/50 dark:bg-gray-700/50 rounded-full text-sm">
+                <span key={lang} className="px-3 py-1 bg-white/50 dark:bg-gray-700/50 rounded-full text-sm text-gray-800 dark:text-white">
                   {lang}
                 </span>
               ))}
