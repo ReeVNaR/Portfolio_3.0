@@ -37,7 +37,7 @@ const About = () => {
             </div>
             <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               A passionate full-stack developer and AI enthusiast. I specialize in building scalable web applications, 
-              mobile apps, and AI-driven solutions using modern technologies like React, MERN stack, and Python.
+              and AI-driven solutions using modern technologies like MERN stack, and Python.
             </p>
 
             <motion.div 
@@ -52,7 +52,7 @@ const About = () => {
                 <HiOutlineLightBulb className="text-3xl text-blue-500" />
                 <p className="text-gray-700 dark:text-gray-200 leading-relaxed">
                   I love solving complex problems, whether it's designing AI models for image analysis, 
-                  optimizing databases, or creating seamless user experiences.
+                  optimizing python codes, or creating seamless user experiences.
                 </p>
               </div>
             </motion.div>
@@ -89,7 +89,7 @@ const About = () => {
               </h4>
             </div>
             <ul className="space-y-4">
-              {['Cloud storage solutions (Cloudinary)', 'AI-driven applications', 'Advanced front-end frameworks'].map((item, index) => (
+              {['React and tailwind', 'AI-driven applications (Python)', 'Advanced front-end frameworks (Next.js)'].map((item, index) => (
                 <motion.li 
                   key={item}
                   initial={{ opacity: 0, x: 20 }}
