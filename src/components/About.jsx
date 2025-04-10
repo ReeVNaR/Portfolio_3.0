@@ -49,7 +49,7 @@ const About = () => {
             >
               <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
               <div className="relative p-6 bg-white dark:bg-gray-800 rounded-lg leading-none flex items-center space-x-6">
-                <HiOutlineLightBulb className="text-3xl text-blue-500" />
+                <HiOutlineLightBulb className="text-9xl text-blue-500" />
                 <p className="text-gray-700 dark:text-gray-200 leading-relaxed">
                   I love solving complex problems, whether it's designing AI models for image analysis, 
                   optimizing python codes, or creating seamless user experiences.
