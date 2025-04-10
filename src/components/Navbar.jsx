@@ -25,12 +25,25 @@ const MenuButton = ({ isOpen, onClick }) => (
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [visitorCount, setVisitorCount] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
+
+    const updateVisitorCount = async () => {
+      try {
+        const response = await fetch('/api/visitors', { method: 'POST' });
+        const data = await response.json();
+        setVisitorCount(data.count);
+      } catch (error) {
+        console.error('Failed to update visitor count:', error);
+      }
+    };
+    updateVisitorCount();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -61,9 +74,14 @@ const Navbar = () => {
       >
         <div className="container max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <span className="text-2xl font-bold text-gray-900 dark:text-white">
-              RG
-            </span>
+            <div className="flex items-center">
+              <span className="text-2xl font-bold text-gray-900 dark:text-white">
+                RG
+              </span>
+              <span className="ml-4 text-sm text-gray-600 dark:text-gray-400">
+                Visitors: {visitorCount}
+              </span>
+            </div>
             
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-6">
