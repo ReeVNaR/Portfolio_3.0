@@ -154,7 +154,7 @@ export default function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="scroll-mt-20 min-h-[100vh] md:min-h-[90vh] pt-0 md:pt-0 pb-4 mb-12 flex items-center justify-center bg-gray-50 dark:bg-black">
+      <section id="projects" className="scroll-mt-20 min-h-[110vh] md:min-h-[100vh] pt-0 md:pt-0 pb-4 mb-12 flex items-center justify-center bg-gray-50 dark:bg-black">
         <div className="container max-w-7xl mx-auto px-4 md:px-6">
           <div className="flex flex-col">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
@@ -162,7 +162,7 @@ export default function App() {
                 Featured Projects
               </span>
             </h2>
-            <div className="h-[65vh] md:h-[70vh]">
+            <div className="h-[75vh] md:h-[80vh]">
               <Projects />
             </div>
           </div>
