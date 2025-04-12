@@ -145,15 +145,15 @@ export default function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="min-h-screen md:h-[90vh] pt-20 pb-32 md:py-20 flex items-center justify-center bg-gray-50 dark:bg-black">
-        <div className="container max-w-7xl mx-auto px-4 h-[55vh] md:h-full">
-          <div className="flex flex-col h-full">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 md:mb-8">
+      <section id="projects" className="min-h-screen md:h-[90vh] pt-20 pb-20 md:py-20 flex items-center justify-center bg-gray-50 dark:bg-black">
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="flex flex-col">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
                 Featured Projects
               </span>
             </h2>
-            <div className="flex-1 h-[calc(100%-2rem)]">
+            <div className="h-[70vh] md:h-[65vh]">
               <Projects />
             </div>
           </div>
