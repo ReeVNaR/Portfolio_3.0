@@ -11,11 +11,8 @@ export default function App() {
     const element = document.getElementById(elementId);
     if (element) {
       const offset = 80; // Height of navbar
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
       window.scrollTo({
-        top: offsetPosition,
+        top: element.offsetTop - offset,
         behavior: 'smooth'
       });
     }
@@ -26,7 +23,7 @@ export default function App() {
       <Navbar />
       
       {/* Home Section - keep min-h-screen */}
-      <section id="home" className="min-h-screen px-4 pt-20 md:pt-24 flex items-center justify-center bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-black dark:to-black relative overflow-hidden">
+      <section id="home" className="min-h-[100vh] px-4 pt-24 md:pt-28 flex items-center justify-center bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-black dark:to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#3B82F6_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.03]"></div>
         <div className="container max-w-7xl mx-auto px-2 sm:px-6 py-6 sm:py-12 relative">
           <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-16">
@@ -127,10 +124,10 @@ export default function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="min-h-screen md:h-[90vh] pt-20 pb-24 md:py-20 flex items-center justify-center bg-gray-50 dark:bg-black">
-        <div className="container max-w-7xl mx-auto px-4">
+      <section id="about" className="scroll-mt-20 min-h-[90vh] md:min-h-[85vh] pt-20 md:pt-0 flex items-center justify-center bg-gray-50 dark:bg-black">
+        <div className="container max-w-7xl mx-auto px-4 md:px-6">
           <div className="flex flex-col">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-0">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
                 About Me
               </span>
@@ -143,27 +140,29 @@ export default function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="min-h-screen md:h-[90vh] pt-20 md:pt-0 flex items-center justify-center bg-white dark:bg-black">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+      <section id="skills" className="scroll-mt-20 min-h-[90vh] md:min-h-[85vh] pt-20 md:pt-0 flex items-center justify-center bg-white dark:bg-black">
+        <div className="container mx-auto px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
               My Skills
             </span>
           </h2>
-          <Skills />
+          <div className="mb-4">
+            <Skills />
+          </div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="min-h-screen md:h-[90vh] pt-20 pb-32 md:py-20 flex items-center justify-center bg-gray-50 dark:bg-black">
-        <div className="container max-w-7xl mx-auto px-4">
+      <section id="projects" className="scroll-mt-20 min-h-[100vh] md:min-h-[90vh] pt-12 md:pt-0 pb-8 mb-12 flex items-center justify-center bg-gray-50 dark:bg-black">
+        <div className="container max-w-7xl mx-auto px-4 md:px-6">
           <div className="flex flex-col">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
                 Featured Projects
               </span>
             </h2>
-            <div className="h-[55vh] md:h-[65vh]">
+            <div className="h-[65vh] md:h-[70vh]">
               <Projects />
             </div>
           </div>
@@ -171,9 +170,9 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="min-h-[80vh] md:h-[90vh] pt-16 pb-20 md:pt-20 md:pb-0 flex items-center justify-center bg-white dark:bg-black">
-        <div className="container max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+      <section id="contact" className="scroll-mt-20 min-h-[90vh] md:min-h-[85vh] pt-20 md:pt-0 mb-12 flex items-center justify-center bg-white dark:bg-black">
+        <div className="container max-w-7xl mx-auto px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
               Contact Me
             </span>
