@@ -42,7 +42,7 @@ const projects = [
         id: 5,
         title: "Revify",
         description: "A full stack working clone of Spotify which can play songs create playlist and is mobile friendly",
-        image: "https://res.cloudinary.com/de3t8l5ul/image/upload/v1742763035/Revify_spotify.png",
+        image: "https://res.cloudinary.com/de3t8l5ul/image/upload/v1744488765/Revify_uvl01e.png",
         tags: ["React", "Node.js", "MongoDB", "Express", "Vercel", "Render", "Cloudinary"],
         githubLink: "https://github.com/ReeVNaR/Revify",
         liveLink: "https://revifym.vercel.app/"
