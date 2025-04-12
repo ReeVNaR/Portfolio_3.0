@@ -37,36 +37,40 @@ const projects = [
         tags: ["React", "Node.js", "MongoDB", "Express", "Vercel", "Render", "Cloudinary"],
         githubLink: "https://github.com/ReeVNaR/Instagram-by-Ranveer",
         liveLink: "https://instagram-by-ranveer.vercel.app/login"
+    },
+    {
+        id: 5,
+        title: "Revify",
+        description: "A full stack working clone of Spotify which can play songs create playlist and is mobile friendly",
+        image: "https://res.cloudinary.com/de3t8l5ul/image/upload/v1742763035/Revify_spotify.png",
+        tags: ["React", "Node.js", "MongoDB", "Express", "Vercel", "Render", "Cloudinary"],
+        githubLink: "https://github.com/ReeVNaR/Revify",
+        liveLink: "https://revifym.vercel.app/"
     }
 ];
 
 const ProjectList = ({ selectedId, onSelect }) => {
   return (
-    <div className="h-[30vh] md:h-[70vh] overflow-y-auto space-y-2 bg-white/30 dark:bg-gray-800/30 p-3 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 hide-scrollbar">
+    <div className="h-[30vh] md:h-[70vh] overflow-y-auto space-y-3 bg-white/30 dark:bg-gray-800/30 p-4 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 hide-scrollbar">
       {projects.map((project) => (
         <motion.div
           key={project.id}
           onClick={() => onSelect(project.id)}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           className={`p-4 rounded-lg cursor-pointer transition-all duration-300 border ${
             selectedId === project.id
-              ? 'bg-gradient-to-r from-blue-50 to-blue-50/50 dark:from-blue-900/30 dark:to-blue-900/10 border-blue-500/50 dark:border-blue-500/50'
-              : 'hover:bg-blue-50/50 dark:hover:bg-blue-900/20 border-transparent'
+              ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg border-blue-400'
+              : 'hover:bg-blue-50/50 dark:hover:bg-blue-900/20 border-transparent hover:border-blue-200 dark:hover:border-blue-800'
           }`}
         >
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+          <h3 className={`text-lg font-semibold ${
+            selectedId === project.id
+              ? 'text-white'
+              : 'text-gray-900 dark:text-white'
+          }`}>
             {project.title}
           </h3>
-          <div className="flex flex-wrap gap-2">
-            {project.tags.slice(0, 3).map((tag) => (
-              <span
-                key={tag}
-                className="px-2 py-1 text-xs bg-blue-50 dark:bg-blue-900/30 
-                         text-blue-600 dark:text-blue-400 rounded-full"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
         </motion.div>
       ))}
     </div>
@@ -75,8 +79,15 @@ const ProjectList = ({ selectedId, onSelect }) => {
 
 const ProjectDetail = ({ project }) => {
   if (!project) return (
-    <div className="h-[40vh] md:h-full flex items-center justify-center text-gray-500 dark:text-gray-400">
-      Select a project to view details
+    <div className="h-[40vh] md:h-full flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 space-y-4">
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <FiExternalLink className="w-16 h-16 opacity-20" />
+      </motion.div>
+      <p className="text-lg font-medium">Select a project to view details</p>
     </div>
   );
 
@@ -88,70 +99,96 @@ const ProjectDetail = ({ project }) => {
       className="h-[40vh] md:h-full rounded-xl overflow-y-auto overflow-x-hidden bg-gradient-to-br from-gray-900/90 to-gray-800/90"
     >
       {/* Background Image with Blur */}
-      <div className="absolute inset-0">
-        <img
+      <div className="absolute inset-0 opacity-30">
+        <motion.img
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5 }}
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover opacity-10 blur-md scale-105"
+          className="w-full h-full object-cover blur-sm"
         />
       </div>
 
       {/* Main Content */}
       <div className="relative h-full flex flex-col p-3 sm:p-6 z-10">
         {/* Project Image */}
-        <div className="relative w-full aspect-video h-[250px] sm:h-[350px] rounded-lg overflow-hidden border border-white/10 shadow-xl">
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="relative w-full h-[250px] sm:h-[350px] rounded-lg overflow-hidden border border-white/20 shadow-2xl group bg-black/40"
+        >
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-contain bg-gray-900/80 p-1"
+            className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-102"
           />
-        </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </motion.div>
 
         {/* Project Info */}
-        <div className="mt-2 sm:mt-4 space-y-2">
-          <h2 className="text-lg sm:text-xl font-bold text-white">
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="mt-4 sm:mt-6 space-y-3"
+        >
+          <h2 className="text-xl sm:text-2xl font-bold text-white bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent">
             {project.title}
           </h2>
           
-          <p className="text-xs sm:text-sm text-gray-300 leading-relaxed line-clamp-2 sm:line-clamp-3">
+          <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
             {project.description}
           </p>
 
           <div className="flex flex-wrap gap-2 pt-2">
             {project.tags.map((tag) => (
-              <span
+              <motion.span
                 key={tag}
-                className="px-2 sm:px-3 py-1 text-xs sm:text-sm bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                whileHover={{ scale: 1.05 }}
+                className="px-3 py-1 text-xs sm:text-sm bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20 backdrop-blur-sm"
               >
                 {tag}
-              </span>
+              </motion.span>
             ))}
           </div>
 
-          {/* New Buttons Section */}
-          <div className="flex gap-4 pt-4 justify-end">
-            <a
+          {/* Buttons Section */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="flex gap-4 pt-6 justify-end"
+          >
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-blue-500"
+              className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-all duration-300 border border-gray-600 hover:border-blue-500 shadow-lg hover:shadow-blue-500/20"
             >
               <FiGithub className="w-5 h-5" />
               <span>View Code</span>
-            </a>
+            </motion.a>
             {project.liveLink && (
-              <a
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 href={project.liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-all duration-300"
+                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white rounded-lg transition-all duration-300 shadow-lg hover:shadow-blue-500/20"
               >
                 <FiExternalLink className="w-5 h-5" />
                 <span>Live Demo</span>
-              </a>
+              </motion.a>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </motion.div>
   );
@@ -162,7 +199,7 @@ const Projects = () => {
   const selectedProject = projects.find(p => p.id === selectedId);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[1fr,300px] gap-4 h-[73vh] md:h-[600px]">
+    <div className="grid grid-cols-1 md:grid-cols-[1fr,300px] gap-4 h-[73vh] md:h-[600px] mb-8">
       <div className="bg-white/5 dark:bg-gray-800/5 rounded-xl backdrop-blur-sm border border-white/10 dark:border-gray-700/50 shadow-2xl">
         <ProjectDetail project={selectedProject} />
       </div>
