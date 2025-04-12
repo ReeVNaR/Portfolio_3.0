@@ -115,9 +115,9 @@ export default function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 sm:py-20 px-4 bg-gray-50 dark:bg-black">
+      <section id="about" className="h-[90vh] flex items-center justify-center bg-gray-50 dark:bg-black">
         <div className="container max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16">
+          <h2 className="text-4xl font-bold text-center mb-0">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
               About Me
             </span>
@@ -127,9 +127,9 @@ export default function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="min-h-screen py-16 sm:py-20 px-4 flex items-center justify-center bg-white dark:bg-black">
-        <div className="container max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12">
+      <section id="skills" className="h-[90vh] flex items-center justify-center bg-white dark:bg-black">
+        <div className="container max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-0">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
               My Skills
             </span>
@@ -139,9 +139,9 @@ export default function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="min-h-screen py-16 sm:py-20 px-4 flex items-center justify-center bg-gray-50 dark:bg-black">
-        <div className="container max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-8">
+      <section id="projects" className="h-[90vh] flex items-center justify-center bg-gray-50 dark:bg-black">
+        <div className="container max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
               Featured Projects
             </span>
@@ -151,9 +151,9 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="min-h-screen py-16 sm:py-20 px-4 flex items-center justify-center bg-white dark:bg-black">
-        <div className="container max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-12">
+      <section id="contact" className="h-[90vh] flex items-center justify-center bg-white dark:bg-black">
+        <div className="container max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-16">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
               Contact Me
             </span>
