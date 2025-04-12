@@ -92,48 +92,28 @@ const ProjectDetail = ({ project }) => {
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-cover opacity-20 blur-sm scale-105"
+          className="w-full h-full object-cover opacity-10 blur-md scale-105"
         />
       </div>
 
       {/* Main Content */}
-      <div className="relative h-full flex flex-col p-4 sm:p-6 z-10">
+      <div className="relative h-full flex flex-col p-3 sm:p-6 z-10">
         {/* Project Image */}
-        <div className="relative h-[200px] sm:h-[300px] rounded-lg overflow-hidden border border-white/10 backdrop-blur">
+        <div className="relative w-full aspect-video h-[250px] sm:h-[350px] rounded-lg overflow-hidden border border-white/10 shadow-xl">
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-contain bg-gray-900/50"
+            className="w-full h-full object-contain bg-gray-900/80 p-1"
           />
-          <div className="absolute top-4 right-4 flex gap-3">
-            <a
-              href={project.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full hover:scale-110 transition-all duration-300 border border-white/10"
-            >
-              <FiGithub className="w-5 h-5 text-white" />
-            </a>
-            {project.liveLink && (
-              <a
-                href={project.liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-black/50 hover:bg-black/70 backdrop-blur-sm rounded-full hover:scale-110 transition-all duration-300 border border-white/10"
-              >
-                <FiExternalLink className="w-5 h-5 text-white" />
-              </a>
-            )}
-          </div>
         </div>
 
         {/* Project Info */}
-        <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-4">
-          <h2 className="text-xl sm:text-2xl font-bold text-white">
+        <div className="mt-2 sm:mt-4 space-y-2">
+          <h2 className="text-lg sm:text-xl font-bold text-white">
             {project.title}
           </h2>
           
-          <p className="text-sm sm:text-base text-gray-300 leading-relaxed line-clamp-3 sm:line-clamp-none">
+          <p className="text-xs sm:text-sm text-gray-300 leading-relaxed line-clamp-2 sm:line-clamp-3">
             {project.description}
           </p>
 
@@ -146,6 +126,30 @@ const ProjectDetail = ({ project }) => {
                 {tag}
               </span>
             ))}
+          </div>
+
+          {/* New Buttons Section */}
+          <div className="flex gap-4 pt-4 justify-end">
+            <a
+              href={project.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-all duration-300 border border-gray-700 hover:border-blue-500"
+            >
+              <FiGithub className="w-5 h-5" />
+              <span>View Code</span>
+            </a>
+            {project.liveLink && (
+              <a
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-all duration-300"
+              >
+                <FiExternalLink className="w-5 h-5" />
+                <span>Live Demo</span>
+              </a>
+            )}
           </div>
         </div>
       </div>
