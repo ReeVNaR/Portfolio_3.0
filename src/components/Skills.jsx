@@ -64,7 +64,6 @@ const SkillBar = ({ name, level, icon, color }) => {
         </div>
         <div className="text-center space-y-2">
           <span className="text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-200">{name}</span>
-          <span className="block text-xs sm:text-sm font-bold text-gray-600 dark:text-gray-300">{level}%</span>
         </div>
       </div>
     </div>
