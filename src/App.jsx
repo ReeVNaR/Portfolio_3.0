@@ -145,15 +145,15 @@ export default function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="min-h-screen md:h-[90vh] pt-20 pb-20 md:py-20 flex items-center justify-center bg-gray-50 dark:bg-black">
+      <section id="projects" className="min-h-screen md:h-[90vh] pt-20 pb-32 md:py-20 flex items-center justify-center bg-gray-50 dark:bg-black">
         <div className="container max-w-7xl mx-auto px-4">
           <div className="flex flex-col">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
                 Featured Projects
               </span>
             </h2>
-            <div className="h-[70vh] md:h-[65vh]">
+            <div className="h-[55vh] md:h-[65vh]">
               <Projects />
             </div>
           </div>
@@ -161,7 +161,7 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="h-[90vh] flex items-center justify-center bg-white dark:bg-black">
+      <section id="contact" className="min-h-screen md:h-[90vh] pt-20 flex items-center justify-center bg-white dark:bg-black">
         <div className="container max-w-7xl mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
