@@ -115,18 +115,16 @@ export default function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="min-h-screen md:h-[90vh] pt-20 pb-32 md:py-20 flex items-center justify-center bg-gray-50 dark:bg-black">
-        <div className="container max-w-7xl mx-auto px-4 h-[60vh] md:h-full">
-          <div className="flex flex-col h-full">
+      <section id="about" className="min-h-screen md:h-[90vh] pt-20 pb-24 md:py-20 flex items-center justify-center bg-gray-50 dark:bg-black">
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="flex flex-col">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
                 About Me
               </span>
             </h2>
-            <div className="flex-1 overflow-y-auto md:overflow-visible scrollbar-hide">
-              <div className="h-full">
-                <About />
-              </div>
+            <div className="overflow-y-auto md:overflow-visible scrollbar-hide">
+              <About />
             </div>
           </div>
         </div>
