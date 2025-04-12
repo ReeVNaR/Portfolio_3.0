@@ -62,6 +62,16 @@ export default {
           '0%': { backgroundPosition: '200% 0' },
           '100%': { backgroundPosition: '-200% 0' },
         },
+        wave: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.1)' },
+        },
+        ping: {
+          '75%, 100%': {
+            transform: 'scale(1.5)',
+            opacity: 0,
+          },
+        },
       }
     },
   },

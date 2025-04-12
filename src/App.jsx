@@ -98,8 +98,20 @@ export default function App() {
             </div>
 
             <div className="w-[250px] sm:w-[280px] md:w-[380px] h-[250px] sm:h-[280px] md:h-[380px] z-10">
-              <div className="relative w-full h-full mx-auto animate-floating">
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-blue-400 rounded-full blur-3xl opacity-10 animate-pulse"></div>
+              <div className="relative w-full h-full mx-auto">
+                {/* Animated rings */}
+                <div className="absolute inset-0 rounded-full animate-[wave_4s_ease-in-out_infinite] opacity-70">
+                  <div className="absolute inset-0 rounded-full border-2 border-blue-500/30 [transform-origin:center_center] animate-[ping_3s_ease-in-out_infinite]"></div>
+                  <div className="absolute inset-[-10px] rounded-full border-2 border-blue-400/20 [transform-origin:center_center] animate-[ping_3s_ease-in-out_0.75s_infinite]"></div>
+                  <div className="absolute inset-[-20px] rounded-full border-2 border-blue-300/10 [transform-origin:center_center] animate-[ping_3s_ease-in-out_1.5s_infinite]"></div>
+                </div>
+                
+                {/* Pulsing gradient background */}
+                <div className="absolute inset-0">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-blue-400 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-blue-400 rounded-full blur-3xl opacity-10 animate-[pulse_2s_ease-in-out_0.5s_infinite]"></div>
+                </div>
+
                 <div className="group relative w-full h-full transform transition-transform duration-500 hover:scale-105">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
                   <img 
