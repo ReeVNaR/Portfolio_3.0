@@ -42,7 +42,7 @@ const projects = [
 
 const ProjectList = ({ selectedId, onSelect }) => {
   return (
-    <div className="h-[30vh] sm:h-[40vh] md:h-[70vh] overflow-y-auto space-y-3 bg-white/30 dark:bg-gray-800/30 p-3 sm:p-4 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 hide-scrollbar">
+    <div className="h-[25vh] md:h-[70vh] overflow-y-auto space-y-3 bg-white/30 dark:bg-gray-800/30 p-3 sm:p-4 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 hide-scrollbar">
       {projects.map((project) => (
         <motion.div
           key={project.id}
@@ -75,7 +75,7 @@ const ProjectList = ({ selectedId, onSelect }) => {
 
 const ProjectDetail = ({ project }) => {
   if (!project) return (
-    <div className="h-full flex items-center justify-center text-gray-500 dark:text-gray-400">
+    <div className="h-[45vh] md:h-full flex items-center justify-center text-gray-500 dark:text-gray-400">
       Select a project to view details
     </div>
   );
@@ -85,7 +85,7 @@ const ProjectDetail = ({ project }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="relative h-full rounded-xl overflow-hidden bg-gradient-to-br from-gray-900/90 to-gray-800/90"
+      className="h-[45vh] md:h-full rounded-xl overflow-y-auto overflow-x-hidden bg-gradient-to-br from-gray-900/90 to-gray-800/90"
     >
       {/* Background Image with Blur */}
       <div className="absolute inset-0">
@@ -158,10 +158,12 @@ const Projects = () => {
   const selectedProject = projects.find(p => p.id === selectedId);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[300px,1fr] gap-6 h-auto sm:h-[80vh] md:h-[600px]">
-      <ProjectList selectedId={selectedId} onSelect={setSelectedId} />
-      <div className="bg-white/5 dark:bg-gray-800/5 rounded-xl backdrop-blur-sm border border-white/10 dark:border-gray-700/50 shadow-2xl">
+    <div className="grid grid-cols-1 md:grid-cols-[1fr,300px] gap-4 md:gap-6 h-[75vh] md:h-[600px]">
+      <div className="bg-white/5 dark:bg-gray-800/5 rounded-xl backdrop-blur-sm border border-white/10 dark:border-gray-700/50 shadow-2xl order-1 md:order-1">
         <ProjectDetail project={selectedProject} />
+      </div>
+      <div className="order-2 md:order-2">
+        <ProjectList selectedId={selectedId} onSelect={setSelectedId} />
       </div>
     </div>
   );

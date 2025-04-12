@@ -25,7 +25,7 @@ export default function App() {
     <main className="bg-white dark:bg-black">
       <Navbar />
       
-      {/* Home Section */}
+      {/* Home Section - keep min-h-screen */}
       <section id="home" className="min-h-screen px-4 pt-20 md:pt-24 flex items-center justify-center bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-black dark:to-black relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#3B82F6_1px,transparent_1px)] [background-size:20px_20px] opacity-[0.03]"></div>
         <div className="container max-w-7xl mx-auto px-2 sm:px-6 py-6 sm:py-12 relative">
@@ -115,21 +115,27 @@ export default function App() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="h-[90vh] flex items-center justify-center bg-gray-50 dark:bg-black">
-        <div className="container max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-0">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
-              About Me
-            </span>
-          </h2>
-          <About />
+      <section id="about" className="min-h-[100vh] md:h-[90vh] py-16 md:py-20 flex items-center justify-center bg-gray-50 dark:bg-black">
+        <div className="container max-w-7xl mx-auto px-4 h-full">
+          <div className="flex flex-col h-full">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
+                About Me
+              </span>
+            </h2>
+            <div className="flex-1 overflow-y-auto md:overflow-visible scrollbar-hide">
+              <div className="h-full">
+                <About />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Skills Section */}
       <section id="skills" className="h-[90vh] flex items-center justify-center bg-white dark:bg-black">
-        <div className="container max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-0">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
               My Skills
             </span>
@@ -139,21 +145,25 @@ export default function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="h-[90vh] flex items-center justify-center bg-gray-50 dark:bg-black">
-        <div className="container max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-4">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
-              Featured Projects
-            </span>
-          </h2>
-          <Projects />
+      <section id="projects" className="min-h-screen md:h-[90vh] pt-20 pb-32 md:py-20 flex items-center justify-center bg-gray-50 dark:bg-black">
+        <div className="container max-w-7xl mx-auto px-4 h-[55vh] md:h-full">
+          <div className="flex flex-col h-full">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 md:mb-8">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
+                Featured Projects
+              </span>
+            </h2>
+            <div className="flex-1 h-[calc(100%-2rem)]">
+              <Projects />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Contact Section */}
       <section id="contact" className="h-[90vh] flex items-center justify-center bg-white dark:bg-black">
         <div className="container max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
               Contact Me
             </span>
