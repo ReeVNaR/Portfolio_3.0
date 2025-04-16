@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { FiGithub, FiExternalLink } from 'react-icons/fi';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiGithub, FiExternalLink, FiArrowRight } from 'react-icons/fi';
 import { useState } from 'react';
 
 const projects = [
@@ -56,141 +56,180 @@ const ProjectList = ({ selectedId, onSelect }) => {
         <motion.div
           key={project.id}
           onClick={() => onSelect(project.id)}
-          whileHover={{ scale: 1.02 }}
+          whileHover={{ 
+            scale: 1.02,
+            backgroundColor: selectedId === project.id ? 'rgba(59, 130, 246, 0.8)' : 'rgba(59, 130, 246, 0.1)'
+          }}
           whileTap={{ scale: 0.98 }}
-          className={`p-4 rounded-lg cursor-pointer transition-all duration-300 border ${
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ 
+            duration: 0.3,
+            backgroundColor: { duration: 0.2 }
+          }}
+          className={`p-4 rounded-lg cursor-pointer border relative group overflow-hidden ${
             selectedId === project.id
               ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg border-blue-400'
-              : 'hover:bg-blue-50/50 dark:hover:bg-blue-900/20 border-transparent hover:border-blue-200 dark:hover:border-blue-800'
+              : 'hover:border-blue-300 border-transparent dark:hover:border-blue-500/30'
           }`}
         >
-          <h3 className={`text-lg font-semibold ${
-            selectedId === project.id
-              ? 'text-white'
-              : 'text-gray-900 dark:text-white'
-          }`}>
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style={{ 
+              backgroundSize: '200% 100%',
+              animation: 'shimmer 2s linear infinite'
+            }}
+          />
+          <motion.h3 
+            className={`text-lg font-semibold relative z-10 ${
+              selectedId === project.id
+                ? 'text-white'
+                : 'text-gray-900 dark:text-white'
+            }`}
+            layout
+          >
             {project.title}
-          </h3>
+          </motion.h3>
+          <motion.div
+            className={`h-0.5 bg-blue-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 mt-2 ${
+              selectedId === project.id ? 'opacity-100' : 'opacity-50'
+            }`}
+            layout
+          />
         </motion.div>
       ))}
     </div>
   );
 };
 
+// Add this CSS anywhere in your global styles or component
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes shimmer {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+  }
+`;
+document.head.appendChild(style);
+
+// Add new keyframes for card animation
+const cardStyle = document.createElement('style');
+cardStyle.textContent = `
+  @keyframes cardShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+`;
+document.head.appendChild(cardStyle);
+
 const ProjectDetail = ({ project }) => {
-  if (!project) return (
-    <div className="h-[40vh] md:h-full flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 space-y-4">
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <FiExternalLink className="w-16 h-16 opacity-20" />
-      </motion.div>
-      <p className="text-lg font-medium">Select a project to view details</p>
-    </div>
-  );
+  const [currentView, setCurrentView] = useState('front');
+
+  if (!project) {
+    return (
+      <div className="h-[40vh] md:h-full flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 space-y-4">
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <FiExternalLink className="w-16 h-16 opacity-20" />
+          <p className="text-lg font-medium">Select a project to view details</p>
+        </motion.div>
+      </div>
+    );
+  }
+
+  const handleDragEnd = (event, info) => {
+    if (Math.abs(info.offset.x) > 100) {
+      setCurrentView(currentView === 'front' ? 'back' : 'front');
+    }
+  };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="h-[40vh] md:h-full rounded-xl overflow-y-auto overflow-x-hidden bg-gradient-to-br from-gray-900/90 to-gray-800/90"
-    >
-      {/* Background Image with Blur */}
-      <div className="absolute inset-0 opacity-30">
-        <motion.img
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.5 }}
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover blur-sm"
-        />
-      </div>
-
-      {/* Main Content */}
-      <div className="relative h-full flex flex-col p-3 sm:p-6 z-10">
-        {/* Project Image */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="relative w-full h-[250px] sm:h-[350px] rounded-lg overflow-hidden border border-white/20 shadow-2xl group bg-black/40"
-        >
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-102"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </motion.div>
-
-        {/* Project Info */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="mt-4 sm:mt-6 space-y-3"
-        >
-          <h2 className="text-xl sm:text-2xl font-bold text-white bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent">
-            {project.title}
-          </h2>
-          
-          <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-            {project.description}
-          </p>
-
-          <div className="flex flex-wrap gap-2 pt-2">
-            {project.tags.map((tag) => (
-              <motion.span
-                key={tag}
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                whileHover={{ scale: 1.05 }}
-                className="px-3 py-1 text-xs sm:text-sm bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20 backdrop-blur-sm"
-              >
-                {tag}
-              </motion.span>
-            ))}
-          </div>
-
-          {/* Buttons Section */}
+    <div className="h-[40vh] md:h-full relative overflow-hidden">
+      <AnimatePresence mode="wait">
+        {currentView === 'front' && (
           <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="flex gap-4 pt-6 justify-end"
+            key="front"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.7}
+            onDragEnd={handleDragEnd}
+            initial={{ x: "-100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{ type: "spring", damping: 20 }}
+            className="absolute inset-0 rounded-xl overflow-hidden bg-gradient-to-br from-gray-900/90 to-gray-800/90 cursor-grab active:cursor-grabbing"
           >
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href={project.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-all duration-300 border border-gray-600 hover:border-blue-500 shadow-lg hover:shadow-blue-500/20"
-            >
-              <FiGithub className="w-5 h-5" />
-              <span>View Code</span>
-            </motion.a>
-            {project.liveLink && (
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href={project.liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white rounded-lg transition-all duration-300 shadow-lg hover:shadow-blue-500/20"
-              >
-                <FiExternalLink className="w-5 h-5" />
-                <span>Live Demo</span>
-              </motion.a>
-            )}
+            <div className="p-6 h-full flex flex-col">
+              <h2 className="text-2xl font-bold text-white mb-4">{project.title}</h2>
+              <p className="text-gray-300 mb-4">{project.description}</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="px-3 py-1 text-sm bg-blue-500/10 text-blue-300 rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-auto flex justify-between items-center">
+                <div className="flex gap-2">
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-gray-800/80 hover:bg-gray-700 text-white rounded-lg"
+                  >
+                    <FiGithub className="inline-block mr-2" />
+                    Code
+                  </a>
+                  {project.liveLink && (
+                    <a
+                      href={project.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 bg-blue-600/80 hover:bg-blue-500 text-white rounded-lg"
+                    >
+                      <FiExternalLink className="inline-block mr-2" />
+                      Demo
+                    </a>
+                  )}
+                </div>
+                <div className="absolute bottom-6 right-6 text-blue-300/50 text-sm">
+                  Swipe left for image
+                </div>
+              </div>
+            </div>
           </motion.div>
-        </motion.div>
-      </div>
-    </motion.div>
+        )}
+
+        {currentView === 'back' && (
+          <motion.div
+            key="back"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.7}
+            onDragEnd={handleDragEnd}
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 20 }}
+            className="absolute inset-0 rounded-xl overflow-hidden bg-black/90 cursor-grab active:cursor-grabbing"
+          >
+            <div className="relative h-full">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-contain p-4"
+              />
+              <div className="absolute bottom-6 left-6 text-blue-300/50 text-sm">
+                Swipe right for details
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 
