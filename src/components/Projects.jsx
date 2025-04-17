@@ -51,7 +51,7 @@ const projects = [
 
 const ProjectList = ({ selectedId, onSelect }) => {
   return (
-    <div className="h-[30vh] md:h-[70vh] overflow-y-auto space-y-3 bg-white/30 dark:bg-gray-800/30 p-4 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 hide-scrollbar">
+    <div className="h-[30vh] md:h-[75vh] overflow-y-auto space-y-3 bg-white/30 dark:bg-gray-800/30 p-4 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 hide-scrollbar">
       {projects.map((project) => (
         <motion.div
           key={project.id}
