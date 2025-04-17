@@ -123,7 +123,7 @@ cardStyle.textContent = `
 document.head.appendChild(cardStyle);
 
 const ProjectDetail = ({ project }) => {
-  const [currentView, setCurrentView] = useState('front');
+  const [showFullImage, setShowFullImage] = useState(false);
 
   if (!project) {
     return (
@@ -140,92 +140,74 @@ const ProjectDetail = ({ project }) => {
     );
   }
 
-  const handleDragEnd = (event, info) => {
-    if (Math.abs(info.offset.x) > 100) {
-      setCurrentView(currentView === 'front' ? 'back' : 'front');
-    }
-  };
-
   return (
-    <div className="h-[40vh] md:h-full relative overflow-hidden">
-      <AnimatePresence mode="wait">
-        {currentView === 'front' && (
-          <motion.div
-            key="front"
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.7}
-            onDragEnd={handleDragEnd}
-            initial={{ x: "-100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "-100%" }}
-            transition={{ type: "spring", damping: 20 }}
-            className="absolute inset-0 rounded-xl overflow-hidden bg-gradient-to-br from-gray-900/90 to-gray-800/90 cursor-grab active:cursor-grabbing"
-          >
-            <div className="p-6 h-full flex flex-col">
-              <h2 className="text-2xl font-bold text-white mb-4">{project.title}</h2>
-              <p className="text-gray-300 mb-4">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="px-3 py-1 text-sm bg-blue-500/10 text-blue-300 rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-auto flex justify-between items-center">
-                <div className="flex gap-2">
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 bg-gray-800/80 hover:bg-gray-700 text-white rounded-lg"
-                  >
-                    <FiGithub className="inline-block mr-2" />
-                    Code
-                  </a>
-                  {project.liveLink && (
-                    <a
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 bg-blue-600/80 hover:bg-blue-500 text-white rounded-lg"
-                    >
-                      <FiExternalLink className="inline-block mr-2" />
-                      Demo
-                    </a>
-                  )}
-                </div>
-                <div className="absolute bottom-6 right-6 text-blue-300/50 text-sm">
-                  Swipe left for image
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-
-        {currentView === 'back' && (
-          <motion.div
-            key="back"
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.7}
-            onDragEnd={handleDragEnd}
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 20 }}
-            className="absolute inset-0 rounded-xl overflow-hidden bg-black/90 cursor-grab active:cursor-grabbing"
-          >
-            <div className="relative h-full">
+    <div className="h-full relative">
+      <div className="h-full rounded-xl bg-gradient-to-br from-gray-900/90 to-gray-800/90">
+        <div className="p-6 h-full flex flex-col">
+          <div className="flex-1 overflow-y-auto no-scrollbar">
+            <div onClick={() => setShowFullImage(true)} className="relative w-full h-[200px] sm:h-[300px] rounded-xl overflow-hidden border border-white/10 shadow-2xl group bg-black/40 cursor-pointer mb-6">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-contain p-4"
+                className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute bottom-6 left-6 text-blue-300/50 text-sm">
-                Swipe right for details
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <div className="absolute bottom-4 left-0 right-0 text-center text-white/90">
+                  Click to view full image
+                </div>
               </div>
             </div>
+            
+            <h2 className="text-2xl font-bold text-white mb-4">{project.title}</h2>
+            <p className="text-gray-300 mb-4">{project.description}</p>
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span key={tag} className="px-3 py-1 text-sm bg-blue-500/10 text-blue-300 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 flex justify-end gap-2">
+            <a
+              href={project.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-gray-800/80 hover:bg-gray-700 text-white rounded-lg"
+            >
+              <FiGithub className="inline-block mr-2" />
+              Code
+            </a>
+            {project.liveLink && (
+              <a
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-blue-600/80 hover:bg-blue-500 text-white rounded-lg"
+              >
+                <FiExternalLink className="inline-block mr-2" />
+                Demo
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {showFullImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowFullImage(false)}
+            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
+          >
+            <img
+              src={project.image}
+              alt={project.title}
+              className="max-w-full max-h-full object-contain"
+            />
           </motion.div>
         )}
       </AnimatePresence>
