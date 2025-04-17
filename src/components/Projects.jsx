@@ -32,7 +32,7 @@ const projects = [
     {
         id: 4,
         title: "Insta by Ranveer",
-        description: "A full-stack Instagram clone built with MERN (MongoDB, Express, React, Node.js) featuring authentication, image uploads, posts, likes & comments. 🚀 For educational purposes only. Not affiliated with Instagram or Meta.",
+        description: "A full-stack Instagram clone built with MERN (MongoDB, Express, React, Node.js) featuring authentication, image uploads, posts, likes & comments.",
         image: "https://res.cloudinary.com/de3t8l5ul/image/upload/v1742763035/Insta_m8bwll.png",
         tags: ["React", "Node.js", "MongoDB", "Express", "Vercel", "Render", "Cloudinary"],
         githubLink: "https://github.com/ReeVNaR/Instagram-by-Ranveer",
@@ -248,7 +248,7 @@ const ProjectDetail = ({ project }) => {
                 className="px-4 py-2 bg-blue-600/80 hover:bg-blue-500 text-white rounded-lg"
               >
                 <FiExternalLink className="inline-block mr-2" />
-                Demo
+                Live Link
               </a>
             )}
           </motion.div>
