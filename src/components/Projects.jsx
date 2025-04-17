@@ -142,14 +142,28 @@ const ProjectDetail = ({ project }) => {
 
   return (
     <div className="h-full relative">
-      <div className="h-full rounded-xl bg-gradient-to-br from-gray-900/90 to-gray-800/90">
+      <motion.div
+        key={project.id}
+        initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+        exit={{ opacity: 0, scale: 0.8, rotate: 5 }}
+        transition={{ 
+          type: "spring",
+          stiffness: 200,
+          damping: 15
+        }}
+        className="h-full rounded-xl bg-gradient-to-br from-gray-900/90 to-gray-800/90"
+      >
         <div className="p-6 h-full flex flex-col">
           <div className="flex-1 overflow-y-auto no-scrollbar">
-            <div onClick={() => setShowFullImage(true)} className="relative w-full h-[200px] sm:h-[300px] rounded-xl overflow-hidden border border-white/10 shadow-2xl group bg-black/40 cursor-pointer mb-6">
+            <div 
+              onClick={() => setShowFullImage(true)} 
+              className="relative w-full h-[200px] sm:h-[300px] rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black/40 cursor-pointer mb-6 group"
+            >
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-contain p-2 transition-all duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300">
                 <div className="absolute bottom-4 left-0 right-0 text-center text-white/90">
@@ -158,18 +172,65 @@ const ProjectDetail = ({ project }) => {
               </div>
             </div>
             
-            <h2 className="text-2xl font-bold text-white mb-4">{project.title}</h2>
-            <p className="text-gray-300 mb-4">{project.description}</p>
+            <motion.h2
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ type: "spring", bounce: 0.4 }}
+              className="text-2xl font-bold text-white mb-4"
+            >
+              {project.title}
+            </motion.h2>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="text-gray-300 mb-4"
+            >
+              {project.description}
+            </motion.p>
+
             <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <span key={tag} className="px-3 py-1 text-sm bg-blue-500/10 text-blue-300 rounded-full">
+              {project.tags.map((tag, index) => (
+                <motion.span
+                  key={tag}
+                  initial={{ scale: 0, rotate: -10 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 15,
+                    delay: index * 0.1
+                  }}
+                  whileHover={{ 
+                    scale: 1.1, 
+                    rotate: [-1, 1, -1],
+                    transition: {
+                      rotate: {
+                        repeat: Infinity,
+                        duration: 0.5
+                      }
+                    }
+                  }}
+                  className="px-3 py-1 text-sm bg-blue-500/10 text-blue-300 rounded-full"
+                >
                   {tag}
-                </span>
+                </motion.span>
               ))}
             </div>
           </div>
 
-          <div className="mt-6 flex justify-end gap-2">
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ 
+              type: "spring",
+              stiffness: 200,
+              damping: 20,
+              delay: 0.3 
+            }}
+            className="mt-6 flex justify-end gap-2"
+          >
             <a
               href={project.githubLink}
               target="_blank"
@@ -190,9 +251,9 @@ const ProjectDetail = ({ project }) => {
                 Demo
               </a>
             )}
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       <AnimatePresence>
         {showFullImage && (
@@ -206,7 +267,7 @@ const ProjectDetail = ({ project }) => {
             <img
               src={project.image}
               alt={project.title}
-              className="max-w-full max-h-full object-contain"
+              className="max-w-full max-h-full object-contain transition-transform duration-300 hover:scale-110"
             />
           </motion.div>
         )}
