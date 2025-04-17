@@ -4,7 +4,7 @@ const descriptions = [
   "Full Stack Developer & UI/UX Enthusiast",
   "React & Node.js Developer",
   "Problem Solver & Tech Enthusiast",
-  "JavaScript & TypeScript Expert",
+  "JavaScript & TypeScript Enthusiast",
   "Web Development Passionate"
 ];
 
