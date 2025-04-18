@@ -31,11 +31,20 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    const name = e.target.user_name.value;
+    const email = e.target.user_email.value;
+
+    const templateParams = {
+      from_name: name,
+      user_email: email,
+      message: e.target.message.value
+    };
+
     try {
-      await emailjs.sendForm(
+      await emailjs.send(
         'service_xgq3fja',
         'template_v4r72jm',
-        formRef.current,
+        templateParams,
         'ORFeE3WXbcgrQai9c'
       );
       setSubmitStatus('success');
@@ -131,7 +140,7 @@ const Contact = () => {
           <div>
             <label className="block text-gray-700 dark:text-gray-300 mb-2 font-medium">Name</label>
             <input
-              type="text"
+              type="user_name"
               name="user_name"
               required
               placeholder="Your name"
@@ -141,7 +150,7 @@ const Contact = () => {
           <div>
             <label className="block text-gray-700 dark:text-gray-300 mb-2 font-medium">Email</label>
             <input
-              type="email"
+              type="user_email"
               name="user_email"
               required
               placeholder="your.email@example.com"
