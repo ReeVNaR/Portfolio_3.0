@@ -160,7 +160,7 @@ export default function App() {
                 Featured Projects
               </span>
             </h2>
-            <div className="h-[75vh] md:h-[80vh]">
+            <div className="h-[75vh] md:h-[100vh]">
               <Projects />
             </div>
           </div>
