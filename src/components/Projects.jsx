@@ -152,13 +152,14 @@ const ProjectDetail = ({ project }) => {
           stiffness: 200,
           damping: 15
         }}
-        className="h-full rounded-xl bg-gradient-to-br from-gray-900/90 to-gray-800/90"
+        className="h-full rounded-xl bg-gradient-to-br from-white/80 to-white/40 dark:from-gray-900/90 dark:to-gray-800/90 backdrop-blur-md border border-white/50 dark:border-white/10"
       >
-        <div className="p-6 h-full flex flex-col">
-          <div className="flex-1 overflow-y-auto no-scrollbar">
+        <div className="p-6 h-full flex flex-col relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-blue-500/5 dark:from-blue-500/10 dark:to-purple-500/10" />
+          <div className="flex-1 overflow-y-auto no-scrollbar relative z-10">
             <div 
               onClick={() => setShowFullImage(true)} 
-              className="relative w-full h-[200px] sm:h-[300px] rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black/40 cursor-pointer mb-6 group"
+              className="relative w-full h-[200px] sm:h-[300px] rounded-xl overflow-hidden border border-gray-200/50 dark:border-white/10 shadow-xl bg-white/50 dark:bg-black/20 cursor-pointer mb-6 group hover:border-blue-500/30 transition-colors duration-300"
             >
               <img
                 src={project.image}
@@ -176,7 +177,7 @@ const ProjectDetail = ({ project }) => {
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ type: "spring", bounce: 0.4 }}
-              className="text-2xl font-bold text-white mb-4"
+              className="text-2xl font-bold text-gray-800 dark:text-white mb-4"
             >
               {project.title}
             </motion.h2>
@@ -185,7 +186,7 @@ const ProjectDetail = ({ project }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-gray-300 mb-4"
+              className="text-gray-600 dark:text-gray-300 mb-4"
             >
               {project.description}
             </motion.p>
@@ -212,7 +213,7 @@ const ProjectDetail = ({ project }) => {
                       }
                     }
                   }}
-                  className="px-3 py-1 text-sm bg-blue-500/10 text-blue-300 rounded-full"
+                  className="px-3 py-1 text-sm bg-blue-100 dark:bg-blue-500/10 text-blue-600 dark:text-blue-300 rounded-full border border-blue-200/50 dark:border-blue-500/20"
                 >
                   {tag}
                 </motion.span>
