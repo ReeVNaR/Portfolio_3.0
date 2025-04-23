@@ -303,29 +303,27 @@ const Projects = () => {
         {/* Mobile Navigation */}
         <div className="md:hidden">
           {/* Navigation Arrows */}
-          <div className="absolute inset-y-0 left-0 flex items-center">
+          <div className="absolute bottom-24 left-0 right-0 flex justify-between items-center px-4">
             <motion.button
               whileHover={{ scale: 1.1, x: -2 }}
               whileTap={{ scale: 0.9 }}
               onClick={handlePrev}
-              className="p-3 ml-2 bg-black/30 backdrop-blur-sm hover:bg-black/50 text-white rounded-full border border-white/10 shadow-lg transform transition-all"
+              className="p-3 bg-black/30 backdrop-blur-sm hover:bg-black/50 text-white rounded-full border border-white/10 shadow-lg transform transition-all"
             >
               <FiArrowLeft className="w-5 h-5" />
             </motion.button>
-          </div>
-          
-          <div className="absolute inset-y-0 right-0 flex items-center">
+
             <motion.button
               whileHover={{ scale: 1.1, x: 2 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleNext}
-              className="p-3 mr-2 bg-black/30 backdrop-blur-sm hover:bg-black/50 text-white rounded-full border border-white/10 shadow-lg transform transition-all"
+              className="p-3 bg-black/30 backdrop-blur-sm hover:bg-black/50 text-white rounded-full border border-white/10 shadow-lg transform transition-all"
             >
               <FiArrowRight className="w-5 h-5" />
             </motion.button>
           </div>
 
-          {/* Page Indicator */}
+          {/* Page Indicator - keep it at bottom */}
           <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-1.5">
             {projects.map((project) => (
               <motion.div
