@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiGithub, FiExternalLink, FiArrowRight } from 'react-icons/fi';
+import { FiGithub, FiExternalLink, FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 import { useState } from 'react';
 
 const projects = [
@@ -278,14 +278,71 @@ const ProjectDetail = ({ project }) => {
 
 const Projects = () => {
   const [selectedId, setSelectedId] = useState(null);
+  
+  const handleNext = () => {
+    setSelectedId(current => {
+      const nextId = current ? (current % projects.length) + 1 : 1;
+      return nextId;
+    });
+  };
+
+  const handlePrev = () => {
+    setSelectedId(current => {
+      const prevId = current ? (current === 1 ? projects.length : current - 1) : projects.length;
+      return prevId;
+    });
+  };
+
   const selectedProject = projects.find(p => p.id === selectedId);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-[1fr,300px] gap-4 h-[73vh] md:h-[600px] mb-8">
-      <div className="bg-white/5 dark:bg-gray-800/5 rounded-xl backdrop-blur-sm border border-white/10 dark:border-gray-700/50 shadow-2xl">
+      <div className="relative bg-white/5 dark:bg-gray-800/5 rounded-xl backdrop-blur-sm border border-white/10 dark:border-gray-700/50 shadow-2xl">
         <ProjectDetail project={selectedProject} />
+        
+        {/* Mobile Navigation */}
+        <div className="md:hidden">
+          {/* Navigation Arrows */}
+          <div className="absolute inset-y-0 left-0 flex items-center">
+            <motion.button
+              whileHover={{ scale: 1.1, x: -2 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={handlePrev}
+              className="p-3 ml-2 bg-black/30 backdrop-blur-sm hover:bg-black/50 text-white rounded-full border border-white/10 shadow-lg transform transition-all"
+            >
+              <FiArrowLeft className="w-5 h-5" />
+            </motion.button>
+          </div>
+          
+          <div className="absolute inset-y-0 right-0 flex items-center">
+            <motion.button
+              whileHover={{ scale: 1.1, x: 2 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={handleNext}
+              className="p-3 mr-2 bg-black/30 backdrop-blur-sm hover:bg-black/50 text-white rounded-full border border-white/10 shadow-lg transform transition-all"
+            >
+              <FiArrowRight className="w-5 h-5" />
+            </motion.button>
+          </div>
+
+          {/* Page Indicator */}
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-1.5">
+            {projects.map((project) => (
+              <motion.div
+                key={project.id}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  selectedId === project.id 
+                    ? 'w-4 bg-white' 
+                    : 'w-1.5 bg-white/30'
+                }`}
+                whileHover={{ scale: 1.2 }}
+                onClick={() => setSelectedId(project.id)}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-      <div>
+      <div className="hidden md:block">
         <ProjectList selectedId={selectedId} onSelect={setSelectedId} />
       </div>
     </div>
