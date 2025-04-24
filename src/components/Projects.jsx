@@ -36,7 +36,7 @@ const projects = [
         image: "https://res.cloudinary.com/de3t8l5ul/image/upload/v1742763035/Insta_m8bwll.png",
         tags: ["React", "Node.js", "MongoDB", "Express", "Vercel", "Render", "Cloudinary"],
         githubLink: "https://github.com/ReeVNaR/Instagram-by-Ranveer",
-        liveLink: "https://revsinsta.vercel.app"
+        liveLink: "https://revsinsta.vercel.app/"
     },
     {
         id: 5,
@@ -221,6 +221,7 @@ const ProjectDetail = ({ project }) => {
             </div>
           </div>
 
+          {/* Links Section - Visible on both mobile and desktop */}
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -230,26 +231,26 @@ const ProjectDetail = ({ project }) => {
               damping: 20,
               delay: 0.3 
             }}
-            className="mt-6 flex justify-end gap-2"
+            className="mt-auto pt-6 flex justify-center md:justify-end gap-4 z-20"
           >
             <a
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-gray-800/80 hover:bg-gray-700 text-white rounded-lg"
+              className="flex-1 md:flex-none px-4 py-3 bg-gray-800/90 hover:bg-gray-700 text-white rounded-lg text-center backdrop-blur-sm border border-white/10 transition-all duration-300 hover:scale-105"
             >
               <FiGithub className="inline-block mr-2" />
-              Code
+              GitHub
             </a>
             {project.liveLink && (
               <a
                 href={project.liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-blue-600/80 hover:bg-blue-500 text-white rounded-lg"
+                className="flex-1 md:flex-none px-4 py-3 bg-blue-600/90 hover:bg-blue-500 text-white rounded-lg text-center backdrop-blur-sm border border-white/10 transition-all duration-300 hover:scale-105"
               >
                 <FiExternalLink className="inline-block mr-2" />
-                Live Link
+                Live Demo
               </a>
             )}
           </motion.div>
