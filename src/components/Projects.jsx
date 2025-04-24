@@ -36,7 +36,7 @@ const projects = [
         image: "https://res.cloudinary.com/de3t8l5ul/image/upload/v1742763035/Insta_m8bwll.png",
         tags: ["React", "Node.js", "MongoDB", "Express", "Vercel", "Render", "Cloudinary"],
         githubLink: "https://github.com/ReeVNaR/Instagram-by-Ranveer",
-        liveLink: "https://instagram-by-ranveer.vercel.app/login"
+        liveLink: "https://revsinsta.vercel.app"
     },
     {
         id: 5,
