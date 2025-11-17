@@ -5,6 +5,7 @@ import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import AIChat from './components/AIChat';
 
 export default function App() {
   const scrollTo = (elementId) => {
@@ -179,6 +180,7 @@ export default function App() {
         </div>
       </section>
 
+      <AIChat />
       <Footer />
     </main>
   );
