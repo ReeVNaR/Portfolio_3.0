@@ -174,12 +174,11 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
             className="w-full relative z-10"
           >
             {/* Ambient Background Glows to enhance frosted liquid glass refraction */}
-            <div className="absolute top-1/2 left-1/4 -translate-y-1/2 -translate-x-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-blue-500/15 dark:bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute top-1/2 right-1/4 -translate-y-1/2 translate-x-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-indigo-500/15 dark:bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] max-w-4xl h-72 sm:h-96 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="container max-w-5xl lg:max-w-[1100px] xl:max-w-[1160px] mx-auto relative z-10">
               {/* Main Floating Glass Canvas Frontpanel with Navbar-style Liquid Glass Effect */}
-              <div className="relative nav-liquid-glass panel-liquid-glass rounded-3xl p-7 sm:p-9 md:p-10 lg:p-11 xl:p-12">
+              <div className="relative panel-liquid-glass rounded-3xl p-7 sm:p-9 md:p-10 lg:p-11 xl:p-12">
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
                   
                   {/* Left Column: Introductions & Actions */}

@@ -390,8 +390,8 @@
     background: linear-gradient(
       45deg,
       rgba(255, 255, 255, 0.8) 0%,
-      transparent var(--tr),
-      transparent calc(100% - var(--tr)),
+      rgba(255, 255, 255, 0) var(--tr),
+      rgba(255, 255, 255, 0) calc(100% - var(--tr)),
       rgba(255, 255, 255, 0.8) 100%
     );
     pointer-events: none;
@@ -428,8 +428,8 @@
     background: linear-gradient(
       45deg,
       rgba(255, 255, 255, 0.3) 0%,
-      transparent var(--tr),
-      transparent calc(100% - var(--tr)),
+      rgba(255, 255, 255, 0) var(--tr),
+      rgba(255, 255, 255, 0) calc(100% - var(--tr)),
       rgba(255, 255, 255, 0.3) 100%
     );
   }
@@ -437,7 +437,7 @@
   /* Liquid Glass Panel (Hero Panel & Card Surfaces) - Exact Navbar Glass Treatment */
   .panel-liquid-glass {
     --r: 1.75rem;
-    --tr: 10%;
+    --tr: 12%;
     position: relative;
     border-radius: var(--r);
     border: 1px double rgba(51, 51, 51, 0.08);
@@ -446,7 +446,7 @@
       inset -2px 2px 1px -1px rgba(255, 255, 255, 0.95),
       inset 6px -6px 1px -6px rgba(255, 255, 255, 0.55),
       inset -6px 6px 1px -6px rgba(255, 255, 255, 0.55),
-      inset 0 0 2px rgba(0, 0, 0, 0.75),
+      inset 0 0 1px rgba(0, 0, 0, 0.15),
       0 20px 50px -10px rgba(15, 23, 42, 0.12),
       0 8px 24px -2px rgba(0, 0, 0, 0.08);
     background: rgba(255, 255, 255, 0.5);
@@ -455,18 +455,10 @@
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
+  /* Disable blurred inner dark borders on large panels to prevent creases */
   .panel-liquid-glass:before {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    top: 8px;
-    left: 8px;
-    width: calc(100% - 16px);
-    height: calc(100% - 16px);
-    border-radius: var(--r);
-    border: 1px solid rgba(0, 0, 0, 0.75);
-    filter: blur(8px);
-    pointer-events: none;
+    display: none !important;
+    content: none !important;
   }
 
   .panel-liquid-glass:after {
@@ -477,13 +469,13 @@
     width: 100%;
     height: 100%;
     border-radius: var(--r);
-    filter: blur(7px);
+    filter: blur(8px);
     background: linear-gradient(
       45deg,
-      rgba(255, 255, 255, 0.8) 0%,
-      transparent var(--tr),
-      transparent calc(100% - var(--tr)),
-      rgba(255, 255, 255, 0.8) 100%
+      rgba(255, 255, 255, 0.75) 0%,
+      rgba(255, 255, 255, 0) var(--tr),
+      rgba(255, 255, 255, 0) calc(100% - var(--tr)),
+      rgba(255, 255, 255, 0.75) 100%
     );
     pointer-events: none;
   }
@@ -507,22 +499,23 @@
       inset -2px 2px 1px -1px rgba(255, 255, 255, 0.45),
       inset 6px -6px 1px -6px rgba(255, 255, 255, 0.25),
       inset -6px 6px 1px -6px rgba(255, 255, 255, 0.25),
-      inset 0 0 2px rgba(0, 0, 0, 0.9),
+      inset 0 0 1px rgba(0, 0, 0, 0.4),
       0 25px 60px -12px rgba(0, 0, 0, 0.6),
       0 12px 30px -4px rgba(0, 0, 0, 0.4);
   }
 
   .dark .panel-liquid-glass:before {
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: none !important;
+    content: none !important;
   }
 
   .dark .panel-liquid-glass:after {
     background: linear-gradient(
       45deg,
-      rgba(255, 255, 255, 0.3) 0%,
-      transparent var(--tr),
-      transparent calc(100% - var(--tr)),
-      rgba(255, 255, 255, 0.3) 100%
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(255, 255, 255, 0) var(--tr),
+      rgba(255, 255, 255, 0) calc(100% - var(--tr)),
+      rgba(255, 255, 255, 0.25) 100%
     );
   }
 }
