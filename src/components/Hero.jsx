@@ -271,15 +271,34 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       >
                         <span className="text relative z-10 pointer-events-none">Explore Work</span>
                         
-                        {/* Reactive Fluid Liquid Chamber */}
-                        <div className="liquid-chamber pointer-events-none" aria-hidden="true">
-                          <div className="liquid-base" />
+                        {/* Continuous Rolling Beach Waves Chamber */}
+                        <div className="beach-liquid-chamber pointer-events-none" aria-hidden="true">
+                          {/* Deep Ocean Water Base */}
+                          <div className="ocean-base" />
+
+                          {/* Interactive Mouse Fluid Droplet */}
                           <div className="liquid-interactive-blob" />
-                          <div className="liquid-wave-track">
-                            <div className="liquid-wave wave-back" />
-                            <div className="liquid-wave wave-front" />
+
+                          {/* Continuous Rolling Beach Waves Layer */}
+                          <div className="ocean-waves-wrapper">
+                            {/* Wave 1: Deep rolling swell */}
+                            <svg className="ocean-wave wave-depth" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                              <path d="M 0,38 Q 125,18 250,38 T 500,38 Q 625,18 750,38 T 1000,38 L 1000,100 L 0,100 Z" />
+                            </svg>
+
+                            {/* Wave 2: Mid-water rolling swell */}
+                            <svg className="ocean-wave wave-mid" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                              <path d="M 0,32 Q 125,50 250,32 T 500,32 Q 625,50 750,32 T 1000,32 L 1000,100 L 0,100 Z" />
+                            </svg>
+
+                            {/* Wave 3: Surface beach wave with foam crest */}
+                            <svg className="ocean-wave wave-surf" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                              <path d="M 0,26 Q 125,8 250,26 T 500,26 Q 625,8 750,26 T 1000,26 L 1000,100 L 0,100 Z" />
+                            </svg>
                           </div>
-                          <div className="liquid-glow" />
+
+                          {/* Surface Glass Meniscus Sheen */}
+                          <div className="surface-glass-sheen" />
                         </div>
 
                         <div className="circle-overlay pointer-events-none"></div>

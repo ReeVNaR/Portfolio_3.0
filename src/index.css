@@ -262,8 +262,8 @@
     z-index: 8;
   }
 
-  /* Liquid Chamber */
-  .start-btn-blue .liquid-chamber {
+  /* Beach Liquid Chamber */
+  .start-btn-blue .beach-liquid-chamber {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -274,13 +274,13 @@
     z-index: 1;
   }
 
-  /* Base Fluid */
-  .start-btn-blue .liquid-base {
+  /* Deep Ocean Water Base */
+  .start-btn-blue .ocean-base {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #0071e3 0%, #005bb5 50%, #004494 100%);
-    opacity: 0.92;
-    transition: opacity 0.3s ease, background 0.3s ease;
+    background: linear-gradient(180deg, #0284c7 0%, #0071e3 35%, #004da8 70%, #003272 100%);
+    opacity: 0.88;
+    transition: opacity 0.3s ease;
   }
 
   /* Interactive Mouse Fluid Droplet (Tracks Cursor) */
@@ -288,67 +288,80 @@
     position: absolute;
     top: var(--my-pct, 50%);
     left: var(--mx-pct, 50%);
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
     transform: translate(-50%, -50%);
     background: radial-gradient(
       circle,
-      rgba(125, 211, 252, 0.95) 0%,
-      rgba(56, 189, 248, 0.8) 25%,
+      rgba(224, 242, 254, 0.95) 0%,
+      rgba(56, 189, 248, 0.85) 25%,
       rgba(0, 113, 227, 0.5) 50%,
-      transparent 75%
+      transparent 70%
     );
     border-radius: 50%;
-    filter: blur(6px);
-    opacity: calc(0.55 + var(--liquid-active, 0) * 0.45);
+    filter: blur(5px);
+    opacity: calc(0.45 + var(--liquid-active, 0) * 0.55);
     transition: opacity 0.25s ease, transform 0.08s ease-out;
     mix-blend-mode: screen;
-    animation: liquidBlobMorph 5s ease-in-out infinite alternate;
+    z-index: 3;
+    pointer-events: none;
   }
 
-  /* Sloshing Wave Track */
-  .start-btn-blue .liquid-wave-track {
+  /* Continuous Rolling Beach Waves Layer */
+  .start-btn-blue .ocean-waves-wrapper {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -6px;
-    height: 32px;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
     pointer-events: none;
-    opacity: 0.8;
-    transform: rotate(calc((var(--mx-pct, 50%) - 50%) * 0.12deg));
-    transition: transform 0.15s ease-out;
+    z-index: 2;
+    transform: rotate(calc((var(--mx-pct, 50%) - 50%) * 0.1deg));
+    transition: transform 0.2s ease-out;
   }
 
-  .start-btn-blue .liquid-wave {
+  .start-btn-blue .ocean-wave {
     position: absolute;
+    bottom: -2px;
+    left: 0;
     width: 200%;
     height: 100%;
-    left: 0;
-    bottom: 0;
   }
 
-  .start-btn-blue .wave-back {
-    opacity: 0.55;
-    background: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(56, 189, 248, 0.7), transparent 70%);
-    background-size: 50% 100%;
-    animation: liquidWaveMove 3.5s linear infinite;
+  /* Wave 1: Deep rolling swell */
+  .start-btn-blue .wave-depth {
+    fill: rgba(0, 85, 180, 0.7);
+    animation: 
+      oceanWaveRoll 5s linear infinite,
+      oceanTideSwell 3.5s ease-in-out infinite alternate;
   }
 
-  .start-btn-blue .wave-front {
-    opacity: 0.75;
-    background: radial-gradient(ellipse 50% 50% at 50% 100%, rgba(186, 230, 253, 0.6), transparent 75%);
-    background-size: 50% 100%;
-    animation: liquidWaveMove 2.2s linear infinite reverse;
+  /* Wave 2: Mid-water azure wave */
+  .start-btn-blue .wave-mid {
+    fill: rgba(2, 132, 199, 0.65);
+    animation: 
+      oceanWaveRoll 3.6s linear infinite reverse,
+      oceanTideSwell 2.8s ease-in-out infinite alternate-reverse;
   }
 
-  /* Ambient Surface Meniscus Glow */
-  .start-btn-blue .liquid-glow {
+  /* Wave 3: Surface foam / bright wave crest */
+  .start-btn-blue .wave-surf {
+    fill: rgba(56, 189, 248, 0.75);
+    filter: drop-shadow(0 -1px 2px rgba(255, 255, 255, 0.65));
+    animation: 
+      oceanWaveRoll 2.6s linear infinite,
+      oceanTideSwell 2.2s ease-in-out infinite alternate;
+  }
+
+  /* Surface Glass Meniscus Sheen */
+  .start-btn-blue .surface-glass-sheen {
     position: absolute;
     top: 1px;
     left: 8%;
     right: 8%;
     height: 35%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 100%);
     border-radius: 9999px 9999px 0 0;
     filter: blur(1px);
     pointer-events: none;
@@ -360,35 +373,34 @@
     box-shadow:
       inset 2px -2px 1px -1px rgba(255, 255, 255, 1),
       inset -2px 2px 1px -1px rgba(255, 255, 255, 1),
-      0 12px 30px -4px rgba(0, 113, 227, 0.6);
+      0 12px 30px -4px rgba(0, 113, 227, 0.65);
   }
 
-  .start-btn.start-btn-blue:hover .liquid-base {
-    opacity: 0.98;
-    background: linear-gradient(135deg, #0a7aff 0%, #0066cc 55%, #004ba0 100%);
+  .start-btn.start-btn-blue:hover .ocean-base {
+    opacity: 0.95;
+    background: linear-gradient(180deg, #0284c7 0%, #0077ee 35%, #0055ba 70%, #003982 100%);
   }
 
-  @keyframes liquidBlobMorph {
-    0% {
-      border-radius: 46% 54% 62% 38% / 42% 58% 42% 58%;
-      transform: translate(-50%, -50%) scale(0.95);
-    }
-    50% {
-      border-radius: 58% 42% 44% 56% / 54% 46% 54% 46%;
-      transform: translate(-50%, -50%) scale(1.12);
-    }
-    100% {
-      border-radius: 50% 50% 42% 58% / 58% 42% 58% 42%;
-      transform: translate(-50%, -50%) scale(1);
-    }
-  }
-
-  @keyframes liquidWaveMove {
+  /* Continuous horizontal rolling wave translation */
+  @keyframes oceanWaveRoll {
     0% {
       transform: translateX(0);
     }
     100% {
       transform: translateX(-50%);
+    }
+  }
+
+  /* Natural vertical swell / ebb-and-flow tide */
+  @keyframes oceanTideSwell {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+    100% {
+      transform: translateY(2px);
     }
   }
 
