@@ -180,74 +180,74 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                   
                   {/* Left Column: Introductions & Actions */}
                   <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
-                    {/* Status Badge Capsule with High Contrast */}
+                    {/* Status Badge Capsule: Apple-style micro-pill */}
                     <motion.div 
-                      initial={{ opacity: 0, y: -10 }}
+                      initial={{ opacity: 0, y: -8 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
-                      className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/95 dark:bg-white/[0.06] border border-slate-300 dark:border-white/10 text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 mb-6 shadow-sm hover:scale-[1.02] transition-transform cursor-default"
+                      className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/[0.04] dark:bg-white/[0.08] border border-slate-900/[0.08] dark:border-white/[0.12] text-xs font-medium text-slate-700 dark:text-slate-300 mb-6 backdrop-blur-xl shadow-none hover:bg-slate-900/[0.07] transition-all cursor-default"
                     >
-                      <span className="relative flex h-2.5 w-2.5">
+                      <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                       </span>
-                      <span>Available for new projects & opportunities</span>
+                      <span className="tracking-tight">Available for new projects & opportunities</span>
                     </motion.div>
 
-                    {/* Main Headline */}
+                    {/* Main Headline: Apple Keynote Style Typography */}
                     <motion.h1 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.1 }}
-                      className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.12] mb-5 font-display"
+                      className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-[-0.035em] text-slate-950 dark:text-white leading-[1.08] mb-5 font-display"
                     >
                       Hi, I'm{' '}
-                      <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 dark:from-blue-400 dark:via-sky-300 dark:to-indigo-300 bg-clip-text text-transparent">
+                      <span className="bg-gradient-to-r from-[#0071e3] via-[#4338ca] to-[#6366f1] dark:from-sky-400 dark:via-blue-300 dark:to-indigo-300 bg-clip-text text-transparent">
                         Ranveer Ghorpade
                       </span>
                     </motion.h1>
 
-                    {/* Typing Subtitle Badge with High Contrast */}
+                    {/* Typing Subtitle Badge: Apple frosted pill */}
                     <motion.div 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.2 }}
-                      className="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-white/95 dark:bg-white/[0.06] border border-slate-300 dark:border-white/10 shadow-sm backdrop-blur-md mb-6"
+                      className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900/[0.04] dark:bg-white/[0.06] border border-slate-900/[0.08] dark:border-white/[0.12] backdrop-blur-xl mb-6 shadow-sm"
                     >
-                      <HiSparkles className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 animate-pulse" />
-                      <span className="text-sm sm:text-base md:text-lg font-semibold text-slate-900 dark:text-slate-100">
+                      <HiSparkles className="w-4 h-4 text-[#0071e3] dark:text-sky-400 flex-shrink-0 animate-pulse" />
+                      <span className="text-sm sm:text-base md:text-lg font-medium tracking-tight text-slate-800 dark:text-slate-200">
                         <TypingEffect />
                       </span>
                     </motion.div>
 
-                    {/* Bio summary */}
+                    {/* Bio summary: Clean Apple editorial copy */}
                     <motion.p 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.3 }}
-                      className="text-base sm:text-lg text-slate-700 dark:text-slate-300 max-w-xl leading-relaxed mb-8 font-medium"
+                      className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mb-8 font-normal tracking-[-0.01em]"
                     >
                       Passionate about crafting intuitive, scalable web applications with refined UI/UX, robust frontend architectures, and seamless digital interactions.
                     </motion.p>
 
-                    {/* Call to Actions with High Contrast */}
+                    {/* Call to Actions: Apple Signature Pill Buttons */}
                     <motion.div 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
-                      className="flex flex-wrap gap-4 justify-center lg:justify-start w-full sm:w-auto"
+                      className="flex flex-wrap gap-3.5 justify-center lg:justify-start w-full sm:w-auto"
                     >
                       <button
                         onClick={() => scrollTo('projects')}
-                        className="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-sm sm:text-base shadow-[0_10px_25px_-5px_rgba(59,130,246,0.4)] hover:shadow-[0_15px_30px_-5px_rgba(59,130,246,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center gap-2 group"
+                        className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white font-medium text-sm sm:text-base shadow-[0_4px_14px_rgba(0,113,227,0.3)] hover:shadow-[0_6px_20px_rgba(0,113,227,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center gap-2 group tracking-tight"
                       >
                         <span>Explore Work</span>
-                        <HiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        <HiArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                       </button>
 
                       <button
                         onClick={() => scrollTo('contact')}
-                        className="px-7 py-3.5 rounded-2xl bg-white dark:bg-white/10 hover:bg-slate-50 dark:hover:bg-white/15 text-slate-900 dark:text-white font-semibold text-sm sm:text-base border-2 border-slate-300 dark:border-white/20 shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center gap-2"
+                        className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-slate-900/[0.04] hover:bg-slate-900/[0.08] dark:bg-white/[0.08] dark:hover:bg-white/[0.14] text-slate-900 dark:text-white font-medium text-sm sm:text-base border border-slate-900/[0.12] dark:border-white/15 backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center gap-2 tracking-tight"
                       >
                         <span>Get in Touch</span>
                       </button>
