@@ -51,7 +51,7 @@ const projects = [
 
 const ProjectList = ({ selectedId, onSelect }) => {
   return (
-    <div className="h-[30vh] md:h-[75vh] overflow-y-auto space-y-3 bg-white/30 dark:bg-gray-800/30 p-4 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 hide-scrollbar">
+    <div className="h-[30vh] md:h-[75vh] overflow-y-auto space-y-3 bg-white dark:bg-gray-800/90 p-4 rounded-xl shadow-md border border-gray-200 dark:border-gray-700/70 hide-scrollbar">
       {projects.map((project) => (
         <motion.div
           key={project.id}
@@ -152,7 +152,7 @@ const ProjectDetail = ({ project }) => {
           stiffness: 200,
           damping: 15
         }}
-        className="h-full rounded-xl bg-gradient-to-br from-white/80 to-white/40 dark:from-gray-900/90 dark:to-gray-800/90 backdrop-blur-md border border-white/50 dark:border-white/10"
+        className="h-full rounded-xl bg-white dark:bg-gray-900/95 shadow-lg border border-gray-200 dark:border-gray-800"
       >
         <div className="p-6 h-full flex flex-col relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-blue-500/5 dark:from-blue-500/10 dark:to-purple-500/10" />

@@ -9,7 +9,9 @@ import Footer from './components/Footer';
 
 export default function App() {
   const [portfolioVersion, setPortfolioVersion] = useState(() => {
-    return localStorage.getItem('portfolio_version') || 'v3';
+    const saved = localStorage.getItem('portfolio_version');
+    if (saved === 'v1' || saved === 'v2') return saved;
+    return 'v2';
   });
 
   useEffect(() => {

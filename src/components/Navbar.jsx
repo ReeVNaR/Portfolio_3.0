@@ -23,7 +23,7 @@ const MenuButton = ({ isOpen, onClick }) => (
   </button>
 );
 
-const Navbar = ({ portfolioVersion = 'v3', setPortfolioVersion }) => {
+const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -79,10 +79,10 @@ const Navbar = ({ portfolioVersion = 'v3', setPortfolioVersion }) => {
     <>
       <header className="fixed top-3 sm:top-5 left-0 right-0 z-[100] px-4 pointer-events-none flex justify-center">
         <nav 
-          className={`pointer-events-auto w-full max-w-5xl rounded-full px-4 sm:px-6 py-2.5 sm:py-3 transition-all duration-300 glass-surface border border-white/50 dark:border-white/10 ${
+          className={`pointer-events-auto w-full max-w-5xl rounded-full px-4 sm:px-6 py-2.5 sm:py-3 transition-all duration-300 glass-surface border border-slate-300/80 dark:border-white/10 ${
             isScrolled 
-              ? 'shadow-[0_12px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.5)] scale-[0.99]' 
-              : 'shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_12px_32px_rgba(0,0,0,0.35)]'
+              ? 'shadow-[0_12px_32px_rgba(15,23,42,0.15)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.6)] scale-[0.99]' 
+              : 'shadow-[0_8px_24px_rgba(15,23,42,0.08)] dark:shadow-[0_12px_32px_rgba(0,0,0,0.35)]'
           }`}
         >
           <div className="flex items-center justify-between">
@@ -136,35 +136,35 @@ const Navbar = ({ portfolioVersion = 'v3', setPortfolioVersion }) => {
             <div className="flex items-center space-x-1.5 sm:space-x-3">
               {/* Version Toggle Pill */}
               <div 
-                className="flex items-center p-0.5 rounded-full bg-slate-200/80 dark:bg-white/10 border border-slate-300/70 dark:border-white/10 text-xs font-semibold shadow-inner"
+                className="flex items-center p-0.5 rounded-full bg-slate-200/90 dark:bg-white/10 border border-slate-300 dark:border-white/15 text-xs font-bold shadow-inner"
                 role="group"
                 aria-label="Portfolio version toggle"
               >
                 <button
                   type="button"
-                  onClick={() => setPortfolioVersion?.('v2')}
-                  className={`px-2 sm:px-2.5 py-1 rounded-full text-[11px] sm:text-xs transition-all duration-200 ${
-                    portfolioVersion === 'v2'
+                  onClick={() => setPortfolioVersion?.('v1')}
+                  className={`px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs transition-all duration-200 ${
+                    portfolioVersion === 'v1'
                       ? 'bg-blue-600 text-white shadow-sm font-bold'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                      : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                   }`}
-                  title="Switch to Previous Portfolio (v2.0)"
-                  aria-label="Previous portfolio version 2.0"
+                  title="Switch to Portfolio V1 (Classic)"
+                  aria-label="Portfolio version 1"
                 >
-                  v2.0
+                  V1
                 </button>
                 <button
                   type="button"
-                  onClick={() => setPortfolioVersion?.('v3')}
-                  className={`px-2 sm:px-2.5 py-1 rounded-full text-[11px] sm:text-xs transition-all duration-200 ${
-                    portfolioVersion === 'v3'
+                  onClick={() => setPortfolioVersion?.('v2')}
+                  className={`px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs transition-all duration-200 ${
+                    portfolioVersion === 'v2'
                       ? 'bg-blue-600 text-white shadow-sm font-bold'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                      : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                   }`}
-                  title="Switch to Current Modern Portfolio (v3.0)"
-                  aria-label="Current portfolio version 3.0"
+                  title="Switch to Portfolio V2 (Modern Glass)"
+                  aria-label="Portfolio version 2"
                 >
-                  v3.0
+                  V2
                 </button>
               </div>
 
@@ -216,30 +216,30 @@ const Navbar = ({ portfolioVersion = 'v3', setPortfolioVersion }) => {
                   </button>
                 ))}
                 <div className="pt-2 flex flex-col gap-2">
-                  <div className="flex items-center justify-between px-3 py-2 rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
-                    <span className="text-xs font-medium text-slate-600 dark:text-slate-300">Portfolio Version</span>
-                    <div className="flex items-center p-0.5 rounded-full bg-slate-200 dark:bg-black/30">
+                  <div className="flex items-center justify-between px-3.5 py-2.5 rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10">
+                    <span className="text-xs font-bold text-slate-700 dark:text-slate-300">Portfolio Version</span>
+                    <div className="flex items-center p-0.5 rounded-full bg-slate-200 dark:bg-black/40 border border-slate-300/70 dark:border-white/10">
                       <button
                         type="button"
-                        onClick={() => setPortfolioVersion?.('v2')}
-                        className={`px-3 py-1 text-xs rounded-full font-semibold transition-all ${
-                          portfolioVersion === 'v2'
+                        onClick={() => setPortfolioVersion?.('v1')}
+                        className={`px-3.5 py-1 text-xs rounded-full font-bold transition-all ${
+                          portfolioVersion === 'v1'
                             ? 'bg-blue-600 text-white shadow-sm'
-                            : 'text-slate-600 dark:text-slate-300'
+                            : 'text-slate-700 dark:text-slate-300'
                         }`}
                       >
-                        v2.0
+                        V1
                       </button>
                       <button
                         type="button"
-                        onClick={() => setPortfolioVersion?.('v3')}
-                        className={`px-3 py-1 text-xs rounded-full font-semibold transition-all ${
-                          portfolioVersion === 'v3'
+                        onClick={() => setPortfolioVersion?.('v2')}
+                        className={`px-3.5 py-1 text-xs rounded-full font-bold transition-all ${
+                          portfolioVersion === 'v2'
                             ? 'bg-blue-600 text-white shadow-sm'
-                            : 'text-slate-600 dark:text-slate-300'
+                            : 'text-slate-700 dark:text-slate-300'
                         }`}
                       >
-                        v3.0
+                        V2
                       </button>
                     </div>
                   </div>

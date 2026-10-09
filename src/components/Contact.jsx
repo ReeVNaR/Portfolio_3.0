@@ -121,7 +121,7 @@ const Contact = () => {
               href={social.link}
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-3 bg-white/50 dark:bg-gray-800/50 rounded-xl text-gray-600 dark:text-gray-400 ${social.color} hover:scale-110 transition-all duration-300 border border-gray-200 dark:border-gray-700/50`}
+              className={`p-3 bg-white dark:bg-gray-800/80 rounded-xl text-gray-700 dark:text-gray-300 ${social.color} hover:scale-110 transition-all duration-300 border border-gray-200 dark:border-gray-700 shadow-sm`}
               whileHover={{ y: -2 }}
             >
               {social.icon}
@@ -134,37 +134,37 @@ const Contact = () => {
       <motion.form 
         ref={formRef}
         onSubmit={handleSubmit}
-        className="space-y-4 md:space-y-6 bg-white/50 dark:bg-gray-800/50 p-6 md:p-8 rounded-xl backdrop-blur-sm border border-gray-200 dark:border-gray-700/50"
+        className="space-y-4 md:space-y-6 bg-white dark:bg-gray-800/90 p-6 md:p-8 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700/80"
       >
         <div className="space-y-4">
           <div>
-            <label className="block text-gray-700 dark:text-gray-300 mb-2 font-medium">Name</label>
+            <label className="block text-gray-800 dark:text-gray-200 mb-2 font-semibold text-sm">Name</label>
             <input
               type="user_name"
               name="user_name"
               required
               placeholder="Your name"
-              className="w-full p-4 rounded-lg bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all duration-300"
+              className="w-full p-4 rounded-lg bg-gray-50/80 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all duration-300"
             />
           </div>
           <div>
-            <label className="block text-gray-700 dark:text-gray-300 mb-2 font-medium">Email</label>
+            <label className="block text-gray-800 dark:text-gray-200 mb-2 font-semibold text-sm">Email</label>
             <input
               type="user_email"
               name="user_email"
               required
               placeholder="your.email@example.com"
-              className="w-full p-4 rounded-lg bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all duration-300"
+              className="w-full p-4 rounded-lg bg-gray-50/80 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all duration-300"
             />
           </div>
           <div>
-            <label className="block text-gray-700 dark:text-gray-300 mb-2 font-medium">Message</label>
+            <label className="block text-gray-800 dark:text-gray-200 mb-2 font-semibold text-sm">Message</label>
             <textarea
               name="message"
               required
               rows="5"
               placeholder="Your message"
-              className="w-full p-4 rounded-lg bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all duration-300 resize-none"
+              className="w-full p-4 rounded-lg bg-gray-50/80 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all duration-300 resize-none"
             ></textarea>
           </div>
         </div>
