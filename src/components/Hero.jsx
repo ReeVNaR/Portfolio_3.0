@@ -276,25 +276,60 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                           {/* Deep Ocean Water Base */}
                           <div className="ocean-base" />
 
+                          {/* Sunlight Glint / Caustic shimmer across the waves */}
+                          <div className="ocean-sun-glint" />
+
                           {/* Interactive Mouse Fluid Droplet */}
                           <div className="liquid-interactive-blob" />
 
-                          {/* Continuous Rolling Beach Waves Layer */}
+                          {/* Continuous Multi-Tier Rolling Beach Waves */}
                           <div className="ocean-waves-wrapper">
-                            {/* Wave 1: Deep rolling swell */}
-                            <svg className="ocean-wave wave-depth" viewBox="0 0 1000 100" preserveAspectRatio="none">
-                              <path d="M 0,38 Q 125,18 250,38 T 500,38 Q 625,18 750,38 T 1000,38 L 1000,100 L 0,100 Z" />
+                            {/* Wave 1: Deep rolling abyss swell */}
+                            <svg className="ocean-wave wave-depth" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                              <path d="M 0,46 Q 150,18 300,46 T 600,46 Q 750,18 900,46 T 1200,46 L 1200,120 L 0,120 Z" />
                             </svg>
 
-                            {/* Wave 2: Mid-water rolling swell */}
-                            <svg className="ocean-wave wave-mid" viewBox="0 0 1000 100" preserveAspectRatio="none">
-                              <path d="M 0,32 Q 125,50 250,32 T 500,32 Q 625,50 750,32 T 1000,32 L 1000,100 L 0,100 Z" />
+                            {/* Wave 2: Mid-water rolling azure current */}
+                            <svg className="ocean-wave wave-mid" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                              <path d="M 0,38 Q 75,58 150,38 T 300,38 Q 375,58 450,38 T 600,38 Q 675,58 750,38 T 900,38 Q 975,58 1050,38 T 1200,38 L 1200,120 L 0,120 Z" />
                             </svg>
 
-                            {/* Wave 3: Surface beach wave with foam crest */}
-                            <svg className="ocean-wave wave-surf" viewBox="0 0 1000 100" preserveAspectRatio="none">
-                              <path d="M 0,26 Q 125,8 250,26 T 500,26 Q 625,8 750,26 T 1000,26 L 1000,100 L 0,100 Z" />
+                            {/* Wave 3: Coastal turquoise chop */}
+                            <svg className="ocean-wave wave-chop" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                              <path d="M 0,32 Q 50,14 100,32 T 200,32 Q 250,14 300,32 T 400,32 Q 450,14 500,32 T 600,32 Q 650,14 700,32 T 800,32 Q 850,14 900,32 T 1000,32 Q 1050,14 1100,32 T 1200,32 L 1200,120 L 0,120 Z" />
                             </svg>
+
+                            {/* Wave 4: Surface beach wave with glistening white foam crest */}
+                            <svg className="ocean-wave wave-surf" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                              <defs>
+                                <linearGradient id="surfFoamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0.95" />
+                                  <stop offset="25%" stopColor="#bae6fd" stopOpacity="0.9" />
+                                  <stop offset="55%" stopColor="#38bdf8" stopOpacity="0.85" />
+                                  <stop offset="100%" stopColor="#0284c7" stopOpacity="0.75" />
+                                </linearGradient>
+                                <filter id="foamGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                  <feDropShadow dx="0" dy="-1" stdDeviation="1.5" floodColor="#ffffff" floodOpacity="0.9" />
+                                </filter>
+                              </defs>
+                              <path 
+                                d="M 0,26 Q 75,8 150,26 T 300,26 Q 375,8 450,26 T 600,26 Q 675,8 750,26 T 900,26 Q 975,8 1050,26 T 1200,26 L 1200,120 L 0,120 Z" 
+                                fill="url(#surfFoamGrad)"
+                                stroke="#ffffff"
+                                strokeWidth="2.5"
+                                strokeOpacity="0.95"
+                                filter="url(#foamGlow)"
+                              />
+                            </svg>
+                          </div>
+
+                          {/* Rising Seafoam Micro-Bubbles */}
+                          <div className="ocean-bubbles pointer-events-none">
+                            <span className="ocean-bubble bubble-1" />
+                            <span className="ocean-bubble bubble-2" />
+                            <span className="ocean-bubble bubble-3" />
+                            <span className="ocean-bubble bubble-4" />
+                            <span className="ocean-bubble bubble-5" />
                           </div>
 
                           {/* Surface Glass Meniscus Sheen */}
