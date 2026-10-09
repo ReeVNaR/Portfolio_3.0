@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
+import profileImg from '../assets/Profile.jpg';
 
 const MenuButton = ({ isOpen, onClick }) => (
   <button 
@@ -85,16 +86,21 @@ const Navbar = () => {
           }`}
         >
           <div className="flex items-center justify-between">
-            {/* Monogram Logo */}
+            {/* Profile Photo Avatar Logo */}
             <button
               onClick={() => handleNavClick('home')}
-              className="group flex items-center gap-2 focus:outline-none"
+              className="group flex items-center gap-2.5 focus:outline-none"
               aria-label="Ranveer Ghorpade Home"
             >
-              <span className="w-8 h-8 rounded-full glass-pill flex items-center justify-center font-bold text-sm tracking-wider bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-sm group-hover:scale-105 transition-transform">
-                RG
-              </span>
-              <span className="font-semibold text-sm sm:text-base tracking-tight text-slate-800 dark:text-white hidden xs:inline-block">
+              <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border border-white/80 dark:border-white/20 shadow-sm ring-2 ring-blue-500/20 group-hover:ring-blue-500/50 group-hover:scale-105 transition-all flex-shrink-0 bg-slate-200 dark:bg-slate-700">
+                <img 
+                  src={profileImg} 
+                  alt="Ranveer Ghorpade" 
+                  className="w-full h-full object-cover rounded-full"
+                  draggable={false}
+                />
+              </div>
+              <span className="font-semibold text-sm sm:text-base tracking-tight text-slate-800 dark:text-white hidden sm:inline-block">
                 Ranveer
               </span>
             </button>
