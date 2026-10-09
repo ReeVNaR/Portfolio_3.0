@@ -7,6 +7,17 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'SF Pro Text', 'system-ui', 'sans-serif'],
+        display: ['Plus Jakarta Sans', 'SF Pro Display', 'Inter', 'sans-serif'],
+      },
+      boxShadow: {
+        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+        'glass-sm': '0 4px 16px 0 rgba(0, 0, 0, 0.25)',
+        'glass-lg': '0 25px 50px -12px rgba(0, 0, 0, 0.4)',
+        'glass-specular': 'inset 0 1px 0 0 rgba(255, 255, 255, 0.18)',
+        'apple-card': '0 24px 48px -12px rgba(0, 0, 0, 0.35), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15)',
+      },
       animation: {
         'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'floating': 'floating 6s ease-in-out infinite',
