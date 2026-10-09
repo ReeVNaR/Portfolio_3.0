@@ -50,24 +50,114 @@ const highlights = [
   }
 ];
 
+const rainDroplets = [
+  // Top left corner cluster
+  { id: 1, top: '4%', left: '3%', size: 14, rotate: 10, trail: 28 },
+  { id: 2, top: '8%', left: '7%', size: 6, rotate: -5 },
+  { id: 3, top: '3%', left: '12%', size: 5 },
+  { id: 4, top: '13%', left: '4%', size: 9, rotate: 15 },
+  { id: 5, top: '16%', left: '9%', size: 4 },
+  
+  // Top center edge
+  { id: 6, top: '3%', left: '32%', size: 12, rotate: 5, trail: 22 },
+  { id: 7, top: '7%', left: '36%', size: 6 },
+  { id: 8, top: '3%', left: '50%', size: 8, rotate: -8 },
+  { id: 9, top: '5%', left: '58%', size: 5 },
+
+  // Top right & around portrait showcase
+  { id: 10, top: '4%', right: '4%', size: 16, rotate: 8, trail: 36 },
+  { id: 11, top: '10%', right: '8%', size: 6 },
+  { id: 12, top: '15%', right: '3%', size: 10, rotate: -12, trail: 20 },
+  { id: 13, top: '24%', right: '6%', size: 5 },
+  { id: 14, top: '32%', right: '2%', size: 12, rotate: 6, trail: 26 },
+  { id: 15, top: '44%', right: '4%', size: 7 },
+  { id: 16, top: '58%', right: '3%', size: 15, rotate: -6, trail: 32 },
+  { id: 17, top: '68%', right: '7%', size: 6 },
+  { id: 18, top: '78%', right: '4%', size: 10, rotate: 10 },
+
+  // Left perimeter (behind empty margin)
+  { id: 19, top: '28%', left: '2%', size: 8, rotate: -10, trail: 18 },
+  { id: 20, top: '38%', left: '4%', size: 5 },
+  { id: 21, top: '48%', left: '1.5%', size: 11, rotate: 12, trail: 24 },
+  { id: 22, top: '58%', left: '3.5%', size: 6 },
+  { id: 23, top: '68%', left: '2%', size: 8, rotate: -4 },
+
+  // Middle atmospheric condensation
+  { id: 24, top: '18%', left: '46%', size: 6 },
+  { id: 25, top: '36%', left: '50%', size: 5 },
+  { id: 26, top: '54%', left: '45%', size: 6 },
+  { id: 27, top: '74%', left: '48%', size: 8, rotate: 8, trail: 20 },
+
+  // Bottom margins & corners
+  { id: 28, bottom: '6%', left: '3%', size: 15, rotate: -8, trail: 30 },
+  { id: 29, bottom: '3%', left: '8%', size: 7 },
+  { id: 30, bottom: '8%', left: '16%', size: 5 },
+  { id: 31, bottom: '4%', left: '28%', size: 10, rotate: 14, trail: 20 },
+  { id: 32, bottom: '6%', left: '42%', size: 6 },
+  { id: 33, bottom: '3%', right: '30%', size: 9, rotate: -6 },
+  { id: 34, bottom: '5%', right: '17%', size: 13, rotate: 10, trail: 25 },
+  { id: 35, bottom: '2%', right: '5%', size: 7 }
+];
+
 export default function Hero({ scrollTo }) {
   return (
     <section 
       id="home" 
-      className="min-h-screen pt-28 pb-16 px-4 sm:px-6 lg:px-8 flex flex-col justify-center relative overflow-hidden bg-slate-50 dark:bg-[#07090e] transition-colors duration-500"
+      className="min-h-screen pt-28 pb-16 px-4 sm:px-6 lg:px-8 flex flex-col justify-center relative overflow-hidden bg-white dark:bg-[#07090e] transition-colors duration-500"
     >
-      {/* Ambient luminous glow mesh */}
-      <div className="absolute -top-24 -left-20 w-80 sm:w-[480px] h-80 sm:h-[480px] rounded-full bg-blue-500/20 dark:bg-blue-600/20 blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/3 -right-24 w-80 sm:w-[500px] h-80 sm:h-[500px] rounded-full bg-indigo-500/15 dark:bg-indigo-600/20 blur-[130px] pointer-events-none" />
-      <div className="absolute -bottom-20 left-1/3 w-72 sm:w-[440px] h-72 sm:h-[440px] rounded-full bg-cyan-400/15 dark:bg-cyan-500/15 blur-[110px] pointer-events-none" />
+      {/* Background ambient luminous glow mesh */}
+      <div className="absolute -top-24 -left-20 w-80 sm:w-[500px] h-80 sm:h-[500px] rounded-full bg-blue-100/70 dark:bg-blue-600/15 blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 -right-24 w-80 sm:w-[520px] h-80 sm:h-[520px] rounded-full bg-sky-100/60 dark:bg-indigo-600/15 blur-[130px] pointer-events-none" />
+      <div className="absolute -bottom-20 left-1/3 w-72 sm:w-[460px] h-72 sm:h-[460px] rounded-full bg-slate-100/80 dark:bg-cyan-500/10 blur-[110px] pointer-events-none" />
       
-      {/* Subtle background grid texture */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800d_1px,transparent_1px),linear-gradient(to_bottom,#8080800d_1px,transparent_1px)] bg-[size:28px_28px] pointer-events-none" />
+      {/* Subtle background glass grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
 
       <div className="container max-w-7xl mx-auto relative z-10">
-        {/* Main Floating Glass Canvas */}
-        <div className="glass-surface rounded-3xl p-6 sm:p-10 md:p-12 lg:p-14 border border-white/60 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        {/* Main Floating Glass Canvas Frontpanel */}
+        <div className="relative glass-surface rounded-3xl p-6 sm:p-10 md:p-12 lg:p-14 border border-white/80 dark:border-white/10 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.06),0_10px_25px_-5px_rgba(0,0,0,0.02)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-2xl overflow-hidden">
+          
+          {/* Glass Specular Gloss Sheen */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/75 via-white/20 to-transparent pointer-events-none z-0 rounded-3xl" />
+          <div className="absolute -top-[1px] left-10 right-10 h-[2px] bg-gradient-to-r from-transparent via-white to-transparent pointer-events-none z-0" />
+
+          {/* Background Rain Droplets on Glass */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 select-none" aria-hidden="true">
+            {rainDroplets.map((drop) => (
+              <div
+                key={drop.id}
+                style={{
+                  top: drop.top,
+                  left: drop.left,
+                  right: drop.right,
+                  bottom: drop.bottom,
+                  position: 'absolute'
+                }}
+              >
+                {drop.trail && (
+                  <div
+                    className="rain-trail"
+                    style={{
+                      height: `${drop.trail}px`,
+                      bottom: '50%',
+                      left: '50%',
+                      transform: 'translateX(-50%)'
+                    }}
+                  />
+                )}
+                <div
+                  className={drop.size <= 6 ? 'rain-drop-micro' : 'rain-drop'}
+                  style={{
+                    width: `${drop.size}px`,
+                    height: `${Math.round(drop.size * 1.15)}px`,
+                    transform: drop.rotate ? `rotate(${drop.rotate}deg)` : undefined
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             
             {/* Left Column: Introductions & Actions */}
             <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -244,9 +334,15 @@ export default function Hero({ scrollTo }) {
             return (
               <div 
                 key={index}
-                className="glass-surface rounded-2xl p-5 border border-white/60 dark:border-white/10 hover:border-blue-500/40 dark:hover:border-blue-400/30 transition-all duration-300 group hover:-translate-y-0.5"
+                className="relative glass-surface rounded-2xl p-5 border border-white/80 dark:border-white/10 hover:border-blue-500/40 dark:hover:border-blue-400/30 transition-all duration-300 group hover:-translate-y-0.5 overflow-hidden"
               >
-                <div className="flex items-center gap-3.5">
+                {/* Subtle corner dew drop */}
+                <div 
+                  className="rain-drop-micro top-2.5 right-3" 
+                  style={{ width: '6px', height: '6px' }}
+                  aria-hidden="true"
+                />
+                <div className="relative z-10 flex items-center gap-3.5">
                   <div className="w-10 h-10 rounded-xl glass-pill flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
                     <Icon className="w-5 h-5" />
                   </div>
