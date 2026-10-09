@@ -263,17 +263,29 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       {/* Explore Work (Apple Sapphire Liquid Glass) */}
                       <button
                         onClick={() => scrollTo('projects')}
-                        className="apple-glass-btn-primary group"
+                        onMouseMove={handleLiquidMouseMove}
+                        onMouseEnter={handleLiquidMouseEnter}
+                        onMouseLeave={handleLiquidMouseLeave}
+                        className="apple-glass-btn apple-glass-primary group"
+                        aria-label="Explore Work"
                       >
-                        <span className="relative z-10">Explore Work</span>
+                        <span className="apple-glass-sheen" aria-hidden="true" />
+                        <span className="apple-glass-caustic" aria-hidden="true" />
+                        <span className="relative z-10 font-semibold tracking-tight">Explore Work</span>
                       </button>
 
                       {/* Get in Touch (Apple Frosted Crystal Liquid Glass) */}
                       <button
                         onClick={() => scrollTo('contact')}
-                        className="apple-glass-btn-secondary group"
+                        onMouseMove={handleLiquidMouseMove}
+                        onMouseEnter={handleLiquidMouseEnter}
+                        onMouseLeave={handleLiquidMouseLeave}
+                        className="apple-glass-btn apple-glass-secondary group"
+                        aria-label="Get in Touch"
                       >
-                        <span className="relative z-10">Get in Touch</span>
+                        <span className="apple-glass-sheen" aria-hidden="true" />
+                        <span className="apple-glass-caustic" aria-hidden="true" />
+                        <span className="relative z-10 font-semibold tracking-tight">Get in Touch</span>
                       </button>
                     </motion.div>
 
