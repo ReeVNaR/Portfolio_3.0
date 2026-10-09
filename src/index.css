@@ -334,21 +334,23 @@
     fill: #0f172a;
   }
 
-  /* Liquid Glass Navbar Capsule */
+  /* Liquid Glass Navbar Capsule - Exact Button Glass Treatment */
   .nav-liquid-glass {
+    --r: 9999px;
+    --tr: 12%;
     position: relative;
-    border-radius: 9999px;
+    border-radius: var(--r);
     border: 1px double rgba(51, 51, 51, 0.08);
     box-shadow:
       inset 2px -2px 1px -1px rgba(255, 255, 255, 0.95),
       inset -2px 2px 1px -1px rgba(255, 255, 255, 0.95),
-      inset 6px -6px 1px -6px rgba(255, 255, 255, 0.6),
-      inset -6px 6px 1px -6px rgba(255, 255, 255, 0.6),
-      inset 0 0 2px rgba(0, 0, 0, 0.15),
-      0 12px 32px -4px rgba(15, 23, 42, 0.12);
-    background: rgba(246, 248, 252, 0.9);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
+      inset 6px -6px 1px -6px rgba(255, 255, 255, 0.55),
+      inset -6px 6px 1px -6px rgba(255, 255, 255, 0.55),
+      inset 0 0 2px rgba(0, 0, 0, 0.75),
+      0 8px 24px -2px rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -361,8 +363,8 @@
     transform: translateX(-50%);
     width: calc(100% - 16px);
     height: calc(100% - 16px);
-    border-radius: 9999px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: var(--r);
+    border: 1px solid rgba(0, 0, 0, 0.85);
     filter: blur(8px);
     pointer-events: none;
   }
@@ -374,14 +376,14 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    border-radius: 9999px;
+    border-radius: var(--r);
     filter: blur(7px);
     background: linear-gradient(
       45deg,
-      rgba(255, 255, 255, 0.85) 0%,
-      transparent 12%,
-      transparent 88%,
-      rgba(255, 255, 255, 0.85) 100%
+      rgba(255, 255, 255, 0.8) 0%,
+      transparent var(--tr),
+      transparent calc(100% - var(--tr)),
+      rgba(255, 255, 255, 0.8) 100%
     );
     pointer-events: none;
   }
@@ -391,35 +393,35 @@
     inset: 4.5px;
     width: calc(100% - 9px);
     height: calc(100% - 9px);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--r);
     filter: blur(1px);
     pointer-events: none;
   }
 
   .dark .nav-liquid-glass {
-    background: rgba(18, 22, 34, 0.82);
-    border: 1px double rgba(255, 255, 255, 0.18);
+    background: rgba(18, 22, 34, 0.65);
+    border: 1px double rgba(255, 255, 255, 0.15);
     box-shadow:
       inset 2px -2px 1px -1px rgba(255, 255, 255, 0.45),
       inset -2px 2px 1px -1px rgba(255, 255, 255, 0.45),
       inset 6px -6px 1px -6px rgba(255, 255, 255, 0.25),
       inset -6px 6px 1px -6px rgba(255, 255, 255, 0.25),
-      inset 0 0 2px rgba(0, 0, 0, 0.8),
-      0 16px 40px -6px rgba(0, 0, 0, 0.6);
+      inset 0 0 2px rgba(0, 0, 0, 0.9),
+      0 12px 30px -4px rgba(0, 0, 0, 0.6);
   }
 
   .dark .nav-liquid-glass:before {
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
   }
 
   .dark .nav-liquid-glass:after {
     background: linear-gradient(
       45deg,
-      rgba(255, 255, 255, 0.25) 0%,
-      transparent 12%,
-      transparent 88%,
-      rgba(255, 255, 255, 0.25) 100%
+      rgba(255, 255, 255, 0.3) 0%,
+      transparent var(--tr),
+      transparent calc(100% - var(--tr)),
+      rgba(255, 255, 255, 0.3) 100%
     );
   }
 }

@@ -168,31 +168,12 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
                 </button>
               </div>
 
-              {/* Let's Talk: Tactile Liquid Glass Button Format */}
+              {/* Let's Talk Button (Original Sleek Pill) */}
               <button
                 onClick={() => handleNavClick('contact')}
-                className="box start-btn start-btn-blue hidden sm:inline-flex group"
-                style={{
-                  '--h': '38px',
-                  '--w': 'auto',
-                  minWidth: '120px',
-                  padding: '0 0.45rem 0 0.95rem',
-                  gap: '0.45rem'
-                }}
+                className="hidden sm:inline-flex text-xs font-semibold px-4 py-1.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90 transition-opacity shadow-sm"
               >
-                <span className="text" style={{ fontSize: '13px', fontWeight: 600 }}>Let's Talk</span>
-                <div className="btn-icon" style={{ width: '28px', height: '28px' }}>
-                  <svg
-                    className="svg"
-                    style={{ width: '10px', height: '10px' }}
-                    viewBox="0 0 1024 1024"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M779.180132 473.232045 322.354755 16.406668c-21.413706-21.413706-56.121182-21.413706-77.534887 0-21.413706 21.413706-21.413706 56.122205 0 77.534887l418.057421 418.057421L244.819868 930.057421c-21.413706 21.413706-21.413706 56.122205 0 77.534887 10.706853 10.706853 24.759917 16.059767 38.767955 16.059767s28.061103-5.353938 38.767955-16.059767L779.180132 550.767955C800.593837 529.35425 800.593837 494.64575 779.180132 473.232045z" />
-                  </svg>
-                </div>
-                <div className="circle-overlay"></div>
+                Let's Talk
               </button>
 
               <div className="w-[1px] h-5 bg-slate-300 dark:bg-white/20 hidden sm:block" />
@@ -267,16 +248,9 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
                   </div>
                   <button
                     onClick={() => handleNavClick('contact')}
-                    className="box start-btn start-btn-blue w-full group justify-between"
-                    style={{ '--h': '46px', '--w': '100%', padding: '0 0.6rem 0 1.2rem' }}
+                    className="w-full text-center py-3 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium text-sm shadow-md"
                   >
-                    <span className="text" style={{ fontSize: '14px' }}>Let's Talk</span>
-                    <div className="btn-icon" style={{ width: '32px', height: '32px' }}>
-                      <svg className="svg" style={{ width: '12px', height: '12px' }} viewBox="0 0 1024 1024">
-                        <path d="M779.180132 473.232045 322.354755 16.406668c-21.413706-21.413706-56.121182-21.413706-77.534887 0-21.413706 21.413706-21.413706 56.122205 0 77.534887l418.057421 418.057421L244.819868 930.057421c-21.413706 21.413706-21.413706 56.122205 0 77.534887 10.706853 10.706853 24.759917 16.059767 38.767955 16.059767s28.061103-5.353938 38.767955-16.059767L779.180132 550.767955C800.593837 529.35425 800.593837 494.64575 779.180132 473.232045z" />
-                      </svg>
-                    </div>
-                    <div className="circle-overlay"></div>
+                    Let's Talk
                   </button>
                 </div>
               </div>
