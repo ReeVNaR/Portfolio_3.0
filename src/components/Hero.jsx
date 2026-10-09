@@ -233,18 +233,18 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       Passionate about crafting intuitive, scalable web applications with refined UI/UX, robust frontend architectures, and seamless digital interactions.
                     </motion.p>
 
-                    {/* Call to Actions: Liquid Glass Buttons (Exact Format Requested) */}
+                    {/* Call to Actions: Liquid Glass Buttons */}
                     <motion.div 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
-                      className="fx-layer flex flex-wrap gap-4 justify-center lg:justify-start w-full sm:w-auto"
+                      className="flex flex-wrap gap-3.5 sm:gap-4 justify-center lg:justify-start w-full sm:w-auto"
                     >
                       {/* Explore Work (Blue Theme) */}
                       <button
                         onClick={() => scrollTo('projects')}
                         className="box start-btn start-btn-blue group"
-                        style={{ '--w': '215px', '--h': '56px', '--tr': '15%' }}
+                        style={{ '--w': '186px', '--h': '48px', '--tr': '15%' }}
                       >
                         <span className="text">Explore Work</span>
                         <div className="btn-icon">
@@ -260,11 +260,11 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                         <div className="circle-overlay"></div>
                       </button>
 
-                      {/* Get in Touch (Liquid Glass / White Theme) */}
+                      {/* Get in Touch (Liquid Glass / Frosted Crystal Theme) */}
                       <button
                         onClick={() => scrollTo('contact')}
                         className="box start-btn group"
-                        style={{ '--w': '210px', '--h': '56px', '--tr': '15%' }}
+                        style={{ '--w': '180px', '--h': '48px', '--tr': '15%' }}
                       >
                         <span className="text">Get in Touch</span>
                         <div className="btn-icon">
