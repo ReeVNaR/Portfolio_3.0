@@ -105,21 +105,26 @@ export default function Hero({ scrollTo }) {
       id="home" 
       className="min-h-screen pt-28 pb-16 px-4 sm:px-6 lg:px-8 flex flex-col justify-center relative overflow-hidden bg-white dark:bg-[#07090e] transition-colors duration-500"
     >
-      {/* Background ambient luminous glow mesh */}
-      <div className="absolute -top-24 -left-20 w-80 sm:w-[500px] h-80 sm:h-[500px] rounded-full bg-blue-100/70 dark:bg-blue-600/15 blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/3 -right-24 w-80 sm:w-[520px] h-80 sm:h-[520px] rounded-full bg-sky-100/60 dark:bg-indigo-600/15 blur-[130px] pointer-events-none" />
-      <div className="absolute -bottom-20 left-1/3 w-72 sm:w-[460px] h-72 sm:h-[460px] rounded-full bg-slate-100/80 dark:bg-cyan-500/10 blur-[110px] pointer-events-none" />
+      {/* Background ambient refraction orbs behind the glass */}
+      <div className="absolute -top-16 -left-16 w-96 sm:w-[540px] h-96 sm:h-[540px] rounded-full bg-gradient-to-br from-blue-500/25 via-indigo-500/20 to-cyan-400/20 blur-[90px] pointer-events-none" />
+      <div className="absolute top-1/4 -right-16 w-96 sm:w-[540px] h-96 sm:h-[540px] rounded-full bg-gradient-to-bl from-cyan-400/20 via-sky-500/20 to-blue-600/15 blur-[100px] pointer-events-none" />
+      <div className="absolute -bottom-20 left-1/4 w-80 sm:w-[480px] h-80 sm:h-[480px] rounded-full bg-gradient-to-tr from-indigo-400/15 via-blue-400/10 to-transparent blur-[90px] pointer-events-none" />
       
       {/* Subtle background glass grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000006_1px,transparent_1px),linear-gradient(to_bottom,#00000006_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a08_1px,transparent_1px),linear-gradient(to_bottom,#0f172a08_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:36px_36px] pointer-events-none" />
 
       <div className="container max-w-7xl mx-auto relative z-10">
         {/* Main Floating Glass Canvas Frontpanel */}
-        <div className="relative glass-surface rounded-3xl p-6 sm:p-10 md:p-12 lg:p-14 border border-white/80 dark:border-white/10 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.06),0_10px_25px_-5px_rgba(0,0,0,0.02)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-2xl overflow-hidden">
+        <div className="relative glass-surface rounded-3xl p-6 sm:p-10 md:p-12 lg:p-14 border border-white/90 dark:border-white/15 shadow-[0_25px_60px_-15px_rgba(15,23,42,0.1),0_10px_20px_-5px_rgba(15,23,42,0.04)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-3xl overflow-hidden">
           
-          {/* Glass Specular Gloss Sheen */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/75 via-white/20 to-transparent pointer-events-none z-0 rounded-3xl" />
-          <div className="absolute -top-[1px] left-10 right-10 h-[2px] bg-gradient-to-r from-transparent via-white to-transparent pointer-events-none z-0" />
+          {/* Frosted Mist / Atmospheric Condensation Layer */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-sky-100/25 via-white/30 to-indigo-100/20 dark:from-sky-900/10 dark:via-transparent dark:to-indigo-900/10 pointer-events-none z-0 rounded-3xl" />
+          
+          {/* Glass Specular Gloss Sheen - Diagonal light reflection beam */}
+          <div className="absolute -top-32 -left-32 w-[160%] h-56 bg-gradient-to-b from-white/70 via-white/20 to-transparent rotate-[-22deg] pointer-events-none z-0 blur-[1px]" />
+          
+          {/* Polished Glass Top Edge Specular Rim */}
+          <div className="absolute top-0 left-6 right-6 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent pointer-events-none z-0" />
 
           {/* Background Rain Droplets on Glass */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 select-none" aria-hidden="true">
@@ -180,7 +185,7 @@ export default function Hero({ scrollTo }) {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.12] mb-5 font-display"
+                className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.12] mb-5 font-display drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
               >
                 Hi, I'm{' '}
                 <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 dark:from-blue-400 dark:via-sky-300 dark:to-indigo-300 bg-clip-text text-transparent">
@@ -193,7 +198,7 @@ export default function Hero({ scrollTo }) {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-white/40 dark:bg-white/[0.04] border border-white/60 dark:border-white/10 shadow-sm backdrop-blur-md mb-6"
+                className="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-white/70 dark:bg-white/[0.06] border border-white/80 dark:border-white/10 shadow-sm backdrop-blur-md mb-6"
               >
                 <HiSparkles className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 animate-pulse" />
                 <span className="text-sm sm:text-base md:text-lg font-medium text-slate-700 dark:text-slate-200">
@@ -206,7 +211,7 @@ export default function Hero({ scrollTo }) {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mb-8"
+                className="text-base sm:text-lg text-slate-700 dark:text-slate-300 max-w-xl leading-relaxed mb-8 drop-shadow-[0_1px_0_rgba(255,255,255,0.8)] dark:drop-shadow-none"
               >
                 Passionate about crafting intuitive, scalable web applications with refined UI/UX, robust frontend architectures, and seamless digital interactions.
               </motion.p>
