@@ -32,6 +32,28 @@ const socialLinksV2 = [
 ];
 
 export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
+  const handleLiquidMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const xPercent = (x / rect.width) * 100;
+    const yPercent = (y / rect.height) * 100;
+    e.currentTarget.style.setProperty('--mx', `${x}px`);
+    e.currentTarget.style.setProperty('--my', `${y}px`);
+    e.currentTarget.style.setProperty('--mx-pct', `${xPercent.toFixed(1)}%`);
+    e.currentTarget.style.setProperty('--my-pct', `${yPercent.toFixed(1)}%`);
+  };
+
+  const handleLiquidMouseEnter = (e) => {
+    e.currentTarget.style.setProperty('--liquid-active', '1');
+  };
+
+  const handleLiquidMouseLeave = (e) => {
+    e.currentTarget.style.setProperty('--liquid-active', '0');
+    e.currentTarget.style.setProperty('--mx-pct', '50%');
+    e.currentTarget.style.setProperty('--my-pct', '50%');
+  };
+
   return (
     <section 
       id="home" 
@@ -238,14 +260,29 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       transition={{ duration: 0.6, delay: 0.4 }}
                       className="flex flex-wrap gap-3.5 sm:gap-4 justify-center lg:justify-start w-full sm:w-auto"
                     >
-                      {/* Explore Work (Blue Theme) */}
+                      {/* Explore Work (Reactive Liquid Glass) */}
                       <button
                         onClick={() => scrollTo('projects')}
-                        className="box start-btn start-btn-blue group"
+                        onMouseMove={handleLiquidMouseMove}
+                        onMouseEnter={handleLiquidMouseEnter}
+                        onMouseLeave={handleLiquidMouseLeave}
+                        className="box start-btn start-btn-blue group relative overflow-hidden"
                         style={{ '--w': 'auto', '--h': '48px', '--tr': '15%' }}
                       >
-                        <span className="text">Explore Work</span>
-                        <div className="circle-overlay"></div>
+                        <span className="text relative z-10 pointer-events-none">Explore Work</span>
+                        
+                        {/* Reactive Fluid Liquid Chamber */}
+                        <div className="liquid-chamber pointer-events-none" aria-hidden="true">
+                          <div className="liquid-base" />
+                          <div className="liquid-interactive-blob" />
+                          <div className="liquid-wave-track">
+                            <div className="liquid-wave wave-back" />
+                            <div className="liquid-wave wave-front" />
+                          </div>
+                          <div className="liquid-glow" />
+                        </div>
+
+                        <div className="circle-overlay pointer-events-none"></div>
                       </button>
 
                       {/* Get in Touch (Liquid Glass / Frosted Crystal Theme) */}

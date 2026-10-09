@@ -232,10 +232,12 @@
     transform: scale(0.97);
   }
 
-  /* Blue theme variant for Explore Work */
+  /* Reactive Liquid Glass Styling for Explore Work */
   .start-btn.start-btn-blue {
-    background: linear-gradient(135deg, #0071e3 0%, #005bb5 100%);
-    border: 1px double rgba(255, 255, 255, 0.35);
+    position: relative;
+    overflow: hidden;
+    background: rgba(0, 80, 180, 0.45);
+    border: 1px double rgba(255, 255, 255, 0.4);
     box-shadow:
       inset 2px -2px 1px -1px rgba(255, 255, 255, 0.95),
       inset -2px 2px 1px -1px rgba(255, 255, 255, 0.95),
@@ -243,23 +245,151 @@
       inset -6px 6px 1px -6px rgba(255, 255, 255, 0.45),
       inset 0 0 1px rgba(0, 20, 80, 0.3),
       0 8px 24px -4px rgba(0, 113, 227, 0.45);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    isolation: isolate;
   }
 
   .start-btn.start-btn-blue .text {
     color: #ffffff;
-    filter: drop-shadow(0 1px 2px rgba(0, 20, 60, 0.25));
+    filter: drop-shadow(0 1px 3px rgba(0, 20, 60, 0.45));
+    position: relative;
+    z-index: 10;
   }
 
   .start-btn.start-btn-blue .circle-overlay {
     border: 1px solid rgba(255, 255, 255, 0.35);
+    z-index: 8;
+  }
+
+  /* Liquid Chamber */
+  .start-btn-blue .liquid-chamber {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Base Fluid */
+  .start-btn-blue .liquid-base {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #0071e3 0%, #005bb5 50%, #004494 100%);
+    opacity: 0.92;
+    transition: opacity 0.3s ease, background 0.3s ease;
+  }
+
+  /* Interactive Mouse Fluid Droplet (Tracks Cursor) */
+  .start-btn-blue .liquid-interactive-blob {
+    position: absolute;
+    top: var(--my-pct, 50%);
+    left: var(--mx-pct, 50%);
+    width: 110px;
+    height: 110px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+      circle,
+      rgba(125, 211, 252, 0.95) 0%,
+      rgba(56, 189, 248, 0.8) 25%,
+      rgba(0, 113, 227, 0.5) 50%,
+      transparent 75%
+    );
+    border-radius: 50%;
+    filter: blur(6px);
+    opacity: calc(0.55 + var(--liquid-active, 0) * 0.45);
+    transition: opacity 0.25s ease, transform 0.08s ease-out;
+    mix-blend-mode: screen;
+    animation: liquidBlobMorph 5s ease-in-out infinite alternate;
+  }
+
+  /* Sloshing Wave Track */
+  .start-btn-blue .liquid-wave-track {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 32px;
+    pointer-events: none;
+    opacity: 0.8;
+    transform: rotate(calc((var(--mx-pct, 50%) - 50%) * 0.12deg));
+    transition: transform 0.15s ease-out;
+  }
+
+  .start-btn-blue .liquid-wave {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+  }
+
+  .start-btn-blue .wave-back {
+    opacity: 0.55;
+    background: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(56, 189, 248, 0.7), transparent 70%);
+    background-size: 50% 100%;
+    animation: liquidWaveMove 3.5s linear infinite;
+  }
+
+  .start-btn-blue .wave-front {
+    opacity: 0.75;
+    background: radial-gradient(ellipse 50% 50% at 50% 100%, rgba(186, 230, 253, 0.6), transparent 75%);
+    background-size: 50% 100%;
+    animation: liquidWaveMove 2.2s linear infinite reverse;
+  }
+
+  /* Ambient Surface Meniscus Glow */
+  .start-btn-blue .liquid-glow {
+    position: absolute;
+    top: 1px;
+    left: 8%;
+    right: 8%;
+    height: 35%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 9999px 9999px 0 0;
+    filter: blur(1px);
+    pointer-events: none;
+    z-index: 5;
   }
 
   .start-btn.start-btn-blue:hover {
-    background: linear-gradient(135deg, #0a7aff 0%, #0066cc 100%);
+    transform: translateY(-2px);
     box-shadow:
       inset 2px -2px 1px -1px rgba(255, 255, 255, 1),
       inset -2px 2px 1px -1px rgba(255, 255, 255, 1),
-      0 12px 28px -4px rgba(0, 113, 227, 0.55);
+      0 12px 30px -4px rgba(0, 113, 227, 0.6);
+  }
+
+  .start-btn.start-btn-blue:hover .liquid-base {
+    opacity: 0.98;
+    background: linear-gradient(135deg, #0a7aff 0%, #0066cc 55%, #004ba0 100%);
+  }
+
+  @keyframes liquidBlobMorph {
+    0% {
+      border-radius: 46% 54% 62% 38% / 42% 58% 42% 58%;
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+    50% {
+      border-radius: 58% 42% 44% 56% / 54% 46% 54% 46%;
+      transform: translate(-50%, -50%) scale(1.12);
+    }
+    100% {
+      border-radius: 50% 50% 42% 58% / 58% 42% 58% 42%;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  @keyframes liquidWaveMove {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   /* Dark mode overrides */
