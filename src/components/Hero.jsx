@@ -173,10 +173,14 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
             transition={{ duration: 0.35, ease: 'easeInOut' }}
             className="w-full relative z-10"
           >
-            <div className="container max-w-5xl lg:max-w-[1100px] xl:max-w-[1160px] mx-auto">
-              {/* Main Floating Glass Canvas Frontpanel with High Contrast */}
-              <div className="relative glass-surface rounded-3xl p-7 sm:p-9 md:p-10 lg:p-11 xl:p-12 border border-slate-300 dark:border-white/10 shadow-[0_20px_50px_rgba(15,23,42,0.12)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
+            {/* Ambient Background Glows to enhance frosted liquid glass refraction */}
+            <div className="absolute top-1/2 left-1/4 -translate-y-1/2 -translate-x-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-blue-500/15 dark:bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-1/2 right-1/4 -translate-y-1/2 translate-x-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-indigo-500/15 dark:bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="container max-w-5xl lg:max-w-[1100px] xl:max-w-[1160px] mx-auto relative z-10">
+              {/* Main Floating Glass Canvas Frontpanel with Navbar-style Liquid Glass Effect */}
+              <div className="relative nav-liquid-glass panel-liquid-glass rounded-3xl p-7 sm:p-9 md:p-10 lg:p-11 xl:p-12">
+                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
                   
                   {/* Left Column: Introductions & Actions */}
                   <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -364,6 +368,8 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                   </div>
 
                 </div>
+                {/* Specular Inner Rim Highlight */}
+                <div className="circle-overlay pointer-events-none"></div>
               </div>
             </div>
           </motion.div>

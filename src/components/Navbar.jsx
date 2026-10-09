@@ -205,7 +205,7 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -10 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed top-20 left-4 right-4 z-[95] md:hidden rounded-3xl nav-liquid-glass p-5 border border-white/60 dark:border-white/15 shadow-2xl"
+              className="fixed top-20 left-4 right-4 z-[95] md:hidden rounded-3xl panel-liquid-glass p-5 border border-white/60 dark:border-white/15 shadow-2xl"
             >
               <div className="flex flex-col space-y-1 relative z-10">
                 {navItems.map((item) => (
