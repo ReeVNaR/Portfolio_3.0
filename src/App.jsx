@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Skills from './components/Skills';
@@ -7,6 +8,14 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
+  const [portfolioVersion, setPortfolioVersion] = useState(() => {
+    return localStorage.getItem('portfolio_version') || 'v3';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('portfolio_version', portfolioVersion);
+  }, [portfolioVersion]);
+
   const scrollTo = (elementId) => {
     const element = document.getElementById(elementId);
     if (element) {
@@ -20,10 +29,16 @@ export default function App() {
 
   return (
     <main className="bg-white dark:bg-black selection:bg-blue-500/20 selection:text-blue-500">
-      <Navbar />
+      <Navbar 
+        portfolioVersion={portfolioVersion} 
+        setPortfolioVersion={setPortfolioVersion} 
+      />
       
       {/* Home / Hero Section */}
-      <Hero scrollTo={scrollTo} />
+      <Hero 
+        scrollTo={scrollTo} 
+        portfolioVersion={portfolioVersion} 
+      />
 
 
       {/* About Section */}

@@ -23,7 +23,7 @@ const MenuButton = ({ isOpen, onClick }) => (
   </button>
 );
 
-const Navbar = () => {
+const Navbar = ({ portfolioVersion = 'v3', setPortfolioVersion }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -132,8 +132,42 @@ const Navbar = () => {
               })}
             </div>
 
-            {/* Right actions: Theme toggle and CTA */}
-            <div className="flex items-center space-x-2 sm:space-x-3">
+            {/* Right actions: Theme toggle, Version toggle, and CTA */}
+            <div className="flex items-center space-x-1.5 sm:space-x-3">
+              {/* Version Toggle Pill */}
+              <div 
+                className="flex items-center p-0.5 rounded-full bg-slate-200/80 dark:bg-white/10 border border-slate-300/70 dark:border-white/10 text-xs font-semibold shadow-inner"
+                role="group"
+                aria-label="Portfolio version toggle"
+              >
+                <button
+                  type="button"
+                  onClick={() => setPortfolioVersion?.('v2')}
+                  className={`px-2 sm:px-2.5 py-1 rounded-full text-[11px] sm:text-xs transition-all duration-200 ${
+                    portfolioVersion === 'v2'
+                      ? 'bg-blue-600 text-white shadow-sm font-bold'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                  title="Switch to Previous Portfolio (v2.0)"
+                  aria-label="Previous portfolio version 2.0"
+                >
+                  v2.0
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPortfolioVersion?.('v3')}
+                  className={`px-2 sm:px-2.5 py-1 rounded-full text-[11px] sm:text-xs transition-all duration-200 ${
+                    portfolioVersion === 'v3'
+                      ? 'bg-blue-600 text-white shadow-sm font-bold'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                  title="Switch to Current Modern Portfolio (v3.0)"
+                  aria-label="Current portfolio version 3.0"
+                >
+                  v3.0
+                </button>
+              </div>
+
               <button
                 onClick={() => handleNavClick('contact')}
                 className="hidden sm:inline-flex text-xs font-semibold px-4 py-1.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90 transition-opacity shadow-sm"
@@ -181,7 +215,34 @@ const Navbar = () => {
                     <span className="text-slate-400 text-xs">→</span>
                   </button>
                 ))}
-                <div className="pt-2">
+                <div className="pt-2 flex flex-col gap-2">
+                  <div className="flex items-center justify-between px-3 py-2 rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
+                    <span className="text-xs font-medium text-slate-600 dark:text-slate-300">Portfolio Version</span>
+                    <div className="flex items-center p-0.5 rounded-full bg-slate-200 dark:bg-black/30">
+                      <button
+                        type="button"
+                        onClick={() => setPortfolioVersion?.('v2')}
+                        className={`px-3 py-1 text-xs rounded-full font-semibold transition-all ${
+                          portfolioVersion === 'v2'
+                            ? 'bg-blue-600 text-white shadow-sm'
+                            : 'text-slate-600 dark:text-slate-300'
+                        }`}
+                      >
+                        v2.0
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setPortfolioVersion?.('v3')}
+                        className={`px-3 py-1 text-xs rounded-full font-semibold transition-all ${
+                          portfolioVersion === 'v3'
+                            ? 'bg-blue-600 text-white shadow-sm'
+                            : 'text-slate-600 dark:text-slate-300'
+                        }`}
+                      >
+                        v3.0
+                      </button>
+                    </div>
+                  </div>
                   <button
                     onClick={() => handleNavClick('contact')}
                     className="w-full text-center py-3 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium text-sm shadow-md"
