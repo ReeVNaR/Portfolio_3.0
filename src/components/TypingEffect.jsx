@@ -46,7 +46,7 @@ export const TypingEffect = () => {
   }, [displayText, isDeleting, currentIndex]);
 
   return (
-    <span className="inline-block overflow-hidden whitespace-nowrap border-r-2 border-blue-600 animate-blink">
+    <span className="inline-block overflow-hidden whitespace-nowrap border-r-2 border-sky-400 drop-shadow-[0_0_8px_rgba(56,189,248,0.8)] animate-blink">
       {displayText}
     </span>
   );
