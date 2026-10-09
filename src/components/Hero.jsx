@@ -230,16 +230,16 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       Passionate about crafting intuitive, scalable web applications with refined UI/UX, robust frontend architectures, and seamless digital interactions.
                     </motion.p>
 
-                    {/* Call to Actions: Apple Signature Pill Buttons */}
+                    {/* Call to Actions: Apple Tactile Frosted Glass Pills (Reference: VisionOS Lozenge) */}
                     <motion.div 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
-                      className="flex flex-wrap gap-3.5 justify-center lg:justify-start w-full sm:w-auto"
+                      className="flex flex-wrap gap-4 justify-center lg:justify-start w-full sm:w-auto"
                     >
                       <button
                         onClick={() => scrollTo('projects')}
-                        className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white font-medium text-sm sm:text-base shadow-[0_4px_14px_rgba(0,113,227,0.3)] hover:shadow-[0_6px_20px_rgba(0,113,227,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center gap-2 group tracking-tight"
+                        className="apple-glass-pill-blue px-7 py-3.5 rounded-full font-medium text-sm sm:text-base flex items-center gap-2 group tracking-tight cursor-pointer"
                       >
                         <span>Explore Work</span>
                         <HiArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -247,7 +247,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
 
                       <button
                         onClick={() => scrollTo('contact')}
-                        className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-slate-900/[0.04] hover:bg-slate-900/[0.08] dark:bg-white/[0.08] dark:hover:bg-white/[0.14] text-slate-900 dark:text-white font-medium text-sm sm:text-base border border-slate-900/[0.12] dark:border-white/15 backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center gap-2 tracking-tight"
+                        className="apple-glass-pill-white px-7 py-3.5 rounded-full font-medium text-sm sm:text-base flex items-center gap-2 tracking-tight cursor-pointer"
                       >
                         <span>Get in Touch</span>
                       </button>
