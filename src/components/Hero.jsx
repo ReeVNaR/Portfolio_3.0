@@ -2,8 +2,8 @@ import { motion } from 'framer-motion';
 import { TypingEffect } from './TypingEffect';
 import profileImg from '../assets/Profile.jpg';
 import { FaGithub, FaLinkedinIn, FaInstagram, FaXTwitter, FaReact } from 'react-icons/fa6';
-import { HiSparkles, HiArrowRight, HiOutlineCodeBracket, HiOutlineCpuChip } from 'react-icons/hi2';
-import { FiCheckCircle, FiLayers } from 'react-icons/fi';
+import { HiSparkles, HiArrowRight } from 'react-icons/hi2';
+import { FiCheckCircle } from 'react-icons/fi';
 
 const socialLinks = [
   {
@@ -32,137 +32,16 @@ const socialLinks = [
   }
 ];
 
-const highlights = [
-  {
-    icon: HiOutlineCodeBracket,
-    title: 'Modern Architecture',
-    desc: 'React 19, Vite & modular clean code'
-  },
-  {
-    icon: FiLayers,
-    title: 'Interactive UI/UX',
-    desc: 'Frosted depth, modern aesthetics & fluid motion'
-  },
-  {
-    icon: HiOutlineCpuChip,
-    title: 'High Performance',
-    desc: 'Optimized rendering, responsive & fast'
-  }
-];
-
-const rainDroplets = [
-  // Top left corner cluster
-  { id: 1, top: '4%', left: '3%', size: 14, rotate: 10, trail: 28 },
-  { id: 2, top: '8%', left: '7%', size: 6, rotate: -5 },
-  { id: 3, top: '3%', left: '12%', size: 5 },
-  { id: 4, top: '13%', left: '4%', size: 9, rotate: 15 },
-  { id: 5, top: '16%', left: '9%', size: 4 },
-  
-  // Top center edge
-  { id: 6, top: '3%', left: '32%', size: 12, rotate: 5, trail: 22 },
-  { id: 7, top: '7%', left: '36%', size: 6 },
-  { id: 8, top: '3%', left: '50%', size: 8, rotate: -8 },
-  { id: 9, top: '5%', left: '58%', size: 5 },
-
-  // Top right & around portrait showcase
-  { id: 10, top: '4%', right: '4%', size: 16, rotate: 8, trail: 36 },
-  { id: 11, top: '10%', right: '8%', size: 6 },
-  { id: 12, top: '15%', right: '3%', size: 10, rotate: -12, trail: 20 },
-  { id: 13, top: '24%', right: '6%', size: 5 },
-  { id: 14, top: '32%', right: '2%', size: 12, rotate: 6, trail: 26 },
-  { id: 15, top: '44%', right: '4%', size: 7 },
-  { id: 16, top: '58%', right: '3%', size: 15, rotate: -6, trail: 32 },
-  { id: 17, top: '68%', right: '7%', size: 6 },
-  { id: 18, top: '78%', right: '4%', size: 10, rotate: 10 },
-
-  // Left perimeter (behind empty margin)
-  { id: 19, top: '28%', left: '2%', size: 8, rotate: -10, trail: 18 },
-  { id: 20, top: '38%', left: '4%', size: 5 },
-  { id: 21, top: '48%', left: '1.5%', size: 11, rotate: 12, trail: 24 },
-  { id: 22, top: '58%', left: '3.5%', size: 6 },
-  { id: 23, top: '68%', left: '2%', size: 8, rotate: -4 },
-
-  // Middle atmospheric condensation
-  { id: 24, top: '18%', left: '46%', size: 6 },
-  { id: 25, top: '36%', left: '50%', size: 5 },
-  { id: 26, top: '54%', left: '45%', size: 6 },
-  { id: 27, top: '74%', left: '48%', size: 8, rotate: 8, trail: 20 },
-
-  // Bottom margins & corners
-  { id: 28, bottom: '6%', left: '3%', size: 15, rotate: -8, trail: 30 },
-  { id: 29, bottom: '3%', left: '8%', size: 7 },
-  { id: 30, bottom: '8%', left: '16%', size: 5 },
-  { id: 31, bottom: '4%', left: '28%', size: 10, rotate: 14, trail: 20 },
-  { id: 32, bottom: '6%', left: '42%', size: 6 },
-  { id: 33, bottom: '3%', right: '30%', size: 9, rotate: -6 },
-  { id: 34, bottom: '5%', right: '17%', size: 13, rotate: 10, trail: 25 },
-  { id: 35, bottom: '2%', right: '5%', size: 7 }
-];
-
 export default function Hero({ scrollTo }) {
   return (
     <section 
       id="home" 
       className="min-h-screen pt-28 pb-16 px-4 sm:px-6 lg:px-8 flex flex-col justify-center relative overflow-hidden bg-white dark:bg-[#07090e] transition-colors duration-500"
     >
-      {/* Background ambient refraction orbs behind the glass */}
-      <div className="absolute -top-16 -left-16 w-96 sm:w-[540px] h-96 sm:h-[540px] rounded-full bg-gradient-to-br from-blue-500/25 via-indigo-500/20 to-cyan-400/20 blur-[90px] pointer-events-none" />
-      <div className="absolute top-1/4 -right-16 w-96 sm:w-[540px] h-96 sm:h-[540px] rounded-full bg-gradient-to-bl from-cyan-400/20 via-sky-500/20 to-blue-600/15 blur-[100px] pointer-events-none" />
-      <div className="absolute -bottom-20 left-1/4 w-80 sm:w-[480px] h-80 sm:h-[480px] rounded-full bg-gradient-to-tr from-indigo-400/15 via-blue-400/10 to-transparent blur-[90px] pointer-events-none" />
-      
-      {/* Subtle background glass grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a08_1px,transparent_1px),linear-gradient(to_bottom,#0f172a08_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:36px_36px] pointer-events-none" />
-
       <div className="container max-w-7xl mx-auto relative z-10">
         {/* Main Floating Glass Canvas Frontpanel */}
-        <div className="relative glass-surface rounded-3xl p-6 sm:p-10 md:p-12 lg:p-14 border border-white/90 dark:border-white/15 shadow-[0_25px_60px_-15px_rgba(15,23,42,0.1),0_10px_20px_-5px_rgba(15,23,42,0.04)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-3xl overflow-hidden">
-          
-          {/* Frosted Mist / Atmospheric Condensation Layer */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-sky-100/25 via-white/30 to-indigo-100/20 dark:from-sky-900/10 dark:via-transparent dark:to-indigo-900/10 pointer-events-none z-0 rounded-3xl" />
-          
-          {/* Glass Specular Gloss Sheen - Diagonal light reflection beam */}
-          <div className="absolute -top-32 -left-32 w-[160%] h-56 bg-gradient-to-b from-white/70 via-white/20 to-transparent rotate-[-22deg] pointer-events-none z-0 blur-[1px]" />
-          
-          {/* Polished Glass Top Edge Specular Rim */}
-          <div className="absolute top-0 left-6 right-6 h-[1.5px] bg-gradient-to-r from-transparent via-white to-transparent pointer-events-none z-0" />
-
-          {/* Background Rain Droplets on Glass */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 select-none" aria-hidden="true">
-            {rainDroplets.map((drop) => (
-              <div
-                key={drop.id}
-                style={{
-                  top: drop.top,
-                  left: drop.left,
-                  right: drop.right,
-                  bottom: drop.bottom,
-                  position: 'absolute'
-                }}
-              >
-                {drop.trail && (
-                  <div
-                    className="rain-trail"
-                    style={{
-                      height: `${drop.trail}px`,
-                      bottom: '50%',
-                      left: '50%',
-                      transform: 'translateX(-50%)'
-                    }}
-                  />
-                )}
-                <div
-                  className={drop.size <= 6 ? 'rain-drop-micro' : 'rain-drop'}
-                  style={{
-                    width: `${drop.size}px`,
-                    height: `${Math.round(drop.size * 1.15)}px`,
-                    transform: drop.rotate ? `rotate(${drop.rotate}deg)` : undefined
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div className="relative glass-surface rounded-3xl p-6 sm:p-10 md:p-12 lg:p-14 border border-slate-200/80 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.06)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             
             {/* Left Column: Introductions & Actions */}
             <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -185,7 +64,7 @@ export default function Hero({ scrollTo }) {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.12] mb-5 font-display drop-shadow-[0_1px_1px_rgba(255,255,255,0.9)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]"
+                className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-white leading-[1.12] mb-5 font-display"
               >
                 Hi, I'm{' '}
                 <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 dark:from-blue-400 dark:via-sky-300 dark:to-indigo-300 bg-clip-text text-transparent">
@@ -198,7 +77,7 @@ export default function Hero({ scrollTo }) {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-white/70 dark:bg-white/[0.06] border border-white/80 dark:border-white/10 shadow-sm backdrop-blur-md mb-6"
+                className="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-white/80 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 shadow-sm backdrop-blur-md mb-6"
               >
                 <HiSparkles className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 animate-pulse" />
                 <span className="text-sm sm:text-base md:text-lg font-medium text-slate-700 dark:text-slate-200">
@@ -211,7 +90,7 @@ export default function Hero({ scrollTo }) {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-base sm:text-lg text-slate-700 dark:text-slate-300 max-w-xl leading-relaxed mb-8 drop-shadow-[0_1px_0_rgba(255,255,255,0.8)] dark:drop-shadow-none"
+                className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mb-8"
               >
                 Passionate about crafting intuitive, scalable web applications with refined UI/UX, robust frontend architectures, and seamless digital interactions.
               </motion.p>
@@ -244,7 +123,7 @@ export default function Hero({ scrollTo }) {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="mt-8 pt-6 border-t border-slate-200/60 dark:border-white/10 w-full flex items-center justify-center lg:justify-start gap-3 sm:gap-4"
+                className="mt-8 pt-6 border-t border-slate-200/80 dark:border-white/10 w-full flex items-center justify-center lg:justify-start gap-3 sm:gap-4"
               >
                 <span className="text-xs uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400 mr-1">
                   Connect
@@ -259,7 +138,7 @@ export default function Hero({ scrollTo }) {
                       rel="noopener noreferrer"
                       title={social.name}
                       aria-label={social.name}
-                      className={`p-3 rounded-2xl glass-pill text-slate-700 dark:text-slate-300 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 border border-white/60 dark:border-white/10 ${social.color}`}
+                      className={`p-3 rounded-2xl glass-pill text-slate-700 dark:text-slate-300 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 border border-slate-200/80 dark:border-white/10 ${social.color}`}
                     >
                       <Icon className="w-5 h-5" />
                     </a>
@@ -277,10 +156,10 @@ export default function Hero({ scrollTo }) {
                 className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[360px] lg:h-[360px]"
               >
                 {/* Luminous Ambient Halo */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/25 via-cyan-400/20 to-indigo-600/25 rounded-3xl blur-2xl animate-pulse" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 via-cyan-400/15 to-indigo-600/20 rounded-3xl blur-2xl" />
 
                 {/* Main Glass Portrait Frame */}
-                <div className="relative w-full h-full rounded-3xl p-3 glass-surface border border-white/80 dark:border-white/20 shadow-2xl overflow-hidden group">
+                <div className="relative w-full h-full rounded-3xl p-3 glass-surface border border-slate-200/80 dark:border-white/20 shadow-xl overflow-hidden group">
                   <div className="w-full h-full rounded-2xl overflow-hidden relative">
                     <img 
                       src={profileImg} 
@@ -296,7 +175,7 @@ export default function Hero({ scrollTo }) {
                 <motion.div
                   animate={{ y: [0, -6, 0] }}
                   transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-                  className="absolute -top-4 -left-4 sm:-top-5 sm:-left-6 px-3.5 py-2 rounded-2xl glass-pill shadow-xl flex items-center gap-2 border border-white/70 dark:border-white/20 z-20"
+                  className="absolute -top-4 -left-4 sm:-top-5 sm:-left-6 px-3.5 py-2 rounded-2xl glass-pill shadow-lg flex items-center gap-2 border border-slate-200/80 dark:border-white/20 z-20"
                 >
                   <div className="w-7 h-7 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500">
                     <FaReact className="w-4 h-4 animate-spin-slow" />
@@ -311,7 +190,7 @@ export default function Hero({ scrollTo }) {
                 <motion.div
                   animate={{ y: [0, 6, 0] }}
                   transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut', delay: 0.5 }}
-                  className="absolute -bottom-4 -right-4 sm:-bottom-5 sm:-right-6 px-3.5 py-2 rounded-2xl glass-pill shadow-xl flex items-center gap-2 border border-white/70 dark:border-white/20 z-20"
+                  className="absolute -bottom-4 -right-4 sm:-bottom-5 sm:-right-6 px-3.5 py-2 rounded-2xl glass-pill shadow-lg flex items-center gap-2 border border-slate-200/80 dark:border-white/20 z-20"
                 >
                   <div className="w-7 h-7 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500">
                     <FiCheckCircle className="w-4 h-4" />
@@ -326,45 +205,6 @@ export default function Hero({ scrollTo }) {
 
           </div>
         </div>
-
-        {/* Hero Bottom Glass Highlights Strip */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.6 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6"
-        >
-          {highlights.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <div 
-                key={index}
-                className="relative glass-surface rounded-2xl p-5 border border-white/80 dark:border-white/10 hover:border-blue-500/40 dark:hover:border-blue-400/30 transition-all duration-300 group hover:-translate-y-0.5 overflow-hidden"
-              >
-                {/* Subtle corner dew drop */}
-                <div 
-                  className="rain-drop-micro top-2.5 right-3" 
-                  style={{ width: '6px', height: '6px' }}
-                  aria-hidden="true"
-                />
-                <div className="relative z-10 flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-xl glass-pill flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </motion.div>
-
       </div>
     </section>
   );
