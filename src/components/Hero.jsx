@@ -253,47 +253,27 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       Passionate about crafting intuitive, scalable web applications with refined UI/UX, robust frontend architectures, and seamless digital interactions.
                     </motion.p>
 
-                    {/* Call to Actions: Liquid Glass Buttons */}
+                    {/* Call to Actions: Apple Liquid Glass Buttons */}
                     <motion.div 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
                       className="flex flex-wrap gap-3.5 sm:gap-4 justify-center lg:justify-start w-full sm:w-auto"
                     >
-                      {/* Explore Work (Minimalist Blue Liquid Glass) */}
+                      {/* Explore Work (Apple Sapphire Liquid Glass) */}
                       <button
                         onClick={() => scrollTo('projects')}
-                        onMouseMove={handleLiquidMouseMove}
-                        onMouseEnter={handleLiquidMouseEnter}
-                        onMouseLeave={handleLiquidMouseLeave}
-                        className="box start-btn start-btn-blue group relative overflow-hidden"
-                        style={{ '--w': 'auto', '--h': '48px', '--tr': '15%' }}
+                        className="apple-glass-btn-primary group"
                       >
-                        <span className="text relative z-10 pointer-events-none">Explore Work</span>
-                        
-                        {/* Minimalist Liquid Glass in Blue */}
-                        <div className="liquid-glass-blue-chamber pointer-events-none" aria-hidden="true">
-                          {/* Pure Electric Sapphire Blue Base */}
-                          <div className="liquid-glass-blue-base" />
-
-                          {/* Silky Specular Liquid Caustic (Smooth Cursor Illumination) */}
-                          <div className="liquid-glass-blue-caustic" />
-
-                          {/* Upper Glass Meniscus Refraction */}
-                          <div className="liquid-glass-blue-meniscus" />
-                        </div>
-
-                        <div className="circle-overlay pointer-events-none"></div>
+                        <span className="relative z-10">Explore Work</span>
                       </button>
 
-                      {/* Get in Touch (Liquid Glass / Frosted Crystal Theme) */}
+                      {/* Get in Touch (Apple Frosted Crystal Liquid Glass) */}
                       <button
                         onClick={() => scrollTo('contact')}
-                        className="box start-btn group"
-                        style={{ '--w': 'auto', '--h': '48px', '--tr': '15%' }}
+                        className="apple-glass-btn-secondary group"
                       >
-                        <span className="text">Get in Touch</span>
-                        <div className="circle-overlay"></div>
+                        <span className="relative z-10">Get in Touch</span>
                       </button>
                     </motion.div>
 

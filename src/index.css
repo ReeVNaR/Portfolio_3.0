@@ -253,156 +253,172 @@
   }
 
   /* ========================================================= */
-  /*   MINIMALIST LIQUID GLASS BUTTON IN BLUE (EXPLORE WORK)   */
+  /*    APPLE LIQUID GLASS BUTTONS (PRIMARY & SECONDARY)       */
   /* ========================================================= */
-  .start-btn.start-btn-blue {
+
+  /* Primary Action: Apple Sapphire Liquid Glass (Explore Work) */
+  .apple-glass-btn-primary {
     position: relative;
-    overflow: hidden;
-    background: rgba(0, 102, 225, 0.55);
-    border: 1px double rgba(255, 255, 255, 0.45);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 1.85rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: #ffffff;
+    
+    /* Apple VisionOS Sapphire Liquid Glass */
+    background: linear-gradient(180deg, rgba(0, 122, 255, 0.92) 0%, rgba(0, 106, 230, 0.98) 100%);
+    backdrop-filter: blur(20px) saturate(190%);
+    -webkit-backdrop-filter: blur(20px) saturate(190%);
+    
+    /* Precision Specular Glass Rim */
+    border-top: 1px solid rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(0, 50, 140, 0.45);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    
+    /* Inner Bevel Highlight & Controlled Ambient Light */
     box-shadow:
-      inset 1.5px -1.5px 1px -1px rgba(255, 255, 255, 0.95),
-      inset -1.5px 1.5px 1px -1px rgba(255, 255, 255, 0.95),
-      inset 4px -4px 1px -4px rgba(255, 255, 255, 0.45),
-      inset -4px 4px 1px -4px rgba(255, 255, 255, 0.45),
-      inset 0 0 1px rgba(0, 30, 90, 0.3),
-      0 10px 28px -4px rgba(0, 102, 225, 0.45);
-    backdrop-filter: blur(18px) saturate(190%);
-    -webkit-backdrop-filter: blur(18px) saturate(190%);
-    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.75),
+      inset 0 -1.5px 2px 0 rgba(0, 30, 90, 0.35),
+      0 4px 14px -2px rgba(0, 113, 227, 0.35),
+      0 1px 3px 0 rgba(0, 0, 0, 0.08);
+
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
     isolation: isolate;
   }
 
-  .start-btn.start-btn-blue .text {
-    color: #ffffff;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    filter: drop-shadow(0 1px 2px rgba(0, 20, 60, 0.5));
-    position: relative;
-    z-index: 10;
-    transition: transform 0.25s ease;
-  }
-
-  .start-btn.start-btn-blue:hover .text {
-    transform: scale(1.02);
-  }
-
-  .start-btn.start-btn-blue .circle-overlay {
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    z-index: 8;
-  }
-
-  /* Liquid Glass Chamber */
-  .start-btn-blue .liquid-glass-blue-chamber {
+  /* Optical Glass Refraction Sheen */
+  .apple-glass-btn-primary::before {
+    content: "";
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-    overflow: hidden;
+    inset: 1px 1px auto 1px;
+    height: 48%;
+    border-radius: 9999px 9999px 0 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0) 100%);
     pointer-events: none;
     z-index: 1;
   }
 
-  /* Pure Electric Sapphire Blue Base */
-  .start-btn-blue .liquid-glass-blue-base {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(0, 113, 227, 0.88) 0%,
-      rgba(0, 90, 200, 0.82) 48%,
-      rgba(0, 65, 160, 0.92) 100%
-    );
-    transition: opacity 0.3s ease, background 0.3s ease;
-  }
-
-  /* Silky Specular Liquid Caustic (Smooth Cursor Illumination) */
-  .start-btn-blue .liquid-glass-blue-caustic {
-    position: absolute;
-    top: var(--my-pct, 50%);
-    left: var(--mx-pct, 50%);
-    width: 120px;
-    height: 120px;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0.5) 0%,
-      rgba(125, 211, 252, 0.35) 30%,
-      rgba(14, 165, 233, 0.15) 55%,
-      transparent 70%
-    );
-    border-radius: 50%;
-    filter: blur(8px);
-    opacity: calc(0.35 + var(--liquid-active, 0) * 0.65);
-    transition: opacity 0.25s ease, transform 0.08s ease-out;
-    mix-blend-mode: overlay;
-    z-index: 3;
-    pointer-events: none;
-  }
-
-  /* Upper Glass Meniscus Refraction */
-  .start-btn-blue .liquid-glass-blue-meniscus {
-    position: absolute;
-    top: 1px;
-    left: 8%;
-    right: 8%;
-    height: 42%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
-    border-radius: 9999px 9999px 0 0;
-    filter: blur(0.75px);
-    pointer-events: none;
-    z-index: 5;
-  }
-
-  .start-btn.start-btn-blue:hover {
-    transform: translateY(-2px);
-    background: rgba(0, 113, 235, 0.7);
+  .apple-glass-btn-primary:hover {
+    transform: translateY(-1.5px);
+    background: linear-gradient(180deg, rgba(14, 138, 255, 0.96) 0%, rgba(0, 115, 240, 1) 100%);
     box-shadow:
-      inset 1.5px -1.5px 1px -1px rgba(255, 255, 255, 1),
-      inset -1.5px 1.5px 1px -1px rgba(255, 255, 255, 1),
-      inset 4px -4px 1px -4px rgba(255, 255, 255, 0.55),
-      inset -4px 4px 1px -4px rgba(255, 255, 255, 0.55),
-      0 14px 34px -4px rgba(0, 113, 235, 0.65),
-      0 0 18px 2px rgba(56, 189, 248, 0.3);
+      inset 0 1px 2px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1.5px 2px 0 rgba(0, 30, 90, 0.35),
+      0 8px 22px -2px rgba(0, 113, 227, 0.45),
+      0 2px 6px rgba(0, 0, 0, 0.1);
   }
 
-  .start-btn.start-btn-blue:hover .liquid-glass-blue-base {
-    background: linear-gradient(
-      135deg,
-      rgba(0, 122, 245, 0.92) 0%,
-      rgba(0, 100, 220, 0.88) 48%,
-      rgba(0, 75, 180, 0.95) 100%
-    );
-  }
-
-  .start-btn.start-btn-blue:active {
+  .apple-glass-btn-primary:active {
     transform: scale(0.97) translateY(0);
-  }
-
-  /* Dark mode overrides */
-  .dark .start-btn:not(.start-btn-blue) {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px double rgba(255, 255, 255, 0.15);
+    background: linear-gradient(180deg, rgba(0, 110, 225, 0.95) 0%, rgba(0, 90, 205, 1) 100%);
     box-shadow:
-      inset 2px -2px 1px -1px rgba(255, 255, 255, 0.4),
-      inset -2px 2px 1px -1px rgba(255, 255, 255, 0.4),
-      inset 6px -6px 1px -6px rgba(255, 255, 255, 0.2),
-      inset -6px 6px 1px -6px rgba(255, 255, 255, 0.2),
-      inset 0 0 1px rgba(0, 0, 0, 0.4),
-      0 8px 24px -4px rgba(0, 0, 0, 0.5);
+      inset 0 1px 1.5px 0 rgba(0, 0, 0, 0.2),
+      0 2px 8px -1px rgba(0, 113, 227, 0.3);
   }
 
-  .dark .start-btn:not(.start-btn-blue) .text {
+  /* Secondary Action: Apple Frosted Crystal Glass (Get in Touch) */
+  .apple-glass-btn-secondary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 1.85rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: #0f172a;
+    
+    /* Apple Frosted Crystal Material */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(240, 245, 255, 0.7) 100%);
+    backdrop-filter: blur(20px) saturate(190%);
+    -webkit-backdrop-filter: blur(20px) saturate(190%);
+    
+    /* Precision Specular Bevel Rim */
+    border-top: 1px solid rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid rgba(203, 213, 225, 0.7);
+    border-left: 1px solid rgba(255, 255, 255, 0.85);
+    border-right: 1px solid rgba(255, 255, 255, 0.85);
+    
+    /* Inner Specular Highlight & Soft Ambient Grounding */
+    box-shadow:
+      inset 0 1px 2px 0 rgba(255, 255, 255, 1),
+      inset 0 -1px 2px 0 rgba(0, 0, 0, 0.03),
+      0 4px 14px -2px rgba(15, 23, 42, 0.08),
+      0 1px 3px 0 rgba(0, 0, 0, 0.04);
+
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* Optical Glass Refraction Sheen */
+  .apple-glass-btn-secondary::before {
+    content: "";
+    position: absolute;
+    inset: 1px 1px auto 1px;
+    height: 48%;
+    border-radius: 9999px 9999px 0 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .apple-glass-btn-secondary:hover {
+    transform: translateY(-1.5px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 248, 255, 0.88) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 1);
+    box-shadow:
+      inset 0 1px 2.5px 0 rgba(255, 255, 255, 1),
+      inset 0 -1px 2px 0 rgba(0, 0, 0, 0.03),
+      0 8px 22px -2px rgba(15, 23, 42, 0.12),
+      0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .apple-glass-btn-secondary:active {
+    transform: scale(0.97) translateY(0);
+    background: rgba(240, 244, 250, 0.85);
+    box-shadow:
+      inset 0 1px 2px 0 rgba(0, 0, 0, 0.08),
+      0 2px 6px -1px rgba(15, 23, 42, 0.06);
+  }
+
+  /* Dark Mode Adaptation for Secondary Glass Button */
+  .dark .apple-glass-btn-secondary {
     color: #f8fafc;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.06) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.45);
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+    border-right: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+      inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
+      inset 0 -1px 2px 0 rgba(0, 0, 0, 0.3),
+      0 4px 16px -2px rgba(0, 0, 0, 0.4);
   }
 
-  .dark .start-btn:not(.start-btn-blue):hover {
-    background: rgba(255, 255, 255, 0.14);
+  .dark .apple-glass-btn-secondary::before {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  .dark .apple-glass-btn-secondary:hover {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.12) 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.55);
     box-shadow:
-      inset 2px -2px 1px -1px rgba(255, 255, 255, 0.5),
-      inset -2px 2px 1px -1px rgba(255, 255, 255, 0.5),
-      0 12px 28px -4px rgba(0, 0, 0, 0.6);
+      inset 0 1px 2px 0 rgba(255, 255, 255, 0.45),
+      0 8px 24px -2px rgba(0, 0, 0, 0.55);
   }
 
   /* Liquid Glass Navbar Capsule - Exact Button Glass Treatment */
