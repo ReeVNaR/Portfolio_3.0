@@ -204,51 +204,51 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                   
                   {/* Left Column: Introductions & Actions */}
                   <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
-                    {/* Status Badge Capsule: Luminous Liquid Glass Micro-Pill */}
+                    {/* Status Badge Capsule: Apple-style micro-pill */}
                     <motion.div 
                       initial={{ opacity: 0, y: -8 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
-                      className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-white/[0.18] text-xs font-medium text-slate-100 mb-4 backdrop-blur-xl shadow-sm hover:bg-white/[0.12] transition-all cursor-default"
+                      className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/[0.04] dark:bg-white/[0.08] border border-slate-900/[0.08] dark:border-white/[0.12] text-xs font-medium text-slate-700 dark:text-slate-300 mb-4 backdrop-blur-xl shadow-none hover:bg-slate-900/[0.07] dark:hover:bg-white/[0.12] transition-all cursor-default"
                     >
                       <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                       </span>
-                      <span className="tracking-tight text-slate-200">Available for new projects & opportunities</span>
+                      <span className="tracking-tight">Available for new projects & opportunities</span>
                     </motion.div>
 
-                    {/* Main Headline: Diamond White & Electric Cyan Gradient */}
+                    {/* Main Headline: Apple Keynote Style Typography */}
                     <motion.h1 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.1 }}
-                      className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.6rem] xl:text-[4rem] font-bold tracking-tight text-white leading-[1.08] mb-4 font-display"
+                      className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.6rem] xl:text-[4rem] font-bold tracking-tight text-slate-950 dark:text-white leading-[1.08] mb-4 font-display"
                     >
                       Hi, I'm{' '}
-                      <span className="block bg-gradient-to-r from-sky-300 via-cyan-400 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(56,189,248,0.3)]">
+                      <span className="block bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#0055b3] dark:from-sky-400 dark:via-blue-300 dark:to-indigo-300 bg-clip-text text-transparent">
                         Ranveer Ghorpade
                       </span>
                     </motion.h1>
 
-                    {/* Typing Subtitle Badge: Electric Sapphire Pill */}
+                    {/* Typing Subtitle Badge: Apple frosted pill */}
                     <motion.div 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.2 }}
-                      className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/[0.14] border border-sky-400/[0.3] backdrop-blur-2xl mb-4 shadow-[0_4px_20px_rgba(0,113,227,0.2)]"
+                      className="inline-flex items-center px-4 py-2 rounded-full bg-slate-900/[0.04] dark:bg-white/[0.06] border border-slate-900/[0.08] dark:border-white/[0.12] backdrop-blur-xl mb-4 shadow-sm"
                     >
-                      <span className="text-sm sm:text-base md:text-lg font-semibold tracking-tight text-sky-100">
+                      <span className="text-sm sm:text-base md:text-lg font-medium tracking-tight text-slate-800 dark:text-slate-200">
                         <TypingEffect />
                       </span>
                     </motion.div>
 
-                    {/* Bio summary: High-contrast Platinum Editorial Copy */}
+                    {/* Bio summary: Clean Apple editorial copy */}
                     <motion.p 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.3 }}
-                      className="text-base sm:text-lg text-slate-200/90 max-w-xl leading-relaxed mb-6 font-normal tracking-[-0.01em]"
+                      className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mb-6 font-normal tracking-[-0.01em]"
                     >
                       Passionate about crafting intuitive, scalable web applications with refined UI/UX, robust frontend architectures, and seamless digital interactions.
                     </motion.p>
@@ -302,9 +302,9 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.5 }}
-                      className="mt-7 pt-5 border-t border-white/[0.12] w-full flex items-center justify-center lg:justify-start gap-3 sm:gap-4"
+                      className="mt-7 pt-5 border-t border-slate-200/80 dark:border-white/10 w-full flex items-center justify-center lg:justify-start gap-3 sm:gap-4"
                     >
-                      <span className="text-xs uppercase tracking-wider font-bold text-sky-200/80 mr-1">
+                      <span className="text-xs uppercase tracking-wider font-bold text-slate-600 dark:text-slate-400 mr-1">
                         Connect
                       </span>
                       {socialLinksV2.map((social) => {
@@ -317,7 +317,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                             rel="noopener noreferrer"
                             title={social.name}
                             aria-label={social.name}
-                            className={`p-2.5 sm:p-3 rounded-2xl bg-white/[0.08] hover:bg-white/[0.18] text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-200 border border-white/[0.16] shadow-sm backdrop-blur-xl ${social.color}`}
+                            className={`p-2.5 sm:p-3 rounded-2xl bg-white/80 dark:bg-white/5 text-slate-800 dark:text-slate-200 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 border border-slate-200/80 dark:border-white/10 shadow-sm ${social.color}`}
                           >
                             <Icon className="w-5 h-5" />
                           </a>
@@ -338,7 +338,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/25 via-cyan-400/20 to-indigo-600/25 rounded-3xl blur-2xl" />
 
                       {/* Main Glass Portrait Frame with High Contrast */}
-                      <div className="relative w-full h-full rounded-3xl p-3 bg-slate-900/60 border border-white/20 shadow-2xl overflow-hidden group backdrop-blur-xl">
+                      <div className="relative w-full h-full rounded-3xl p-3 bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/20 shadow-xl overflow-hidden group backdrop-blur-xl">
                         <div className="w-full h-full rounded-2xl overflow-hidden relative">
                           <img 
                             src={profileImg} 
@@ -354,14 +354,14 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       <motion.div
                         animate={{ y: [0, -5, 0] }}
                         transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-                        className="absolute -top-4 -left-4 sm:-top-5 sm:-left-5 px-3.5 py-2 rounded-2xl bg-slate-950/85 backdrop-blur-2xl shadow-xl flex items-center gap-2.5 border border-white/20 z-20"
+                        className="absolute -top-4 -left-4 sm:-top-5 sm:-left-5 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-slate-900/90 shadow-md flex items-center gap-2.5 border border-slate-200/80 dark:border-white/20 z-20"
                       >
-                        <div className="w-7 h-7 rounded-xl bg-blue-500/20 flex items-center justify-center text-sky-400">
+                        <div className="w-7 h-7 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600">
                           <FaReact className="w-4 h-4 animate-spin-slow" />
                         </div>
                         <div>
-                          <p className="text-[10px] text-sky-300/80 font-semibold leading-none">Specialty</p>
-                          <p className="text-xs font-bold text-white leading-tight">React & Vite</p>
+                          <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold leading-none">Specialty</p>
+                          <p className="text-xs font-bold text-slate-900 dark:text-white leading-tight">React & Vite</p>
                         </div>
                       </motion.div>
 
@@ -369,14 +369,14 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       <motion.div
                         animate={{ y: [0, 5, 0] }}
                         transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut', delay: 0.5 }}
-                        className="absolute -bottom-4 -right-4 sm:-bottom-5 sm:-right-5 px-3.5 py-2 rounded-2xl bg-slate-950/85 backdrop-blur-2xl shadow-xl flex items-center gap-2.5 border border-white/20 z-20"
+                        className="absolute -bottom-4 -right-4 sm:-bottom-5 sm:-right-5 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-slate-900/90 shadow-md flex items-center gap-2.5 border border-slate-200/80 dark:border-white/20 z-20"
                       >
-                        <div className="w-7 h-7 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                        <div className="w-7 h-7 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600">
                           <FiCheckCircle className="w-4 h-4" />
                         </div>
                         <div>
-                          <p className="text-[10px] text-emerald-300/80 font-semibold leading-none">Focus</p>
-                          <p className="text-xs font-bold text-white leading-tight">Clean Architecture</p>
+                          <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold leading-none">Focus</p>
+                          <p className="text-xs font-bold text-slate-900 dark:text-white leading-tight">Clean Architecture</p>
                         </div>
                       </motion.div>
                     </motion.div>

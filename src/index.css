@@ -237,73 +237,19 @@
   /* ========================================================= */
   .hero-lamborghini-bg {
     position: relative;
-    /* Signature Lamborghini Blu Nethuns metallic gradient */
-    background-color: #030a18;
+    /* Luminous Lamborghini Blu Cepheus atmospheric backdrop */
+    background-color: #f8fafc;
     background-image: 
-      radial-gradient(ellipse 95% 70% at 50% 18%, #0d2c5e 0%, #071938 42%, #030c1e 75%, #020712 100%);
+      radial-gradient(ellipse 110% 80% at 50% -5%, rgba(14, 165, 233, 0.22) 0%, rgba(56, 189, 248, 0.12) 35%, rgba(240, 249, 255, 0.5) 65%, transparent 100%),
+      linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 45%, #ffffff 100%);
     transition: background 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .dark .hero-lamborghini-bg {
-    background-color: #020712;
+    background-color: #030814;
     background-image: 
-      radial-gradient(ellipse 95% 70% at 50% 16%, #09234d 0%, #05142e 45%, #020917 78%, #01040a 100%);
-  }
-
-  /* Smoked Sapphire Liquid Glass Panel Treatment on Lamborghini Blue */
-  .hero-lamborghini-bg .panel-liquid-glass {
-    background: rgba(4, 15, 36, 0.65);
-    backdrop-filter: blur(28px) saturate(200%);
-    -webkit-backdrop-filter: blur(28px) saturate(200%);
-    border: 1px double rgba(255, 255, 255, 0.2);
-    box-shadow:
-      inset 2px -2px 1px -1px rgba(255, 255, 255, 0.75),
-      inset -2px 2px 1px -1px rgba(255, 255, 255, 0.75),
-      inset 6px -6px 1px -6px rgba(255, 255, 255, 0.18),
-      inset -6px 6px 1px -6px rgba(255, 255, 255, 0.18),
-      inset 0 0 35px rgba(0, 113, 227, 0.12),
-      0 28px 70px -12px rgba(1, 5, 14, 0.85),
-      0 12px 32px -4px rgba(0, 35, 95, 0.35);
-  }
-
-  .dark .hero-lamborghini-bg .panel-liquid-glass {
-    background: rgba(2, 9, 22, 0.75);
-    border: 1px double rgba(255, 255, 255, 0.16);
-    box-shadow:
-      inset 2px -2px 1px -1px rgba(255, 255, 255, 0.55),
-      inset -2px 2px 1px -1px rgba(255, 255, 255, 0.55),
-      inset 6px -6px 1px -6px rgba(255, 255, 255, 0.15),
-      inset -6px 6px 1px -6px rgba(255, 255, 255, 0.15),
-      inset 0 0 40px rgba(0, 80, 180, 0.1),
-      0 32px 80px -15px rgba(0, 0, 0, 0.9),
-      0 14px 36px -4px rgba(0, 10, 30, 0.6);
-  }
-
-  /* Get in Touch button matching liquid glass styling inside Hero */
-  .hero-lamborghini-bg .start-btn:not(.start-btn-blue) {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px double rgba(255, 255, 255, 0.28);
-    box-shadow:
-      inset 1.5px -1.5px 1px -1px rgba(255, 255, 255, 0.75),
-      inset -1.5px 1.5px 1px -1px rgba(255, 255, 255, 0.75),
-      0 8px 24px -4px rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
-
-  .hero-lamborghini-bg .start-btn:not(.start-btn-blue) .text {
-    color: #ffffff;
-    font-weight: 600;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6));
-  }
-
-  .hero-lamborghini-bg .start-btn:not(.start-btn-blue):hover {
-    background: rgba(255, 255, 255, 0.18);
-    transform: translateY(-2px);
-    box-shadow:
-      inset 1.5px -1.5px 1px -1px rgba(255, 255, 255, 0.95),
-      inset -1.5px 1.5px 1px -1px rgba(255, 255, 255, 0.95),
-      0 12px 28px -4px rgba(0, 0, 0, 0.55);
+      radial-gradient(ellipse 110% 80% at 50% -5%, rgba(14, 165, 233, 0.22) 0%, rgba(2, 132, 199, 0.16) 35%, rgba(6, 24, 56, 0.75) 65%, #020712 100%),
+      linear-gradient(180deg, #071938 0%, #030d20 50%, #01040a 100%);
   }
 
   /* ========================================================= */
