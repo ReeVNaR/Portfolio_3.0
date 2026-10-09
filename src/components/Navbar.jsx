@@ -78,20 +78,20 @@ const Navbar = () => {
     <>
       <header className="fixed top-3 sm:top-5 left-0 right-0 z-[100] px-4 pointer-events-none flex justify-center">
         <nav 
-          className={`pointer-events-auto w-full max-w-5xl rounded-full px-4 sm:px-6 py-2.5 sm:py-3 transition-all duration-300 apple-glass border border-white/50 dark:border-white/10 ${
+          className={`pointer-events-auto w-full max-w-5xl rounded-full px-4 sm:px-6 py-2.5 sm:py-3 transition-all duration-300 glass-surface border border-white/50 dark:border-white/10 ${
             isScrolled 
               ? 'shadow-[0_12px_32px_rgba(0,0,0,0.12)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.5)] scale-[0.99]' 
               : 'shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_12px_32px_rgba(0,0,0,0.35)]'
           }`}
         >
           <div className="flex items-center justify-between">
-            {/* Apple-style Monogram Logo */}
+            {/* Monogram Logo */}
             <button
               onClick={() => handleNavClick('home')}
               className="group flex items-center gap-2 focus:outline-none"
               aria-label="Ranveer Ghorpade Home"
             >
-              <span className="w-8 h-8 rounded-full apple-glass-pill flex items-center justify-center font-bold text-sm tracking-wider bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-sm group-hover:scale-105 transition-transform">
+              <span className="w-8 h-8 rounded-full glass-pill flex items-center justify-center font-bold text-sm tracking-wider bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-sm group-hover:scale-105 transition-transform">
                 RG
               </span>
               <span className="font-semibold text-sm sm:text-base tracking-tight text-slate-800 dark:text-white hidden xs:inline-block">
@@ -162,7 +162,7 @@ const Navbar = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -10 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed top-20 left-4 right-4 z-[95] md:hidden rounded-3xl apple-glass p-5 border border-white/60 dark:border-white/15 shadow-2xl"
+              className="fixed top-20 left-4 right-4 z-[95] md:hidden rounded-3xl glass-surface p-5 border border-white/60 dark:border-white/15 shadow-2xl"
             >
               <div className="flex flex-col space-y-1">
                 {navItems.map((item) => (
