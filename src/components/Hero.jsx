@@ -241,15 +241,17 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                         onClick={() => scrollTo('projects')}
                         className="apple-glass-pill-blue px-7 py-3.5 rounded-full font-medium text-sm sm:text-base flex items-center gap-2 group tracking-tight cursor-pointer"
                       >
-                        <span>Explore Work</span>
-                        <HiArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                        <span className="relative z-10 flex items-center gap-2">
+                          <span>Explore Work</span>
+                          <HiArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                        </span>
                       </button>
 
                       <button
                         onClick={() => scrollTo('contact')}
                         className="apple-glass-pill-white px-7 py-3.5 rounded-full font-medium text-sm sm:text-base flex items-center gap-2 tracking-tight cursor-pointer"
                       >
-                        <span>Get in Touch</span>
+                        <span className="relative z-10">Get in Touch</span>
                       </button>
                     </motion.div>
 
