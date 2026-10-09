@@ -2,7 +2,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { TypingEffect } from './TypingEffect';
 import profileImg from '../assets/Profile.jpg';
 import { FaGithub, FaLinkedinIn, FaInstagram, FaXTwitter, FaReact } from 'react-icons/fa6';
-import { HiSparkles, HiArrowRight } from 'react-icons/hi2';
 import { FiCheckCircle } from 'react-icons/fi';
 
 const socialLinksV2 = [
@@ -215,9 +214,8 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.2 }}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/[0.04] dark:bg-white/[0.06] border border-slate-900/[0.08] dark:border-white/[0.12] backdrop-blur-xl mb-4 shadow-sm"
+                      className="inline-flex items-center px-4 py-2 rounded-full bg-slate-900/[0.04] dark:bg-white/[0.06] border border-slate-900/[0.08] dark:border-white/[0.12] backdrop-blur-xl mb-4 shadow-sm"
                     >
-                      <HiSparkles className="w-4 h-4 text-[#0071e3] dark:text-sky-400 flex-shrink-0 animate-pulse" />
                       <span className="text-sm sm:text-base md:text-lg font-medium tracking-tight text-slate-800 dark:text-slate-200">
                         <TypingEffect />
                       </span>
@@ -244,19 +242,9 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       <button
                         onClick={() => scrollTo('projects')}
                         className="box start-btn start-btn-blue group"
-                        style={{ '--w': '186px', '--h': '48px', '--tr': '15%' }}
+                        style={{ '--w': 'auto', '--h': '48px', '--tr': '15%' }}
                       >
                         <span className="text">Explore Work</span>
-                        <div className="btn-icon">
-                          <svg
-                            className="svg"
-                            viewBox="0 0 1024 1024"
-                            version="1.1"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M779.180132 473.232045 322.354755 16.406668c-21.413706-21.413706-56.121182-21.413706-77.534887 0-21.413706 21.413706-21.413706 56.122205 0 77.534887l418.057421 418.057421L244.819868 930.057421c-21.413706 21.413706-21.413706 56.122205 0 77.534887 10.706853 10.706853 24.759917 16.059767 38.767955 16.059767s28.061103-5.353938 38.767955-16.059767L779.180132 550.767955C800.593837 529.35425 800.593837 494.64575 779.180132 473.232045z" />
-                          </svg>
-                        </div>
                         <div className="circle-overlay"></div>
                       </button>
 
@@ -264,19 +252,9 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       <button
                         onClick={() => scrollTo('contact')}
                         className="box start-btn group"
-                        style={{ '--w': '180px', '--h': '48px', '--tr': '15%' }}
+                        style={{ '--w': 'auto', '--h': '48px', '--tr': '15%' }}
                       >
                         <span className="text">Get in Touch</span>
-                        <div className="btn-icon">
-                          <svg
-                            className="svg"
-                            viewBox="0 0 1024 1024"
-                            version="1.1"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M779.180132 473.232045 322.354755 16.406668c-21.413706-21.413706-56.121182-21.413706-77.534887 0-21.413706 21.413706-21.413706 56.122205 0 77.534887l418.057421 418.057421L244.819868 930.057421c-21.413706 21.413706-21.413706 56.122205 0 77.534887 10.706853 10.706853 24.759917 16.059767 38.767955 16.059767s28.061103-5.353938 38.767955-16.059767L779.180132 550.767955C800.593837 529.35425 800.593837 494.64575 779.180132 473.232045z" />
-                          </svg>
-                        </div>
                         <div className="circle-overlay"></div>
                       </button>
                     </motion.div>

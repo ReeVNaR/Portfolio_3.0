@@ -201,41 +201,22 @@
   }
 
   .start-btn {
-    padding: 0 0.5rem 0 1.25rem;
+    padding: 0 1.65rem;
     display: inline-flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 0.75rem;
-    min-width: 170px;
+    min-width: 140px;
   }
 
   .start-btn .text {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     font-family: inherit;
     color: #0f172a;
     position: relative;
     z-index: 3;
     white-space: nowrap;
-  }
-
-  .start-btn .btn-icon {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(15, 23, 42, 0.06);
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 50%;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    z-index: 3;
-    flex-shrink: 0;
-  }
-
-  .start-btn .btn-icon .svg {
-    fill: #0f172a;
+    text-align: center;
   }
 
   .start-btn:hover {
@@ -247,17 +228,8 @@
       0 12px 28px -4px rgba(15, 23, 42, 0.12);
   }
 
-  .start-btn:hover .btn-icon {
-    transform: translateX(2px) scale(1.05);
-    background: rgba(15, 23, 42, 0.1);
-  }
-
   .start-btn:active {
     transform: scale(0.97);
-  }
-
-  .start-btn:active .btn-icon {
-    transform: scale(0.94);
   }
 
   /* Blue theme variant for Explore Work */
@@ -282,27 +254,12 @@
     border: 1px solid rgba(255, 255, 255, 0.35);
   }
 
-  .start-btn.start-btn-blue .btn-icon {
-    background: rgba(255, 255, 255, 0.22);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .start-btn.start-btn-blue .btn-icon .svg {
-    fill: #ffffff;
-  }
-
   .start-btn.start-btn-blue:hover {
     background: linear-gradient(135deg, #0a7aff 0%, #0066cc 100%);
     box-shadow:
       inset 2px -2px 1px -1px rgba(255, 255, 255, 1),
       inset -2px 2px 1px -1px rgba(255, 255, 255, 1),
       0 12px 28px -4px rgba(0, 113, 227, 0.55);
-  }
-
-  .start-btn.start-btn-blue:hover .btn-icon {
-    transform: translateX(2px) scale(1.05);
-    background: rgba(255, 255, 255, 0.3);
   }
 
   /* Dark mode overrides */
@@ -322,25 +279,12 @@
     color: #f8fafc;
   }
 
-  .dark .start-btn:not(.start-btn-blue) .btn-icon {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-  }
-
-  .dark .start-btn:not(.start-btn-blue) .btn-icon .svg {
-    fill: #ffffff;
-  }
-
   .dark .start-btn:not(.start-btn-blue):hover {
     background: rgba(255, 255, 255, 0.14);
     box-shadow:
       inset 2px -2px 1px -1px rgba(255, 255, 255, 0.5),
       inset -2px 2px 1px -1px rgba(255, 255, 255, 0.5),
       0 12px 28px -4px rgba(0, 0, 0, 0.6);
-  }
-
-  .dark .start-btn:not(.start-btn-blue):hover .btn-icon {
-    background: rgba(255, 255, 255, 0.2);
   }
 
   /* Liquid Glass Navbar Capsule - Exact Button Glass Treatment */
