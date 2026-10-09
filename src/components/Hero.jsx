@@ -36,7 +36,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
   return (
     <section 
       id="home" 
-      className={`min-h-screen pt-24 sm:pt-28 pb-16 px-4 sm:px-6 lg:px-8 flex flex-col justify-center relative overflow-hidden transition-colors duration-500 ${
+      className={`min-h-screen pt-20 sm:pt-22 lg:pt-20 pb-4 sm:pb-6 px-4 sm:px-6 lg:px-8 flex items-center justify-center relative overflow-hidden transition-colors duration-500 ${
         portfolioVersion === 'v1'
           ? 'bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-black dark:to-black'
           : 'bg-white dark:bg-[#07090e]'
@@ -150,7 +150,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                     <div className="group relative w-full h-full transform transition-transform duration-500 hover:scale-105">
                       <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
                       <img 
-                        src={profileImg}
+                        src={profileImg} 
                         alt="Ranveer Ghorpade" 
                         className="rounded-full shadow-2xl border-2 border-blue-500/30 relative w-full h-full object-cover backdrop-blur-3xl"
                       />
@@ -173,10 +173,10 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
             transition={{ duration: 0.35, ease: 'easeInOut' }}
             className="w-full relative z-10"
           >
-            <div className="container max-w-7xl mx-auto">
+            <div className="container max-w-6xl xl:max-w-7xl mx-auto">
               {/* Main Floating Glass Canvas Frontpanel with High Contrast */}
-              <div className="relative glass-surface rounded-3xl p-6 sm:p-10 md:p-12 lg:p-14 border border-slate-300 dark:border-white/10 shadow-[0_20px_50px_rgba(15,23,42,0.12)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+              <div className="relative glass-surface rounded-3xl p-5 sm:p-7 md:p-8 lg:p-7 xl:p-9 border border-slate-300 dark:border-white/10 shadow-[0_20px_50px_rgba(15,23,42,0.12)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-10 items-center">
                   
                   {/* Left Column: Introductions & Actions */}
                   <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -185,7 +185,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       initial={{ opacity: 0, y: -8 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5 }}
-                      className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/[0.04] dark:bg-white/[0.08] border border-slate-900/[0.08] dark:border-white/[0.12] text-xs font-medium text-slate-700 dark:text-slate-300 mb-6 backdrop-blur-xl shadow-none hover:bg-slate-900/[0.07] transition-all cursor-default"
+                      className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/[0.04] dark:bg-white/[0.08] border border-slate-900/[0.08] dark:border-white/[0.12] text-xs font-medium text-slate-700 dark:text-slate-300 mb-3 backdrop-blur-xl shadow-none hover:bg-slate-900/[0.07] transition-all cursor-default"
                     >
                       <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
@@ -199,7 +199,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.1 }}
-                      className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-[-0.035em] text-slate-950 dark:text-white leading-[1.08] mb-5 font-display"
+                      className="text-3xl sm:text-5xl md:text-5xl lg:text-[3.15rem] xl:text-[3.5rem] font-bold tracking-[-0.035em] text-slate-950 dark:text-white leading-[1.08] mb-3 font-display"
                     >
                       Hi, I'm{' '}
                       <span className="bg-gradient-to-r from-[#0071e3] via-[#4338ca] to-[#6366f1] dark:from-sky-400 dark:via-blue-300 dark:to-indigo-300 bg-clip-text text-transparent">
@@ -212,10 +212,10 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.2 }}
-                      className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900/[0.04] dark:bg-white/[0.06] border border-slate-900/[0.08] dark:border-white/[0.12] backdrop-blur-xl mb-6 shadow-sm"
+                      className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/[0.04] dark:bg-white/[0.06] border border-slate-900/[0.08] dark:border-white/[0.12] backdrop-blur-xl mb-3.5 shadow-sm"
                     >
-                      <HiSparkles className="w-4 h-4 text-[#0071e3] dark:text-sky-400 flex-shrink-0 animate-pulse" />
-                      <span className="text-sm sm:text-base md:text-lg font-medium tracking-tight text-slate-800 dark:text-slate-200">
+                      <HiSparkles className="w-3.5 h-3.5 text-[#0071e3] dark:text-sky-400 flex-shrink-0 animate-pulse" />
+                      <span className="text-xs sm:text-sm md:text-base font-medium tracking-tight text-slate-800 dark:text-slate-200">
                         <TypingEffect />
                       </span>
                     </motion.div>
@@ -225,7 +225,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.3 }}
-                      className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mb-8 font-normal tracking-[-0.01em]"
+                      className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-lg leading-relaxed mb-5 font-normal tracking-[-0.01em]"
                     >
                       Passionate about crafting intuitive, scalable web applications with refined UI/UX, robust frontend architectures, and seamless digital interactions.
                     </motion.p>
@@ -235,23 +235,42 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
-                      className="flex flex-wrap gap-4 justify-center lg:justify-start w-full sm:w-auto"
+                      className="flex flex-wrap gap-3.5 justify-center lg:justify-start w-full sm:w-auto"
                     >
                       <button
                         onClick={() => scrollTo('projects')}
-                        className="apple-glass-pill-blue px-7 py-3.5 rounded-full font-medium text-sm sm:text-base flex items-center gap-2 group tracking-tight cursor-pointer"
+                        className="apple-glass-pill-blue group relative px-6 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base flex items-center justify-center cursor-pointer select-none overflow-hidden"
                       >
                         <span className="relative z-10 flex items-center gap-2">
                           <span>Explore Work</span>
                           <HiArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                         </span>
+                        {/* Frosted Internal Glass Reflection of the Text */}
+                        <span 
+                          aria-hidden="true" 
+                          className="absolute top-[62%] left-0 right-0 flex items-center justify-center gap-2 pointer-events-none select-none scale-y-[-0.7] origin-top opacity-25 blur-[0.5px] text-white"
+                          style={{ maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1), transparent 85%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1), transparent 85%)' }}
+                        >
+                          <span>Explore Work</span>
+                          <HiArrowRight className="w-4 h-4" />
+                        </span>
                       </button>
 
                       <button
                         onClick={() => scrollTo('contact')}
-                        className="apple-glass-pill-white px-7 py-3.5 rounded-full font-medium text-sm sm:text-base flex items-center gap-2 tracking-tight cursor-pointer"
+                        className="apple-glass-pill-white group relative px-6 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold text-sm sm:text-base flex items-center justify-center cursor-pointer select-none overflow-hidden"
                       >
-                        <span className="relative z-10">Get in Touch</span>
+                        <span className="relative z-10 flex items-center gap-2">
+                          <span>Get in Touch</span>
+                        </span>
+                        {/* Frosted Internal Glass Reflection of the Text */}
+                        <span 
+                          aria-hidden="true" 
+                          className="absolute top-[62%] left-0 right-0 flex items-center justify-center gap-2 pointer-events-none select-none scale-y-[-0.7] origin-top opacity-20 blur-[0.5px] text-slate-900 dark:text-white"
+                          style={{ maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1), transparent 85%)', WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1), transparent 85%)' }}
+                        >
+                          <span>Get in Touch</span>
+                        </span>
                       </button>
                     </motion.div>
 
@@ -260,7 +279,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.5 }}
-                      className="mt-8 pt-6 border-t border-slate-300/80 dark:border-white/10 w-full flex items-center justify-center lg:justify-start gap-3 sm:gap-4"
+                      className="mt-5 sm:mt-6 pt-3.5 sm:pt-4 border-t border-slate-300/80 dark:border-white/10 w-full flex items-center justify-center lg:justify-start gap-2.5 sm:gap-3"
                     >
                       <span className="text-xs uppercase tracking-wider font-bold text-slate-600 dark:text-slate-400 mr-1">
                         Connect
@@ -275,9 +294,9 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                             rel="noopener noreferrer"
                             title={social.name}
                             aria-label={social.name}
-                            className={`p-3 rounded-2xl bg-white dark:bg-white/5 text-slate-800 dark:text-slate-200 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 border border-slate-300 dark:border-white/10 shadow-sm ${social.color}`}
+                            className={`p-2 sm:p-2.5 rounded-xl bg-white dark:bg-white/5 text-slate-800 dark:text-slate-200 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 border border-slate-300 dark:border-white/10 shadow-sm ${social.color}`}
                           >
-                            <Icon className="w-5 h-5" />
+                            <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                           </a>
                         );
                       })}
@@ -290,13 +309,13 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.7, delay: 0.2 }}
-                      className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[360px] lg:h-[360px]"
+                      className="relative w-52 h-52 sm:w-60 sm:h-60 lg:w-[270px] lg:h-[270px] xl:w-[300px] xl:h-[300px]"
                     >
                       {/* Ambient Halo */}
                       <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/25 via-cyan-400/20 to-indigo-600/25 rounded-3xl blur-2xl" />
 
                       {/* Main Glass Portrait Frame with High Contrast */}
-                      <div className="relative w-full h-full rounded-3xl p-3 bg-white/80 dark:bg-slate-900/60 border border-slate-300 dark:border-white/20 shadow-xl overflow-hidden group">
+                      <div className="relative w-full h-full rounded-3xl p-2.5 sm:p-3 bg-white/80 dark:bg-slate-900/60 border border-slate-300 dark:border-white/20 shadow-xl overflow-hidden group">
                         <div className="w-full h-full rounded-2xl overflow-hidden relative">
                           <img 
                             src={profileImg} 
@@ -310,31 +329,31 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
 
                       {/* Floating Glass Widget 1: Tech Pill */}
                       <motion.div
-                        animate={{ y: [0, -6, 0] }}
+                        animate={{ y: [0, -5, 0] }}
                         transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-                        className="absolute -top-4 -left-4 sm:-top-5 sm:-left-6 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-slate-900/90 shadow-lg flex items-center gap-2.5 border border-slate-300 dark:border-white/20 z-20"
+                        className="absolute -top-3 -left-3 sm:-top-3.5 sm:-left-4 px-3 py-1.5 rounded-xl bg-white/95 dark:bg-slate-900/90 shadow-md flex items-center gap-2 border border-slate-300 dark:border-white/20 z-20"
                       >
-                        <div className="w-7 h-7 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600">
-                          <FaReact className="w-4 h-4 animate-spin-slow" />
+                        <div className="w-6 h-6 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-600">
+                          <FaReact className="w-3.5 h-3.5 animate-spin-slow" />
                         </div>
                         <div>
-                          <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold leading-none">Specialty</p>
-                          <p className="text-xs font-bold text-slate-900 dark:text-white leading-tight">React & Vite</p>
+                          <p className="text-[9px] text-slate-500 dark:text-slate-400 font-semibold leading-none">Specialty</p>
+                          <p className="text-[11px] font-bold text-slate-900 dark:text-white leading-tight">React & Vite</p>
                         </div>
                       </motion.div>
 
                       {/* Floating Glass Widget 2: UI/UX & Web */}
                       <motion.div
-                        animate={{ y: [0, 6, 0] }}
+                        animate={{ y: [0, 5, 0] }}
                         transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut', delay: 0.5 }}
-                        className="absolute -bottom-4 -right-4 sm:-bottom-5 sm:-right-6 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-slate-900/90 shadow-lg flex items-center gap-2.5 border border-slate-300 dark:border-white/20 z-20"
+                        className="absolute -bottom-3 -right-3 sm:-bottom-3.5 sm:-right-4 px-3 py-1.5 rounded-xl bg-white/95 dark:bg-slate-900/90 shadow-md flex items-center gap-2 border border-slate-300 dark:border-white/20 z-20"
                       >
-                        <div className="w-7 h-7 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600">
-                          <FiCheckCircle className="w-4 h-4" />
+                        <div className="w-6 h-6 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+                          <FiCheckCircle className="w-3.5 h-3.5" />
                         </div>
                         <div>
-                          <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold leading-none">Focus</p>
-                          <p className="text-xs font-bold text-slate-900 dark:text-white leading-tight">Clean Architecture</p>
+                          <p className="text-[9px] text-slate-500 dark:text-slate-400 font-semibold leading-none">Focus</p>
+                          <p className="text-[11px] font-bold text-slate-900 dark:text-white leading-tight">Clean Architecture</p>
                         </div>
                       </motion.div>
                     </motion.div>
