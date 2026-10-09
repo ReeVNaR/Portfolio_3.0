@@ -28,7 +28,7 @@ const socialLinks = [
     name: 'Twitter / X',
     url: 'https://x.com/Ranveer52251721',
     icon: FaXTwitter,
-    color: 'hover:text-sky-400 hover:border-sky-400/40 hover:bg-sky-400/10'
+    color: 'hover:text-black dark:hover:text-white hover:border-black/50 dark:hover:border-white/40 hover:bg-black/10 dark:hover:bg-white/10'
   }
 ];
 
