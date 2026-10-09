@@ -60,7 +60,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
       className={`min-h-screen pt-20 sm:pt-24 lg:pt-20 pb-8 sm:pb-10 lg:pb-8 px-4 sm:px-6 lg:px-8 flex items-center justify-center relative overflow-hidden transition-colors duration-500 ${
         portfolioVersion === 'v1'
           ? 'bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-black dark:to-black'
-          : 'bg-white dark:bg-[#07090e]'
+          : 'hero-lamborghini-bg'
       }`}
     >
       <AnimatePresence mode="wait">
@@ -260,7 +260,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       transition={{ duration: 0.6, delay: 0.4 }}
                       className="flex flex-wrap gap-3.5 sm:gap-4 justify-center lg:justify-start w-full sm:w-auto"
                     >
-                      {/* Explore Work (Reactive Liquid Glass) */}
+                      {/* Explore Work (Minimalist Blue Liquid Glass) */}
                       <button
                         onClick={() => scrollTo('projects')}
                         onMouseMove={handleLiquidMouseMove}
@@ -271,69 +271,16 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       >
                         <span className="text relative z-10 pointer-events-none">Explore Work</span>
                         
-                        {/* Continuous Rolling Beach Waves Chamber */}
-                        <div className="beach-liquid-chamber pointer-events-none" aria-hidden="true">
-                          {/* Deep Ocean Water Base */}
-                          <div className="ocean-base" />
+                        {/* Minimalist Liquid Glass in Blue */}
+                        <div className="liquid-glass-blue-chamber pointer-events-none" aria-hidden="true">
+                          {/* Pure Electric Sapphire Blue Base */}
+                          <div className="liquid-glass-blue-base" />
 
-                          {/* Sunlight Glint / Caustic shimmer across the waves */}
-                          <div className="ocean-sun-glint" />
+                          {/* Silky Specular Liquid Caustic (Smooth Cursor Illumination) */}
+                          <div className="liquid-glass-blue-caustic" />
 
-                          {/* Interactive Mouse Fluid Droplet */}
-                          <div className="liquid-interactive-blob" />
-
-                          {/* Continuous Multi-Tier Rolling Beach Waves */}
-                          <div className="ocean-waves-wrapper">
-                            {/* Wave 1: Deep rolling abyss swell */}
-                            <svg className="ocean-wave wave-depth" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                              <path d="M 0,46 Q 150,18 300,46 T 600,46 Q 750,18 900,46 T 1200,46 L 1200,120 L 0,120 Z" />
-                            </svg>
-
-                            {/* Wave 2: Mid-water rolling azure current */}
-                            <svg className="ocean-wave wave-mid" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                              <path d="M 0,38 Q 75,58 150,38 T 300,38 Q 375,58 450,38 T 600,38 Q 675,58 750,38 T 900,38 Q 975,58 1050,38 T 1200,38 L 1200,120 L 0,120 Z" />
-                            </svg>
-
-                            {/* Wave 3: Coastal turquoise chop */}
-                            <svg className="ocean-wave wave-chop" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                              <path d="M 0,32 Q 50,14 100,32 T 200,32 Q 250,14 300,32 T 400,32 Q 450,14 500,32 T 600,32 Q 650,14 700,32 T 800,32 Q 850,14 900,32 T 1000,32 Q 1050,14 1100,32 T 1200,32 L 1200,120 L 0,120 Z" />
-                            </svg>
-
-                            {/* Wave 4: Surface beach wave with glistening white foam crest */}
-                            <svg className="ocean-wave wave-surf" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                              <defs>
-                                <linearGradient id="surfFoamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0.95" />
-                                  <stop offset="25%" stopColor="#bae6fd" stopOpacity="0.9" />
-                                  <stop offset="55%" stopColor="#38bdf8" stopOpacity="0.85" />
-                                  <stop offset="100%" stopColor="#0284c7" stopOpacity="0.75" />
-                                </linearGradient>
-                                <filter id="foamGlow" x="-20%" y="-20%" width="140%" height="140%">
-                                  <feDropShadow dx="0" dy="-1" stdDeviation="1.5" floodColor="#ffffff" floodOpacity="0.9" />
-                                </filter>
-                              </defs>
-                              <path 
-                                d="M 0,26 Q 75,8 150,26 T 300,26 Q 375,8 450,26 T 600,26 Q 675,8 750,26 T 900,26 Q 975,8 1050,26 T 1200,26 L 1200,120 L 0,120 Z" 
-                                fill="url(#surfFoamGrad)"
-                                stroke="#ffffff"
-                                strokeWidth="2.5"
-                                strokeOpacity="0.95"
-                                filter="url(#foamGlow)"
-                              />
-                            </svg>
-                          </div>
-
-                          {/* Rising Seafoam Micro-Bubbles */}
-                          <div className="ocean-bubbles pointer-events-none">
-                            <span className="ocean-bubble bubble-1" />
-                            <span className="ocean-bubble bubble-2" />
-                            <span className="ocean-bubble bubble-3" />
-                            <span className="ocean-bubble bubble-4" />
-                            <span className="ocean-bubble bubble-5" />
-                          </div>
-
-                          {/* Surface Glass Meniscus Sheen */}
-                          <div className="surface-glass-sheen" />
+                          {/* Upper Glass Meniscus Refraction */}
+                          <div className="liquid-glass-blue-meniscus" />
                         </div>
 
                         <div className="circle-overlay pointer-events-none"></div>
