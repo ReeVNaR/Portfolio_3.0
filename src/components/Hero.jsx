@@ -1,8 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypingEffect } from './TypingEffect';
 import profileImg from '../assets/Profile.jpg';
-import { FaGithub, FaLinkedinIn, FaInstagram, FaXTwitter, FaReact } from 'react-icons/fa6';
-import { FiCheckCircle } from 'react-icons/fi';
+import { FaGithub, FaLinkedinIn, FaInstagram, FaXTwitter } from 'react-icons/fa6';
 
 const socialLinksV2 = [
   {
@@ -203,7 +202,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
                   
                   {/* Left Column: Introductions & Actions */}
-                  <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+                  <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
                     {/* Status Badge Capsule: Apple-style micro-pill */}
                     <motion.div 
                       initial={{ opacity: 0, y: -8 }}
@@ -319,7 +318,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                   </div>
 
                   {/* Right Column: Interactive Portrait Showcase */}
-                  <div className="lg:col-span-5 flex justify-center relative">
+                  <div className="order-1 lg:order-2 lg:col-span-5 flex justify-center relative">
                     <motion.div 
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -341,36 +340,6 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                           <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/40 via-transparent to-white/10 pointer-events-none" />
                         </div>
                       </div>
-
-                      {/* Floating Glass Widget 1: Tech Pill */}
-                      <motion.div
-                        animate={{ y: [0, -5, 0] }}
-                        transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-                        className="absolute -top-4 -left-4 sm:-top-5 sm:-left-5 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-slate-900/90 shadow-md flex items-center gap-2.5 border border-slate-200/80 dark:border-white/20 z-20"
-                      >
-                        <div className="w-7 h-7 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600">
-                          <FaReact className="w-4 h-4 animate-spin-slow" />
-                        </div>
-                        <div>
-                          <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold leading-none">Specialty</p>
-                          <p className="text-xs font-bold text-slate-900 dark:text-white leading-tight">React & Vite</p>
-                        </div>
-                      </motion.div>
-
-                      {/* Floating Glass Widget 2: UI/UX & Web */}
-                      <motion.div
-                        animate={{ y: [0, 5, 0] }}
-                        transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut', delay: 0.5 }}
-                        className="absolute -bottom-4 -right-4 sm:-bottom-5 sm:-right-5 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-slate-900/90 shadow-md flex items-center gap-2.5 border border-slate-200/80 dark:border-white/20 z-20"
-                      >
-                        <div className="w-7 h-7 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600">
-                          <FiCheckCircle className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold leading-none">Focus</p>
-                          <p className="text-xs font-bold text-slate-900 dark:text-white leading-tight">Clean Architecture</p>
-                        </div>
-                      </motion.div>
                     </motion.div>
                   </div>
 
