@@ -30,7 +30,7 @@ export default function App() {
   };
 
   return (
-    <main className="bg-white dark:bg-black selection:bg-blue-500/20 selection:text-blue-500">
+    <main className="bg-white dark:bg-black selection:bg-blue-500/20 selection:text-blue-500 pb-20 md:pb-0">
       <Navbar 
         portfolioVersion={portfolioVersion} 
         setPortfolioVersion={setPortfolioVersion} 

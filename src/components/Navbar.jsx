@@ -1,31 +1,17 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { 
+  HiOutlineHome, HiHome, 
+  HiOutlineUser, HiUser, 
+  HiOutlineCodeBracket, HiCodeBracket, 
+  HiOutlineBriefcase, HiBriefcase, 
+  HiOutlineEnvelope, HiEnvelope 
+} from 'react-icons/hi2';
 import ThemeToggle from './ThemeToggle';
 import profileImg from '../assets/Profile.jpg';
 
-const MenuButton = ({ isOpen, onClick }) => (
-  <button 
-    onClick={onClick}
-    className="md:hidden relative w-9 h-9 rounded-full flex items-center justify-center hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
-    aria-label="Toggle menu"
-  >
-    <div className="flex flex-col justify-between w-5 h-4 transform transition-all duration-300">
-      <span className={`bg-slate-700 dark:bg-slate-200 h-0.5 w-full rounded-full transform transition-all duration-300 ${
-        isOpen ? 'rotate-45 translate-y-1.5' : ''
-      }`} />
-      <span className={`bg-slate-700 dark:bg-slate-200 h-0.5 w-full rounded-full transition-all duration-300 ${
-        isOpen ? 'opacity-0' : 'opacity-100'
-      }`} />
-      <span className={`bg-slate-700 dark:bg-slate-200 h-0.5 w-full rounded-full transform transition-all duration-300 ${
-        isOpen ? '-rotate-45 -translate-y-2' : ''
-      }`} />
-    </div>
-  </button>
-);
-
 const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
@@ -53,7 +39,6 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
   }, []);
 
   const handleNavClick = (elementId) => {
-    setIsMobileMenuOpen(false);
     const element = document.getElementById(elementId);
     if (element) {
       const offset = 85;
@@ -68,15 +53,16 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
   };
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'home', label: 'Home', icon: HiOutlineHome, activeIcon: HiHome },
+    { id: 'about', label: 'About', icon: HiOutlineUser, activeIcon: HiUser },
+    { id: 'skills', label: 'Skills', icon: HiOutlineCodeBracket, activeIcon: HiCodeBracket },
+    { id: 'projects', label: 'Projects', icon: HiOutlineBriefcase, activeIcon: HiBriefcase },
+    { id: 'contact', label: 'Contact', icon: HiOutlineEnvelope, activeIcon: HiEnvelope }
   ];
 
   return (
     <>
+      {/* Top Header Navbar */}
       <header className="fixed top-3 sm:top-5 left-0 right-0 z-[100] px-4 pointer-events-none flex justify-center">
         <nav 
           className={`pointer-events-auto w-full max-w-5xl rounded-full px-4 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 nav-liquid-glass ${
@@ -168,7 +154,7 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
                 </button>
               </div>
 
-              {/* Let's Talk Button (Original Sleek Pill) */}
+              {/* Let's Talk Button (Desktop Only) */}
               <button
                 onClick={() => handleNavClick('contact')}
                 className="hidden sm:inline-flex text-xs font-semibold px-4 py-1.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90 transition-opacity shadow-sm"
@@ -178,87 +164,53 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
 
               <div className="w-[1px] h-5 bg-slate-300 dark:bg-white/20 hidden sm:block" />
               <ThemeToggle />
-              <MenuButton 
-                isOpen={isMobileMenuOpen} 
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
-              />
             </div>
           </div>
           <div className="circle-overlay pointer-events-none"></div>
         </nav>
       </header>
 
-      {/* Mobile Menu Dropdown Panel */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/40 backdrop-blur-md z-[90] md:hidden"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: -10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: -10 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed top-20 left-4 right-4 z-[95] md:hidden rounded-3xl panel-liquid-glass p-5 border border-white/60 dark:border-white/15 shadow-2xl"
-            >
-              <div className="flex flex-col space-y-1 relative z-10">
-                {navItems.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => handleNavClick(item.id)}
-                    className="w-full text-left px-4 py-3 rounded-2xl text-sm font-medium text-slate-800 dark:text-slate-200 hover:bg-blue-500/10 dark:hover:bg-white/10 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center justify-between"
-                  >
-                    <span>{item.label}</span>
-                    <span className="text-slate-400 text-xs">→</span>
-                  </button>
-                ))}
-                <div className="pt-2 flex flex-col gap-2">
-                  <div className="flex items-center justify-between px-3.5 py-2.5 rounded-2xl bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10">
-                    <span className="text-xs font-bold text-slate-700 dark:text-slate-300">Portfolio Version</span>
-                    <div className="flex items-center p-0.5 rounded-full bg-slate-200 dark:bg-black/40 border border-slate-300/70 dark:border-white/10">
-                      <button
-                        type="button"
-                        onClick={() => setPortfolioVersion?.('v1')}
-                        className={`px-3.5 py-1 text-xs rounded-full font-bold transition-all ${
-                          portfolioVersion === 'v1'
-                            ? 'bg-blue-600 text-white shadow-sm'
-                            : 'text-slate-700 dark:text-slate-300'
-                        }`}
-                      >
-                        V1
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setPortfolioVersion?.('v2')}
-                        className={`px-3.5 py-1 text-xs rounded-full font-bold transition-all ${
-                          portfolioVersion === 'v2'
-                            ? 'bg-blue-600 text-white shadow-sm'
-                            : 'text-slate-700 dark:text-slate-300'
-                        }`}
-                      >
-                        V2
-                      </button>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => handleNavClick('contact')}
-                    className="w-full text-center py-3 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium text-sm shadow-md"
-                  >
-                    Let's Talk
-                  </button>
-                </div>
-              </div>
-              <div className="circle-overlay pointer-events-none"></div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      {/* Mobile Floating Bottom Liquid Glass Navbar */}
+      <nav 
+        className="fixed bottom-3 sm:bottom-4 left-0 right-0 z-[100] px-3 sm:px-4 pointer-events-none flex justify-center md:hidden"
+        aria-label="Mobile Navigation Bar"
+      >
+        <div 
+          className="pointer-events-auto w-full max-w-[360px] xs:max-w-[400px] sm:max-w-md rounded-full px-2 py-1.5 nav-liquid-glass shadow-[0_12px_36px_rgba(15,23,42,0.22)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.8)] backdrop-blur-2xl"
+        >
+          <div className="relative z-10 grid grid-cols-5 items-center">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.id;
+              const Icon = isActive ? item.activeIcon : item.icon;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleNavClick(item.id)}
+                  className={`relative flex flex-col items-center justify-center py-1.5 px-1 rounded-2xl transition-all duration-200 select-none ${
+                    isActive 
+                      ? 'text-blue-600 dark:text-blue-400 font-semibold' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                  aria-label={item.label}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="mobile-nav-pill"
+                      className="absolute inset-0 rounded-2xl bg-blue-500/15 dark:bg-blue-400/20 border border-blue-500/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),0_2px_8px_rgba(0,113,227,0.15)] backdrop-blur-sm"
+                      transition={{ type: 'spring', bounce: 0.25, duration: 0.5 }}
+                    />
+                  )}
+                  <span className="relative z-10 flex flex-col items-center gap-0.5">
+                    <Icon className={`w-5 h-5 transition-transform duration-200 ${isActive ? 'scale-110' : ''}`} />
+                    <span className="text-[10px] tracking-tight font-medium leading-none">{item.label}</span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          <div className="circle-overlay pointer-events-none"></div>
+        </div>
+      </nav>
     </>
   );
 };
