@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { 
   HiOutlineHome, HiHome, 
@@ -13,6 +13,7 @@ import profileImg from '../assets/Profile.jpg';
 const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const constraintsRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,8 +63,8 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
 
   return (
     <>
-      {/* Top Header Navbar */}
-      <header className="fixed top-3 sm:top-5 left-0 right-0 z-[100] px-4 pointer-events-none flex justify-center">
+      {/* Top Header Navbar - DESKTOP ONLY (Hidden on Mobile) */}
+      <header className="hidden md:flex fixed top-3 sm:top-5 left-0 right-0 z-[100] px-4 pointer-events-none justify-center">
         <nav 
           className={`pointer-events-auto w-full max-w-5xl rounded-full px-4 sm:px-6 py-2 sm:py-2.5 transition-all duration-300 nav-liquid-glass ${
             isScrolled 
@@ -92,7 +93,7 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
             </button>
             
             {/* Desktop Navigation Capsule */}
-            <div className="hidden md:flex items-center space-x-1 sm:space-x-1.5">
+            <div className="flex items-center space-x-1 sm:space-x-1.5">
               {navItems.map((item) => {
                 const isActive = activeSection === item.id;
                 return (
@@ -154,15 +155,15 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
                 </button>
               </div>
 
-              {/* Let's Talk Button (Desktop Only) */}
+              {/* Let's Talk Button */}
               <button
                 onClick={() => handleNavClick('contact')}
-                className="hidden sm:inline-flex text-xs font-semibold px-4 py-1.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90 transition-opacity shadow-sm"
+                className="inline-flex text-xs font-semibold px-4 py-1.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90 transition-opacity shadow-sm"
               >
                 Let's Talk
               </button>
 
-              <div className="w-[1px] h-5 bg-slate-300 dark:bg-white/20 hidden sm:block" />
+              <div className="w-[1px] h-5 bg-slate-300 dark:bg-white/20 block" />
               <ThemeToggle />
             </div>
           </div>
@@ -170,14 +171,29 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
         </nav>
       </header>
 
-      {/* Mobile Floating Bottom Liquid Glass Navbar */}
-      <nav 
-        className="fixed bottom-3 sm:bottom-4 left-0 right-0 z-[100] px-3 sm:px-4 pointer-events-none flex justify-center md:hidden"
-        aria-label="Mobile Navigation Bar"
+      {/* Screen Boundary Constraint Layer for Mobile Draggable Dock */}
+      <div 
+        ref={constraintsRef} 
+        className="fixed inset-0 pointer-events-none z-[100] md:hidden p-3"
+        aria-hidden="true"
+      />
+
+      {/* Mobile Floating Slidable / Draggable Liquid Glass Navbar */}
+      <div 
+        className="fixed bottom-4 left-0 right-0 z-[100] px-3 pointer-events-none flex justify-center md:hidden"
       >
-        <div 
-          className="pointer-events-auto w-full max-w-[360px] xs:max-w-[400px] sm:max-w-md rounded-full px-2 py-1.5 nav-liquid-glass shadow-[0_12px_36px_rgba(15,23,42,0.22)] dark:shadow-[0_16px_40px_rgba(0,0,0,0.8)] backdrop-blur-2xl"
+        <motion.nav 
+          drag
+          dragConstraints={constraintsRef}
+          dragElastic={0.15}
+          dragMomentum={false}
+          whileDrag={{ scale: 1.04, filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.35))' }}
+          className="pointer-events-auto touch-none cursor-grab active:cursor-grabbing w-full max-w-[360px] xs:max-w-[380px] rounded-3xl p-1.5 pt-1 nav-liquid-glass shadow-[0_14px_40px_rgba(15,23,42,0.25)] dark:shadow-[0_18px_45px_rgba(0,0,0,0.85)] backdrop-blur-2xl select-none"
+          aria-label="Mobile Draggable Navigation Bar"
         >
+          {/* Subtle Drag Handle Indicator */}
+          <div className="w-9 h-1 rounded-full bg-slate-400/40 dark:bg-white/30 mx-auto my-0.5" />
+
           <div className="relative z-10 grid grid-cols-5 items-center">
             {navItems.map((item) => {
               const isActive = activeSection === item.id;
@@ -186,7 +202,7 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`relative flex flex-col items-center justify-center py-1.5 px-1 rounded-2xl transition-all duration-200 select-none ${
+                  className={`relative flex flex-col items-center justify-center py-1 px-1 rounded-2xl transition-all duration-200 select-none ${
                     isActive 
                       ? 'text-blue-600 dark:text-blue-400 font-semibold' 
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -209,8 +225,8 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
             })}
           </div>
           <div className="circle-overlay pointer-events-none"></div>
-        </div>
-      </nav>
+        </motion.nav>
+      </div>
     </>
   );
 };
