@@ -4,7 +4,7 @@
 1. **Push After Every Task**:
    - At the completion of each task/feature/fix, verify that the application builds cleanly (`npm run build`).
    - Stage the changes properly using `git add`.
-   - Create commit messages following the version convention starting at `ver_2.2` and increment from now onwards (e.g., `ver_2.2: <description>` or `ver_2.2`).
+   - Create commit messages with ONLY the version name (no description) starting at `ver_2.2` and increment from now onwards (e.g., `ver_2.2`, `ver_2.3`, `ver_2.4`).
    - Push the commits to the remote repository (`git push origin <branch>`).
 
 2. **Strictly Respect `.gitignore`**:
