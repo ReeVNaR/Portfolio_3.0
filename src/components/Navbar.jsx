@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, animate } from 'framer-motion';
 import { 
   HiOutlineHome, HiHome, 
   HiOutlineUser, HiUser, 
@@ -16,20 +16,30 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
   const trackRef = useRef(null);
   const [trackWidth, setTrackWidth] = useState(0);
 
+  // Motion value for seamless, zero-glitch sliding without re-render jumps
+  const pillMotionX = useMotionValue(0);
+
+  // Ignore scroll-spy during programmatic navigation to prevent pill bouncing back
+  const ignoreScrollUntilRef = useRef(0);
+
   // Pointer drag state for the blue indicator pill
   const isPointerDownRef = useRef(false);
   const startXRef = useRef(0);
   const hasMovedRef = useRef(false);
   const [isDragging, setIsDragging] = useState(false);
-  const [dragX, setDragX] = useState(0);
   const [dragHoverIndex, setDragHoverIndex] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
+      // Do not allow scroll-spy to override activeSection while smooth scrolling to target
+      if (Date.now() < ignoreScrollUntilRef.current) {
+        return;
+      }
+
       const sections = ['home', 'about', 'skills', 'projects', 'contact'];
-      const scrollPosition = window.scrollY + 120;
+      const scrollPosition = window.scrollY + 140;
 
       for (const section of sections) {
         const el = document.getElementById(section);
@@ -61,6 +71,7 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
   }, []);
 
   const handleNavClick = (elementId) => {
+    ignoreScrollUntilRef.current = Date.now() + 1000;
     const element = document.getElementById(elementId);
     if (element) {
       const offset = 85;
@@ -85,7 +96,24 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
   const activeIndex = Math.max(0, navItems.findIndex(item => item.id === activeSection));
   // Total padding is 12px (6px left, 6px right from p-1.5)
   const slotWidth = trackWidth > 12 ? (trackWidth - 12) / 5 : 0;
-  const pillX = isDragging ? dragX : activeIndex * slotWidth;
+
+  // Sync motion value when activeIndex changes from natural page scrolling
+  useEffect(() => {
+    if (!isDragging && slotWidth > 0 && Date.now() >= ignoreScrollUntilRef.current) {
+      animate(pillMotionX, activeIndex * slotWidth, {
+        type: 'spring',
+        stiffness: 450,
+        damping: 34
+      });
+    }
+  }, [activeIndex, slotWidth, isDragging, pillMotionX]);
+
+  // Initial pill position setup on resize or load
+  useEffect(() => {
+    if (slotWidth > 0 && !isDragging) {
+      pillMotionX.set(activeIndex * slotWidth);
+    }
+  }, [slotWidth]);
 
   // Pointer drag event handlers for slidable/draggable blue pill
   const handlePointerDown = (e) => {
@@ -98,9 +126,10 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
   const handlePointerMove = (e) => {
     if (!isPointerDownRef.current) return;
     const deltaX = Math.abs(e.clientX - startXRef.current);
-    if (!hasMovedRef.current && deltaX > 6) {
+    if (!hasMovedRef.current && deltaX > 5) {
       hasMovedRef.current = true;
       setIsDragging(true);
+      ignoreScrollUntilRef.current = Date.now() + 1500;
     }
 
     if (hasMovedRef.current && trackRef.current && slotWidth > 0) {
@@ -109,7 +138,7 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
       const relativeX = e.clientX - rect.left - 6 - slotWidth / 2;
       const maxX = slotWidth * 4;
       const clampedX = Math.max(0, Math.min(maxX, relativeX));
-      setDragX(clampedX);
+      pillMotionX.set(clampedX);
       const hoveredIdx = Math.min(4, Math.max(0, Math.round(clampedX / slotWidth)));
       setDragHoverIndex(hoveredIdx);
     }
@@ -120,9 +149,15 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
     isPointerDownRef.current = false;
 
     if (hasMovedRef.current && slotWidth > 0) {
-      const finalIndex = Math.min(4, Math.max(0, Math.round(dragX / slotWidth)));
+      const finalIndex = Math.min(4, Math.max(0, Math.round(pillMotionX.get() / slotWidth)));
       const targetSection = navItems[finalIndex].id;
       setActiveSection(targetSection);
+      // Smoothly spring directly from release coordinate into slot - no jumping back!
+      animate(pillMotionX, finalIndex * slotWidth, {
+        type: 'spring',
+        stiffness: 450,
+        damping: 34
+      });
       handleNavClick(targetSection);
     }
 
@@ -137,9 +172,16 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
     hasMovedRef.current = false;
   };
 
-  const handleItemClick = (id) => {
+  const handleItemClick = (id, index) => {
     if (hasMovedRef.current) return;
     setActiveSection(id);
+    if (slotWidth > 0) {
+      animate(pillMotionX, index * slotWidth, {
+        type: 'spring',
+        stiffness: 450,
+        damping: 34
+      });
+    }
     handleNavClick(id);
   };
 
@@ -307,7 +349,7 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
         </div>
       </aside>
 
-      {/* Mobile Anchored Bottom Navbar with Draggable Blue Indicator Pill */}
+      {/* Mobile Anchored Bottom Navbar with Fluid Draggable/Slidable Blue Indicator Pill */}
       <nav 
         className="fixed bottom-3 sm:bottom-4 left-0 right-0 z-[100] px-3 sm:px-4 pointer-events-none flex justify-center md:hidden"
         aria-label="Mobile Navigation Bar"
@@ -323,9 +365,7 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
           {/* Draggable Blue Liquid Glass Indicator Pill */}
           {slotWidth > 0 && (
             <motion.div
-              animate={{ x: pillX }}
-              transition={isDragging ? { duration: 0 } : { type: 'spring', stiffness: 420, damping: 32 }}
-              style={{ left: 6, width: `${slotWidth}px` }}
+              style={{ left: 6, width: `${slotWidth}px`, x: pillMotionX }}
               className="absolute top-1.5 bottom-1.5 rounded-full bg-blue-500/20 dark:bg-blue-400/25 border border-blue-500/40 dark:border-blue-400/40 shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.85),0_2px_12px_rgba(0,113,227,0.3)] backdrop-blur-md z-0 pointer-events-none"
             >
               {/* Subtle tactile grip pip at the top of the pill */}
@@ -342,7 +382,7 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
                 <button
                   key={item.id}
                   type="button"
-                  onClick={() => handleItemClick(item.id)}
+                  onClick={() => handleItemClick(item.id, index)}
                   className={`relative flex flex-col items-center justify-center py-1.5 px-1 rounded-full transition-colors duration-150 select-none ${
                     isCurrent 
                       ? 'text-blue-600 dark:text-blue-400 font-semibold' 
