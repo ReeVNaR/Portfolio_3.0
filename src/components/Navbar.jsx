@@ -26,8 +26,14 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
         return;
       }
 
+      if (window.scrollY < 60) {
+        setActiveSection('home');
+        return;
+      }
+
       const sections = ['home', 'about', 'skills', 'projects', 'contact'];
-      const scrollPosition = window.scrollY + 160;
+      const isMobile = window.innerWidth < 768;
+      const scrollPosition = window.scrollY + (isMobile ? 120 : 180);
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
@@ -49,9 +55,22 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
   const handleNavClick = (elementId) => {
     setActiveSection(elementId);
     ignoreScrollUntilRef.current = Date.now() + 1000;
+
+    if (elementId === 'home') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      return;
+    }
+
     const element = document.getElementById(elementId);
     if (element) {
-      const offset = 80;
+      const isMobile = window.innerWidth < 768;
+      // On mobile, the navigation bar is at the bottom, so top offset is minimal (8px)
+      // allowing the chosen section to align directly at the top so only that section is visible.
+      // On desktop, the floating navbar is at the top (~65px).
+      const offset = isMobile ? 8 : 70;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
@@ -260,10 +279,7 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
                       layoutId="mobile-active-pill"
                       className="absolute inset-0 rounded-full bg-blue-500/20 dark:bg-blue-400/25 border border-blue-500/40 dark:border-blue-400/40 shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.85),0_2px_12px_rgba(0,113,227,0.3)] backdrop-blur-md"
                       transition={{ type: 'spring', stiffness: 450, damping: 32 }}
-                    >
-                      {/* Subtle tactile grip pip at the top of the pill */}
-                      <span className="absolute top-1 left-1/2 -translate-x-1/2 w-3.5 h-0.5 rounded-full bg-blue-500/50 dark:bg-white/50" />
-                    </motion.span>
+                    />
                   )}
                   <span className="relative z-10 flex flex-col items-center gap-0.5 pointer-events-none">
                     <Icon className={`w-5 h-5 transition-transform duration-200 ${isCurrent ? 'scale-110' : ''}`} />

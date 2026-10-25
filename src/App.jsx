@@ -19,11 +19,22 @@ export default function App() {
   }, [portfolioVersion]);
 
   const scrollTo = (elementId) => {
+    if (elementId === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     const element = document.getElementById(elementId);
     if (element) {
-      const offset = 80; // Height of navbar
+      const isMobile = window.innerWidth < 768;
+      // On mobile, the navigation bar is at the bottom, so top offset is minimal (8px)
+      // allowing the chosen section to align directly at the top so only that section is visible.
+      // On desktop, the floating navbar is at the top (~65px).
+      const offset = isMobile ? 8 : 70;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
       window.scrollTo({
-        top: Math.max(0, element.offsetTop - offset),
+        top: Math.max(0, offsetPosition),
         behavior: 'smooth'
       });
     }
@@ -45,7 +56,7 @@ export default function App() {
       {/* About Section */}
       <section 
         id="about" 
-        className={`scroll-mt-20 pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 transition-colors duration-500 relative ${
+        className={`scroll-mt-3 md:scroll-mt-20 min-h-[calc(100vh-4.5rem)] md:min-h-screen flex flex-col justify-center py-6 sm:py-8 md:py-10 transition-colors duration-500 relative ${
           portfolioVersion === 'v1' 
             ? 'bg-gray-50 dark:bg-black' 
             : 'bg-transparent'
@@ -76,9 +87,12 @@ export default function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="scroll-mt-20 min-h-[90vh] md:min-h-[85vh] mb-8 pt-20 md:pt-0 flex items-center justify-center bg-white dark:bg-black">
-        <div className="container mx-auto px-4 md:px-6 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+      <section 
+        id="skills" 
+        className="scroll-mt-3 md:scroll-mt-20 min-h-[calc(100vh-4.5rem)] md:min-h-screen flex flex-col justify-center py-6 sm:py-8 md:py-10 bg-white dark:bg-black"
+      >
+        <div className="container mx-auto px-4 md:px-6 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
               My Skills
             </span>
@@ -88,15 +102,18 @@ export default function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="scroll-mt-20 min-h-[100vh] md:min-h-[90vh] mb-4 flex items-center justify-center bg-gray-50 dark:bg-black">
+      <section 
+        id="projects" 
+        className="scroll-mt-3 md:scroll-mt-20 min-h-[calc(100vh-4.5rem)] md:min-h-screen flex flex-col justify-center py-6 sm:py-8 md:py-10 bg-gray-50 dark:bg-black"
+      >
         <div className="container max-w-7xl mx-auto px-4 md:px-6">
           <div className="flex flex-col">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
                 Featured Projects
               </span>
             </h2>
-            <div className="h-[75vh] md:h-[100vh]">
+            <div className="h-[75vh] md:h-[80vh]">
               <Projects />
             </div>
           </div>
@@ -104,9 +121,12 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="scroll-mt-20 min-h-[90vh] md:min-h-[85vh] pt-20 md:pt-0 mb-12 flex items-center justify-center bg-white dark:bg-black">
+      <section 
+        id="contact" 
+        className="scroll-mt-3 md:scroll-mt-20 min-h-[calc(100vh-4.5rem)] md:min-h-screen flex flex-col justify-center py-6 sm:py-8 md:py-10 bg-white dark:bg-black"
+      >
         <div className="container max-w-7xl mx-auto px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
               Contact Me
             </span>
