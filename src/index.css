@@ -5,7 +5,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -233,11 +233,11 @@
   }
 
   /* ========================================================= */
-  /*    LAMBORGHINI BLUE HERO PAGE BACKGROUND (CLEAN & SLEEK)   */
+  /*    V2 HERO PAGE BACKGROUND (AMBIENT BLUE)   */
   /* ========================================================= */
-  .hero-lamborghini-bg {
+  .hero-v2-bg {
     position: relative;
-    /* Luminous Lamborghini Blu Cepheus atmospheric backdrop */
+    /* Luminous atmospheric backdrop */
     background-color: #f8fafc;
     background-image: 
       radial-gradient(ellipse 110% 80% at 50% -5%, rgba(14, 165, 233, 0.22) 0%, rgba(56, 189, 248, 0.12) 35%, rgba(240, 249, 255, 0.5) 65%, transparent 100%),
@@ -245,7 +245,7 @@
     transition: background 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .dark .hero-lamborghini-bg {
+  .dark .hero-v2-bg {
     background-color: #030814;
     background-image: 
       radial-gradient(ellipse 110% 80% at 50% -5%, rgba(14, 165, 233, 0.22) 0%, rgba(2, 132, 199, 0.16) 35%, rgba(6, 24, 56, 0.75) 65%, #020712 100%),
@@ -253,11 +253,11 @@
   }
 
   /* ========================================================= */
-  /*    APPLE LIQUID GLASS BUTTONS (AUTHENTIC VISIONOS / SEQUOIA) */
+  /*    MODERN LIQUID GLASS BUTTON SYSTEM */
   /* ========================================================= */
 
-  /* Base Apple Glass Button Architecture */
-  .apple-glass-btn {
+  /* Base Liquid Glass Button Architecture */
+  .liquid-glass-btn {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -280,13 +280,13 @@
       border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .apple-glass-btn:active {
+  .liquid-glass-btn:active {
     transform: scale(0.97) translateY(0);
     transition-duration: 0.1s;
   }
 
   /* Optical Glass Curvature Sheen (Fresnel Reflection) */
-  .apple-glass-sheen {
+  .liquid-glass-sheen {
     position: absolute;
     inset: 0;
     border-radius: inherit;
@@ -302,7 +302,7 @@
   }
 
   /* Dynamic Specular Caustic Spotlight (Cursor-reactive) */
-  .apple-glass-caustic {
+  .liquid-glass-caustic {
     position: absolute;
     inset: 0;
     border-radius: inherit;
@@ -319,8 +319,8 @@
     z-index: 2;
   }
 
-  /* Primary Action: Apple Sapphire Liquid Glass (Explore Work) */
-  .apple-glass-primary {
+  /* Primary Action: Sapphire Liquid Glass (Explore Work) */
+  .liquid-glass-primary {
     color: #ffffff;
     background: linear-gradient(
       135deg,
@@ -339,7 +339,7 @@
       0 2px 4px 0 rgba(0, 0, 0, 0.06);
   }
 
-  .apple-glass-primary .apple-glass-caustic {
+  .liquid-glass-primary .liquid-glass-caustic {
     background: radial-gradient(
       circle 95px at var(--mx-pct, 50%) var(--my-pct, 50%),
       rgba(255, 255, 255, 0.55) 0%,
@@ -349,7 +349,7 @@
     mix-blend-mode: screen;
   }
 
-  .apple-glass-primary:hover {
+  .liquid-glass-primary:hover {
     transform: translateY(-2px);
     background: linear-gradient(
       135deg,
@@ -366,7 +366,7 @@
       0 3px 6px 0 rgba(0, 0, 0, 0.08);
   }
 
-  .apple-glass-primary:active {
+  .liquid-glass-primary:active {
     background: linear-gradient(
       135deg,
       rgba(0, 100, 210, 0.94) 0%,
@@ -377,8 +377,8 @@
       0 2px 6px -1px rgba(0, 113, 227, 0.25);
   }
 
-  /* Secondary Action: Apple Frosted Crystal Liquid Glass (Get in Touch) */
-  .apple-glass-secondary {
+  /* Secondary Action: Frosted Crystal Liquid Glass (Get in Touch) */
+  .liquid-glass-secondary {
     color: #0f172a;
     background: linear-gradient(
       135deg,
@@ -396,7 +396,7 @@
       0 1px 3px 0 rgba(0, 0, 0, 0.03);
   }
 
-  .apple-glass-secondary:hover {
+  .liquid-glass-secondary:hover {
     transform: translateY(-2px);
     background: linear-gradient(
       135deg,
@@ -411,7 +411,7 @@
       0 2px 6px 0 rgba(0, 0, 0, 0.04);
   }
 
-  .apple-glass-secondary:active {
+  .liquid-glass-secondary:active {
     background: rgba(240, 244, 250, 0.85);
     box-shadow:
       inset 0 1px 2px 0 rgba(0, 0, 0, 0.08),
@@ -419,7 +419,7 @@
   }
 
   /* Dark Mode Adaptation for Secondary Liquid Glass Button */
-  .dark .apple-glass-secondary {
+  .dark .liquid-glass-secondary {
     color: #ffffff;
     background: linear-gradient(
       135deg,
@@ -434,7 +434,7 @@
       0 6px 20px -3px rgba(0, 0, 0, 0.45);
   }
 
-  .dark .apple-glass-secondary .apple-glass-caustic {
+  .dark .liquid-glass-secondary .liquid-glass-caustic {
     background: radial-gradient(
       circle 95px at var(--mx-pct, 50%) var(--my-pct, 50%),
       rgba(255, 255, 255, 0.3) 0%,
@@ -444,7 +444,7 @@
     mix-blend-mode: screen;
   }
 
-  .dark .apple-glass-secondary:hover {
+  .dark .liquid-glass-secondary:hover {
     transform: translateY(-2px);
     background: linear-gradient(
       135deg,
@@ -457,7 +457,7 @@
       0 10px 26px -3px rgba(0, 0, 0, 0.55);
   }
 
-  .dark .apple-glass-secondary:active {
+  .dark .liquid-glass-secondary:active {
     background: rgba(255, 255, 255, 0.06);
   }
 

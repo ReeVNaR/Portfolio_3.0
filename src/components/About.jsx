@@ -20,7 +20,7 @@ const techPillsV2 = [
   { name: 'React & Tailwind CSS', detail: 'Modern Component Architectures' },
   { name: 'AI & Machine Learning (Python)', detail: 'Deep Learning & Computer Vision' },
   { name: 'Next.js & Full-Stack Systems', detail: 'Scalable APIs & SSR/SSG' },
-  { name: 'Liquid Glass & VisionOS UI', detail: 'Spatial Optics & Fluid Micro-Interactions' }
+  { name: 'Interactive UI & Motion Design', detail: 'Frosted Glass & Fluid Micro-Interactions' }
 ];
 
 const languagesV2 = [
@@ -185,7 +185,7 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
           </motion.div>
         ) : (
           /* ========================================================= */
-          /*         ABOUT V2 (Modern Apple Liquid Glass Bento)        */
+          /*         ABOUT V2 (Modern Liquid Glass Bento Grid)         */
           /* ========================================================= */
           <motion.div 
             key="about-v2"
@@ -224,10 +224,10 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                   </h3>
 
                   <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-normal mb-5">
-                    Hi, I'm <strong className="text-slate-900 dark:text-white font-semibold">Ranveer Ghorpade</strong>. I bridge robust backend architectures with fluid, high-fidelity spatial optics. From MERN full-stack workflows to Python-powered intelligence, my work centers on delivering intuitive, impactful software.
+                    Hi, I'm <strong className="text-slate-900 dark:text-white font-semibold">Ranveer Ghorpade</strong>. I bridge robust backend architectures with fluid, high-fidelity interfaces. From MERN full-stack workflows to Python-powered intelligence, my work centers on delivering intuitive, impactful software.
                   </p>
 
-                  {/* Embedded Apple-style Frosted Sub-Panel */}
+                  {/* Embedded Frosted Sub-Panel */}
                   <div className="p-4 sm:p-5 rounded-2xl bg-white/60 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/[0.08] backdrop-blur-xl flex items-start gap-3.5 shadow-sm">
                     <div className="p-2.5 rounded-xl bg-blue-500/10 dark:bg-blue-400/15 border border-blue-500/20 text-blue-600 dark:text-sky-400 shrink-0 mt-0.5">
                       <HiOutlineLightBulb className="w-5 h-5" />
@@ -254,8 +254,8 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                     <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">MERN & Python</span>
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">VisionOS</span>
-                    <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Liquid Glass UI</span>
+                    <span className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">UI / UX</span>
+                    <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Modern Interfaces</span>
                   </div>
                 </div>
 

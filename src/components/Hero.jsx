@@ -59,7 +59,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
       className={`min-h-screen pt-10 sm:pt-16 md:pt-24 lg:pt-20 pb-8 sm:pb-10 lg:pb-8 px-4 sm:px-6 lg:px-8 flex items-center justify-center relative overflow-hidden transition-colors duration-500 ${
         portfolioVersion === 'v1'
           ? 'bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-black dark:to-black'
-          : 'hero-lamborghini-bg'
+          : 'hero-v2-bg'
       }`}
     >
       <AnimatePresence mode="wait">
@@ -139,7 +139,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       </div>
                     </a>
 
-                    {/* Twitter/X with solid black hover */}
+                    {/* Twitter/X */}
                     <a href="https://x.com/Ranveer52251721" target="_blank" rel="noopener noreferrer" className="group relative" aria-label="X / Twitter">
                       <div className="absolute -inset-2 bg-gradient-to-r from-neutral-950 to-neutral-500 rounded-lg blur-lg opacity-0 group-hover:opacity-30 transition-all duration-500"></div>
                       <div className="relative flex items-center justify-center w-12 h-12 border border-gray-300 dark:border-gray-700 rounded-lg bg-white/90 dark:bg-white/5 backdrop-blur-xl shadow-md group-hover:border-black dark:group-hover:border-neutral-400 transition-all duration-500">
@@ -203,7 +203,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                   
                   {/* Left Column: Introductions & Actions */}
                   <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
-                    {/* Status Badge Capsule: Apple-style micro-pill */}
+                    {/* Status Badge Capsule: Micro-pill */}
                     <motion.div 
                       initial={{ opacity: 0, y: -8 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -217,7 +217,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       <span className="tracking-tight">Available for new projects & opportunities</span>
                     </motion.div>
 
-                    {/* Main Headline: Apple Keynote Style Typography */}
+                    {/* Main Headline */}
                     <motion.h1 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -230,7 +230,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       </span>
                     </motion.h1>
 
-                    {/* Typing Subtitle Badge: Apple frosted pill */}
+                    {/* Typing Subtitle Badge */}
                     <motion.div 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -242,7 +242,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       </span>
                     </motion.div>
 
-                    {/* Bio summary: Clean Apple editorial copy */}
+                    {/* Bio summary */}
                     <motion.p 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -252,38 +252,38 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       Passionate about crafting intuitive, scalable web applications with refined UI/UX, robust frontend architectures, and seamless digital interactions.
                     </motion.p>
 
-                    {/* Call to Actions: Apple Liquid Glass Buttons */}
+                    {/* Call to Actions: Liquid Glass Buttons */}
                     <motion.div 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
                       className="flex flex-wrap gap-3.5 sm:gap-4 justify-center lg:justify-start w-full sm:w-auto"
                     >
-                      {/* Explore Work (Apple Sapphire Liquid Glass) */}
+                      {/* Explore Work */}
                       <button
                         onClick={() => scrollTo('projects')}
                         onMouseMove={handleLiquidMouseMove}
                         onMouseEnter={handleLiquidMouseEnter}
                         onMouseLeave={handleLiquidMouseLeave}
-                        className="apple-glass-btn apple-glass-primary group"
+                        className="liquid-glass-btn liquid-glass-primary group"
                         aria-label="Explore Work"
                       >
-                        <span className="apple-glass-sheen" aria-hidden="true" />
-                        <span className="apple-glass-caustic" aria-hidden="true" />
+                        <span className="liquid-glass-sheen" aria-hidden="true" />
+                        <span className="liquid-glass-caustic" aria-hidden="true" />
                         <span className="relative z-10 font-semibold tracking-tight">Explore Work</span>
                       </button>
 
-                      {/* Get in Touch (Apple Frosted Crystal Liquid Glass) */}
+                      {/* Get in Touch */}
                       <button
                         onClick={() => scrollTo('contact')}
                         onMouseMove={handleLiquidMouseMove}
                         onMouseEnter={handleLiquidMouseEnter}
                         onMouseLeave={handleLiquidMouseLeave}
-                        className="apple-glass-btn apple-glass-secondary group"
+                        className="liquid-glass-btn liquid-glass-secondary group"
                         aria-label="Get in Touch"
                       >
-                        <span className="apple-glass-sheen" aria-hidden="true" />
-                        <span className="apple-glass-caustic" aria-hidden="true" />
+                        <span className="liquid-glass-sheen" aria-hidden="true" />
+                        <span className="liquid-glass-caustic" aria-hidden="true" />
                         <span className="relative z-10 font-semibold tracking-tight">Get in Touch</span>
                       </button>
                     </motion.div>
