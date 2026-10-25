@@ -1,4 +1,5 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView, animate } from 'framer-motion';
 import { 
   HiOutlineChip, 
   HiOutlineLightBulb, 
@@ -28,6 +29,76 @@ const languagesV2 = [
   { name: 'Hindi', level: 'Fluent', code: 'HI', color: 'from-amber-500 to-orange-500' },
   { name: 'Marathi', level: 'Native', code: 'MR', color: 'from-emerald-500 to-teal-500' }
 ];
+
+/* Dynamic Animated Roll-Up Project Counter */
+const AnimatedProjectCounter = ({ target = 5 }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, margin: "-30px" });
+  const [count, setCount] = useState(0);
+  const [isDone, setIsDone] = useState(false);
+
+  useEffect(() => {
+    if (!isInView) {
+      setCount(0);
+      setIsDone(false);
+      return;
+    }
+
+    setIsDone(false);
+    const controls = animate(0, target, {
+      duration: 1.6,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (latest) => setCount(Math.floor(latest)),
+      onComplete: () => setIsDone(true)
+    });
+
+    return () => controls.stop();
+  }, [isInView, target]);
+
+  const handleReplay = (e) => {
+    e?.stopPropagation?.();
+    setIsDone(false);
+    animate(0, target, {
+      duration: 0.9,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (latest) => setCount(Math.floor(latest)),
+      onComplete: () => setIsDone(true)
+    });
+  };
+
+  return (
+    <span 
+      ref={ref}
+      onClick={handleReplay}
+      className="inline-flex items-center gap-1 cursor-pointer select-none group/counter"
+      title="Click to replay animation"
+    >
+      <span className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white font-display tabular-nums">
+        <motion.span
+          key={count}
+          initial={{ y: -6, opacity: 0.6 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.12 }}
+          className="inline-block"
+        >
+          {count}
+        </motion.span>
+        <motion.span
+          animate={isDone ? { scale: [1, 1.3, 1], color: ['#2563eb', '#38bdf8', '#2563eb'] } : {}}
+          transition={{ duration: 0.4 }}
+          className="text-blue-600 dark:text-sky-400 font-extrabold ml-0.5 inline-block"
+        >
+          +
+        </motion.span>
+      </span>
+      {/* Live active glow beacon */}
+      <span className="relative flex h-2 w-2 ml-1">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+      </span>
+    </span>
+  );
+};
 
 const About = ({ portfolioVersion = 'v2', scrollTo }) => {
   return (
@@ -289,10 +360,13 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                   </motion.div>
                 </div>
 
-                {/* Footer Metrics Row with Interactive Hover Elevation */}
+                {/* Footer Metrics Row with Interactive Animated Counter */}
                 <div className="relative z-10 grid grid-cols-3 gap-2 sm:gap-3 mt-6 pt-5 border-t border-slate-200/80 dark:border-white/10">
-                  <motion.div whileHover={{ y: -3, scale: 1.04 }} className="flex flex-col cursor-default">
-                    <span className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">5+</span>
+                  <motion.div 
+                    whileHover={{ y: -3, scale: 1.04 }} 
+                    className="flex flex-col cursor-pointer group/stat"
+                  >
+                    <AnimatedProjectCounter target={5} />
                     <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Projects Built</span>
                   </motion.div>
                   <motion.div whileHover={{ y: -3, scale: 1.04 }} className="flex flex-col cursor-default">
