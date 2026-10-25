@@ -31,7 +31,7 @@ const languagesV2 = [
 
 const About = ({ portfolioVersion = 'v2', scrollTo }) => {
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       <AnimatePresence mode="wait">
         {portfolioVersion === 'v1' ? (
           /* ========================================================= */
@@ -61,7 +61,9 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                 <motion.div 
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ y: -3 }}
                   viewport={{ once: true }}
+                  transition={{ duration: 0.3 }}
                   className="space-y-4 bg-white dark:bg-gray-800/90 p-4 sm:p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700/70 backdrop-blur-sm"
                 >
                   <div className="flex flex-wrap items-center gap-3">
@@ -113,8 +115,9 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                 <motion.div 
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ y: -3 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
+                  transition={{ duration: 0.3 }}
                   className="relative group p-8 bg-white dark:bg-gray-800/90 rounded-xl shadow-md border border-gray-200 dark:border-gray-700/70"
                 >
                   <div className="flex items-center gap-3 mb-6">
@@ -146,7 +149,9 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                 <motion.div 
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ y: -3 }}
                   viewport={{ once: true }}
+                  transition={{ duration: 0.3 }}
                   className="relative group p-6 bg-white dark:bg-gray-800/90 rounded-xl shadow-md border border-gray-200 dark:border-gray-700/70"
                 >
                   <div className="flex items-center gap-3 mb-4">
@@ -166,7 +171,9 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                 <motion.div 
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ y: -3 }}
                   viewport={{ once: true }}
+                  transition={{ duration: 0.3 }}
                   className="relative group"
                 >
                   <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
@@ -189,32 +196,68 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
           /* ========================================================= */
           <motion.div 
             key="about-v2"
-            className="w-full pt-1 pb-4"
+            className="w-full pt-1 pb-4 relative"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.35, ease: 'easeInOut' }}
           >
+            {/* Ambient Dynamic Background Drift to Bridge Hero & About */}
+            <motion.div 
+              animate={{ 
+                x: [0, 25, -20, 0],
+                y: [0, -15, 15, 0],
+                scale: [1, 1.06, 0.96, 1]
+              }}
+              transition={{ 
+                duration: 15, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="absolute -top-10 left-1/4 w-80 sm:w-96 h-80 bg-blue-500/[0.07] dark:bg-blue-400/[0.05] rounded-full blur-3xl pointer-events-none" 
+            />
+            <motion.div 
+              animate={{ 
+                x: [0, -20, 20, 0],
+                y: [0, 15, -15, 0],
+                scale: [1, 0.95, 1.05, 1]
+              }}
+              transition={{ 
+                duration: 18, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="absolute bottom-0 right-1/4 w-72 sm:w-80 h-72 bg-cyan-400/[0.06] dark:bg-cyan-500/[0.04] rounded-full blur-3xl pointer-events-none" 
+            />
+
             {/* Bento Grid Canvas */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 w-full max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 w-full max-w-6xl mx-auto relative z-10">
               
               {/* CARD 1: Core Bio & Engineering Philosophy (Span 7) */}
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="lg:col-span-7 panel-liquid-glass rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group"
+                viewport={{ once: true, margin: "-40px" }}
+                whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                transition={{ duration: 0.55 }}
+                className="lg:col-span-7 panel-liquid-glass rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group hover:shadow-2xl transition-shadow duration-300"
               >
-                {/* Ambient Soft Glow */}
-                <div className="absolute -top-16 -right-16 w-52 h-52 bg-blue-500/10 dark:bg-blue-400/10 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
+                {/* Dynamic Ambient Hover Sheen */}
+                <motion.div 
+                  animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-16 -right-16 w-52 h-52 bg-blue-500/10 dark:bg-blue-400/10 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" 
+                />
                 
                 <div className="relative z-10">
-                  {/* Micro Pill Badge */}
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/[0.04] dark:bg-white/[0.08] border border-slate-900/[0.08] dark:border-white/[0.12] text-xs font-semibold text-blue-600 dark:text-sky-400 mb-4 backdrop-blur-xl">
+                  {/* Micro Pill Badge with soft scale */}
+                  <motion.div 
+                    whileHover={{ scale: 1.03 }}
+                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/[0.04] dark:bg-white/[0.08] border border-slate-900/[0.08] dark:border-white/[0.12] text-xs font-semibold text-blue-600 dark:text-sky-400 mb-4 backdrop-blur-xl cursor-default"
+                  >
                     <HiOutlineSparkles className="w-3.5 h-3.5 text-blue-500 dark:text-sky-300" />
                     <span>Full-Stack Engineer & AI Enthusiast</span>
-                  </div>
+                  </motion.div>
 
                   <h3 className="text-2xl sm:text-3xl md:text-[2.1rem] font-bold tracking-tight text-slate-950 dark:text-white leading-[1.2] mb-4 font-display">
                     Architecting scalable web systems with{' '}
@@ -227,8 +270,11 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                     Hi, I'm <strong className="text-slate-900 dark:text-white font-semibold">Ranveer Ghorpade</strong>. I bridge robust backend architectures with fluid, high-fidelity interfaces. From MERN full-stack workflows to Python-powered intelligence, my work centers on delivering intuitive, impactful software.
                   </p>
 
-                  {/* Embedded Frosted Sub-Panel */}
-                  <div className="p-4 sm:p-5 rounded-2xl bg-white/60 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/[0.08] backdrop-blur-xl flex items-start gap-3.5 shadow-sm">
+                  {/* Embedded Frosted Sub-Panel with subtle hover depth */}
+                  <motion.div 
+                    whileHover={{ scale: 1.01 }}
+                    className="p-4 sm:p-5 rounded-2xl bg-white/60 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/[0.08] backdrop-blur-xl flex items-start gap-3.5 shadow-sm transition-all duration-200"
+                  >
                     <div className="p-2.5 rounded-xl bg-blue-500/10 dark:bg-blue-400/15 border border-blue-500/20 text-blue-600 dark:text-sky-400 shrink-0 mt-0.5">
                       <HiOutlineLightBulb className="w-5 h-5" />
                     </div>
@@ -240,23 +286,23 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                         Whether designing neural models for visual recognition, optimizing asynchronous server endpoints, or tuning micro-second frontend transitions, I strive for clean simplicity and technical rigor.
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
 
-                {/* Footer Metrics Row */}
+                {/* Footer Metrics Row with Interactive Hover Elevation */}
                 <div className="relative z-10 grid grid-cols-3 gap-2 sm:gap-3 mt-6 pt-5 border-t border-slate-200/80 dark:border-white/10">
-                  <div className="flex flex-col">
+                  <motion.div whileHover={{ y: -3, scale: 1.04 }} className="flex flex-col cursor-default">
                     <span className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">5+</span>
                     <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Projects Built</span>
-                  </div>
-                  <div className="flex flex-col">
+                  </motion.div>
+                  <motion.div whileHover={{ y: -3, scale: 1.04 }} className="flex flex-col cursor-default">
                     <span className="text-lg sm:text-xl font-bold text-blue-600 dark:text-sky-400">Full-Stack</span>
                     <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">MERN & Python</span>
-                  </div>
-                  <div className="flex flex-col">
+                  </motion.div>
+                  <motion.div whileHover={{ y: -3, scale: 1.04 }} className="flex flex-col cursor-default">
                     <span className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">UI / UX</span>
                     <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Modern Interfaces</span>
-                  </div>
+                  </motion.div>
                 </div>
 
                 <div className="circle-overlay pointer-events-none"></div>
@@ -264,14 +310,19 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
 
               {/* CARD 2: Currently Exploring & R&D (Span 5) */}
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="lg:col-span-5 panel-liquid-glass rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group"
+                viewport={{ once: true, margin: "-40px" }}
+                whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                transition={{ duration: 0.55, delay: 0.1 }}
+                className="lg:col-span-5 panel-liquid-glass rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group hover:shadow-2xl transition-shadow duration-300"
               >
                 {/* Ambient Soft Glow */}
-                <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-cyan-500/10 dark:bg-cyan-400/10 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" />
+                <motion.div 
+                  animate={{ scale: [1, 1.12, 1], opacity: [0.65, 0.95, 0.65] }}
+                  transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -bottom-16 -left-16 w-48 h-48 bg-cyan-500/10 dark:bg-cyan-400/10 rounded-full blur-3xl pointer-events-none group-hover:scale-125 transition-transform duration-700" 
+                />
 
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-5">
@@ -284,16 +335,19 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                       </h4>
                     </div>
                     {/* Live Pulse Beacon */}
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 backdrop-blur-md">
+                    <motion.span 
+                      whileHover={{ scale: 1.05 }}
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 backdrop-blur-md cursor-default"
+                    >
                       <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                       </span>
                       Active R&D
-                    </span>
+                    </motion.span>
                   </div>
 
-                  {/* Interactive Tech Pill Stack */}
+                  {/* Interactive Tech Pill Stack with Fluid Stagger Hover */}
                   <div className="space-y-2.5">
                     {techPillsV2.map((tech, idx) => (
                       <motion.div
@@ -301,12 +355,13 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                         initial={{ opacity: 0, x: 10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: 0.15 + idx * 0.08 }}
-                        className="group/pill p-3 rounded-2xl bg-white/60 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/[0.08] hover:border-blue-500/40 dark:hover:border-sky-400/30 hover:bg-white/90 dark:hover:bg-white/[0.08] transition-all duration-200 backdrop-blur-md shadow-sm"
+                        whileHover={{ x: 6, scale: 1.015 }}
+                        transition={{ duration: 0.2 }}
+                        className="group/pill p-3 rounded-2xl bg-white/60 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/[0.08] hover:border-blue-500/40 dark:hover:border-sky-400/40 hover:bg-white/90 dark:hover:bg-white/[0.08] transition-all duration-200 backdrop-blur-md shadow-sm cursor-default"
                       >
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-sky-400 group-hover/pill:scale-125 transition-transform" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-sky-400 group-hover/pill:scale-150 transition-transform duration-200" />
                             <span className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-slate-100">
                               {tech.name}
                             </span>
@@ -333,15 +388,16 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
 
               {/* CARD 3: Education & Academic Milestone (Span 4) */}
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="lg:col-span-4 panel-liquid-glass rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden group"
+                viewport={{ once: true, margin: "-40px" }}
+                whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                transition={{ duration: 0.55, delay: 0.15 }}
+                className="lg:col-span-4 panel-liquid-glass rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden group hover:shadow-2xl transition-shadow duration-300"
               >
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-2.5 rounded-2xl bg-purple-500/10 dark:bg-purple-400/15 border border-purple-500/20 text-purple-600 dark:text-purple-400">
+                    <div className="p-2.5 rounded-2xl bg-purple-500/10 dark:bg-purple-400/15 border border-purple-500/20 text-purple-600 dark:text-purple-400 group-hover:scale-105 transition-transform">
                       <HiOutlineAcademicCap className="w-6 h-6" />
                     </div>
                     <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-purple-500/10 dark:bg-purple-400/10 text-purple-700 dark:text-purple-300 border border-purple-500/20">
@@ -370,15 +426,16 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
 
               {/* CARD 4: Languages & Global Reach (Span 4) */}
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.25 }}
-                className="lg:col-span-4 panel-liquid-glass rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden group"
+                viewport={{ once: true, margin: "-40px" }}
+                whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                transition={{ duration: 0.55, delay: 0.2 }}
+                className="lg:col-span-4 panel-liquid-glass rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden group hover:shadow-2xl transition-shadow duration-300"
               >
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-2.5 rounded-2xl bg-emerald-500/10 dark:bg-emerald-400/15 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+                    <div className="p-2.5 rounded-2xl bg-emerald-500/10 dark:bg-emerald-400/15 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 group-hover:scale-105 transition-transform">
                       <HiOutlineGlobeAlt className="w-6 h-6" />
                     </div>
                     <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 dark:bg-emerald-400/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20">
@@ -393,12 +450,14 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                     Languages
                   </h4>
 
-                  {/* Language Badges */}
+                  {/* Language Badges with Hover Micro-Slide */}
                   <div className="space-y-2">
                     {languagesV2.map((lang) => (
-                      <div 
+                      <motion.div 
                         key={lang.name}
-                        className="flex items-center justify-between p-2.5 rounded-xl bg-white/60 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/[0.08]"
+                        whileHover={{ x: 4, scale: 1.015 }}
+                        transition={{ duration: 0.2 }}
+                        className="flex items-center justify-between p-2.5 rounded-xl bg-white/60 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/[0.08] hover:border-emerald-500/30 transition-colors cursor-default"
                       >
                         <div className="flex items-center gap-2">
                           <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${lang.color}`} />
@@ -409,7 +468,7 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                         <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
                           {lang.level}
                         </span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
@@ -419,15 +478,16 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
 
               {/* CARD 5: Collaboration & Vision Callout (Span 4) */}
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="lg:col-span-4 panel-liquid-glass rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden group bg-gradient-to-br from-blue-600/[0.06] to-cyan-500/[0.06] dark:from-blue-500/[0.1] dark:to-cyan-400/[0.05]"
+                viewport={{ once: true, margin: "-40px" }}
+                whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                transition={{ duration: 0.55, delay: 0.25 }}
+                className="lg:col-span-4 panel-liquid-glass rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden group bg-gradient-to-br from-blue-600/[0.06] to-cyan-500/[0.06] dark:from-blue-500/[0.1] dark:to-cyan-400/[0.05] hover:shadow-2xl transition-shadow duration-300"
               >
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="p-2.5 rounded-2xl bg-blue-500/15 dark:bg-sky-400/20 border border-blue-500/25 text-blue-600 dark:text-sky-300">
+                    <div className="p-2.5 rounded-2xl bg-blue-500/15 dark:bg-sky-400/20 border border-blue-500/25 text-blue-600 dark:text-sky-300 group-hover:scale-105 group-hover:rotate-6 transition-transform">
                       <HiOutlineRocketLaunch className="w-6 h-6" />
                     </div>
                     <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-500/10 dark:bg-blue-400/10 text-blue-700 dark:text-sky-300 border border-blue-500/20">
@@ -446,16 +506,18 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                   </p>
                 </div>
 
-                {/* Direct Action Link */}
+                {/* Direct Action Link with Tactile Press Animation */}
                 <div className="relative z-10 mt-5 pt-3">
-                  <button
+                  <motion.button
                     type="button"
+                    whileHover={{ scale: 1.02, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
                     onClick={() => scrollTo?.('contact')}
                     className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-xs sm:text-sm hover:opacity-90 transition-opacity shadow-sm group/btn"
                   >
                     <span>Start a Conversation</span>
                     <HiOutlineArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </button>
+                  </motion.button>
                 </div>
 
                 <div className="circle-overlay pointer-events-none"></div>

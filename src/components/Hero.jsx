@@ -193,21 +193,52 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
             transition={{ duration: 0.35, ease: 'easeInOut' }}
             className="w-full relative z-10"
           >
-            {/* Ambient Background Glows to enhance frosted liquid glass refraction */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] max-w-4xl h-72 sm:h-96 bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+            {/* Dynamic Continuous Floating Ambient Light Orbs */}
+            <motion.div 
+              animate={{ 
+                x: [0, 25, -20, 0], 
+                y: [0, -25, 20, 0],
+                scale: [1, 1.08, 0.95, 1]
+              }}
+              transition={{ 
+                duration: 13, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] max-w-4xl h-72 sm:h-96 bg-gradient-to-r from-blue-500/15 via-indigo-500/10 to-cyan-500/15 rounded-full blur-3xl pointer-events-none" 
+            />
+            <motion.div 
+              animate={{ 
+                x: [0, -20, 25, 0], 
+                y: [0, 20, -15, 0],
+                scale: [1, 0.94, 1.06, 1]
+              }}
+              transition={{ 
+                duration: 16, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="absolute top-1/3 right-1/4 w-64 h-64 bg-cyan-400/10 dark:bg-blue-600/10 rounded-full blur-3xl pointer-events-none" 
+            />
 
             <div className="container max-w-5xl lg:max-w-[1100px] xl:max-w-[1160px] mx-auto relative z-10">
-              {/* Main Floating Glass Canvas Frontpanel with Navbar-style Liquid Glass Effect */}
-              <div className="relative panel-liquid-glass rounded-3xl p-7 sm:p-9 md:p-10 lg:p-11 xl:p-12">
+              {/* Main Floating Glass Canvas Frontpanel */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="relative panel-liquid-glass rounded-3xl p-7 sm:p-9 md:p-10 lg:p-11 xl:p-12 shadow-2xl"
+              >
                 <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
                   
                   {/* Left Column: Introductions & Actions */}
                   <div className="order-2 lg:order-1 lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
-                    {/* Status Badge Capsule: Micro-pill */}
+                    {/* Status Badge Capsule: Micro-pill with hover animation */}
                     <motion.div 
                       initial={{ opacity: 0, y: -8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5 }}
+                      whileHover={{ scale: 1.03 }}
+                      transition={{ duration: 0.4 }}
                       className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/[0.04] dark:bg-white/[0.08] border border-slate-900/[0.08] dark:border-white/[0.12] text-xs font-medium text-slate-700 dark:text-slate-300 mb-4 backdrop-blur-xl shadow-none hover:bg-slate-900/[0.07] dark:hover:bg-white/[0.12] transition-all cursor-default"
                     >
                       <span className="relative flex h-2 w-2">
@@ -235,6 +266,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.2 }}
+                      whileHover={{ scale: 1.02 }}
                       className="inline-flex items-center px-4 py-2 rounded-full bg-slate-900/[0.04] dark:bg-white/[0.06] border border-slate-900/[0.08] dark:border-white/[0.12] backdrop-blur-xl mb-4 shadow-sm"
                     >
                       <span className="text-sm sm:text-base md:text-lg font-medium tracking-tight text-slate-800 dark:text-slate-200">
@@ -252,7 +284,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       Passionate about crafting intuitive, scalable web applications with refined UI/UX, robust frontend architectures, and seamless digital interactions.
                     </motion.p>
 
-                    {/* Call to Actions: Liquid Glass Buttons */}
+                    {/* Call to Actions: Dynamic Liquid Glass Buttons */}
                     <motion.div 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -260,7 +292,9 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       className="flex flex-wrap gap-3.5 sm:gap-4 justify-center lg:justify-start w-full sm:w-auto"
                     >
                       {/* Explore Work */}
-                      <button
+                      <motion.button
+                        whileHover={{ scale: 1.03, y: -2 }}
+                        whileTap={{ scale: 0.97 }}
                         onClick={() => scrollTo('projects')}
                         onMouseMove={handleLiquidMouseMove}
                         onMouseEnter={handleLiquidMouseEnter}
@@ -271,10 +305,12 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                         <span className="liquid-glass-sheen" aria-hidden="true" />
                         <span className="liquid-glass-caustic" aria-hidden="true" />
                         <span className="relative z-10 font-semibold tracking-tight">Explore Work</span>
-                      </button>
+                      </motion.button>
 
                       {/* Get in Touch */}
-                      <button
+                      <motion.button
+                        whileHover={{ scale: 1.03, y: -2 }}
+                        whileTap={{ scale: 0.97 }}
                         onClick={() => scrollTo('contact')}
                         onMouseMove={handleLiquidMouseMove}
                         onMouseEnter={handleLiquidMouseEnter}
@@ -285,10 +321,10 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                         <span className="liquid-glass-sheen" aria-hidden="true" />
                         <span className="liquid-glass-caustic" aria-hidden="true" />
                         <span className="relative z-10 font-semibold tracking-tight">Get in Touch</span>
-                      </button>
+                      </motion.button>
                     </motion.div>
 
-                    {/* Social Quick Links Bar with High Contrast */}
+                    {/* Social Quick Links Bar with Smooth Hover Transitions */}
                     <motion.div 
                       initial={{ opacity: 0, y: 15 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -301,23 +337,26 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       {socialLinksV2.map((social) => {
                         const Icon = social.icon;
                         return (
-                          <a
+                          <motion.a
                             key={social.name}
                             href={social.url}
                             target="_blank"
                             rel="noopener noreferrer"
                             title={social.name}
                             aria-label={social.name}
-                            className={`p-2.5 sm:p-3 rounded-2xl bg-white/80 dark:bg-white/5 text-slate-800 dark:text-slate-200 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 border border-slate-200/80 dark:border-white/10 shadow-sm ${social.color}`}
+                            whileHover={{ y: -4, scale: 1.08 }}
+                            whileTap={{ scale: 0.95 }}
+                            transition={{ duration: 0.2 }}
+                            className={`p-2.5 sm:p-3 rounded-2xl bg-white/80 dark:bg-white/5 text-slate-800 dark:text-slate-200 hover:shadow-lg transition-colors duration-200 border border-slate-200/80 dark:border-white/10 shadow-sm ${social.color}`}
                           >
                             <Icon className="w-5 h-5" />
-                          </a>
+                          </motion.a>
                         );
                       })}
                     </motion.div>
                   </div>
 
-                  {/* Right Column: Interactive Portrait Showcase */}
+                  {/* Right Column: Floating Breathing Portrait Showcase */}
                   <div className="order-1 lg:order-2 lg:col-span-5 flex justify-center relative">
                     <motion.div 
                       initial={{ opacity: 0, scale: 0.9 }}
@@ -325,28 +364,46 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
                       transition={{ duration: 0.7, delay: 0.2 }}
                       className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-[320px] lg:h-[320px] xl:w-[350px] xl:h-[350px]"
                     >
-                      {/* Ambient Halo */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/25 via-cyan-400/20 to-indigo-600/25 rounded-3xl blur-2xl" />
+                      {/* Floating Motion Wrapper */}
+                      <motion.div
+                        animate={{ y: [0, -7, 0] }}
+                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                        className="w-full h-full relative"
+                      >
+                        {/* Ambient Halo with soft rhythmic breathing */}
+                        <motion.div 
+                          animate={{ 
+                            scale: [1, 1.06, 1], 
+                            opacity: [0.65, 0.9, 0.65] 
+                          }}
+                          transition={{ 
+                            duration: 4.5, 
+                            repeat: Infinity, 
+                            ease: "easeInOut" 
+                          }}
+                          className="absolute inset-0 bg-gradient-to-tr from-blue-500/25 via-cyan-400/20 to-indigo-600/25 rounded-3xl blur-2xl" 
+                        />
 
-                      {/* Main Glass Portrait Frame with High Contrast */}
-                      <div className="relative w-full h-full rounded-3xl p-3 bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/20 shadow-xl overflow-hidden group backdrop-blur-xl">
-                        <div className="w-full h-full rounded-2xl overflow-hidden relative">
-                          <img 
-                            src={profileImg} 
-                            alt="Ranveer Ghorpade" 
-                            className="w-full h-full object-cover rounded-2xl transform transition-transform duration-700 group-hover:scale-105"
-                          />
-                          {/* Inner subtle sheen */}
-                          <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/40 via-transparent to-white/10 pointer-events-none" />
+                        {/* Main Glass Portrait Frame with High Contrast */}
+                        <div className="relative w-full h-full rounded-3xl p-3 bg-white/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/20 shadow-xl overflow-hidden group backdrop-blur-xl">
+                          <div className="w-full h-full rounded-2xl overflow-hidden relative">
+                            <img 
+                              src={profileImg} 
+                              alt="Ranveer Ghorpade" 
+                              className="w-full h-full object-cover rounded-2xl transform transition-transform duration-700 group-hover:scale-105"
+                            />
+                            {/* Inner subtle sheen */}
+                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/40 via-transparent to-white/10 pointer-events-none" />
+                          </div>
                         </div>
-                      </div>
+                      </motion.div>
                     </motion.div>
                   </div>
 
                 </div>
                 {/* Specular Inner Rim Highlight */}
                 <div className="circle-overlay pointer-events-none"></div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         )}
