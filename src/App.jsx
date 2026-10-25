@@ -23,7 +23,7 @@ export default function App() {
     if (element) {
       const offset = 80; // Height of navbar
       window.scrollTo({
-        top: element.offsetTop - offset,
+        top: Math.max(0, element.offsetTop - offset),
         behavior: 'smooth'
       });
     }
@@ -45,18 +45,18 @@ export default function App() {
       {/* About Section */}
       <section 
         id="about" 
-        className={`scroll-mt-20 min-h-[90vh] md:min-h-[85vh] py-14 sm:py-16 md:py-20 flex items-center justify-center transition-colors duration-500 relative ${
+        className={`scroll-mt-20 pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 transition-colors duration-500 relative ${
           portfolioVersion === 'v1' 
             ? 'bg-gray-50 dark:bg-black' 
-            : 'bg-slate-50/70 dark:bg-[#030814] overflow-hidden'
+            : 'bg-transparent'
         }`}
       >
         {portfolioVersion === 'v2' && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-5xl h-96 bg-gradient-to-r from-blue-500/5 via-sky-500/5 to-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-64 sm:h-80 bg-gradient-to-r from-blue-500/5 via-cyan-500/5 to-indigo-500/5 rounded-full blur-3xl pointer-events-none" />
         )}
         <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
           <div className="flex flex-col">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 sm:mb-6">
               <span className={
                 portfolioVersion === 'v1'
                   ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400"
@@ -65,7 +65,7 @@ export default function App() {
                 About Me
               </span>
             </h2>
-            <div className="overflow-y-auto md:overflow-visible scrollbar-hide">
+            <div className="overflow-visible">
               <About 
                 portfolioVersion={portfolioVersion} 
                 scrollTo={scrollTo} 

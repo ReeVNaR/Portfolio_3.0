@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, useMotionValue, animate } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   HiOutlineHome, HiHome, 
   HiOutlineUser, HiUser, 
@@ -13,21 +13,9 @@ import profileImg from '../assets/Profile.jpg';
 const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const trackRef = useRef(null);
-  const [trackWidth, setTrackWidth] = useState(0);
 
-  // Motion value for seamless, zero-glitch sliding without re-render jumps
-  const pillMotionX = useMotionValue(0);
-
-  // Ignore scroll-spy during programmatic navigation to prevent pill bouncing back
+  // Ignore scroll-spy briefly during programmatic navigation to prevent indicator pill bounce
   const ignoreScrollUntilRef = useRef(0);
-
-  // Pointer drag state for the blue indicator pill
-  const isPointerDownRef = useRef(false);
-  const startXRef = useRef(0);
-  const hasMovedRef = useRef(false);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragHoverIndex, setDragHoverIndex] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,14 +27,14 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
       }
 
       const sections = ['home', 'about', 'skills', 'projects', 'contact'];
-      const scrollPosition = window.scrollY + 140;
+      const scrollPosition = window.scrollY + 160;
 
-      for (const section of sections) {
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
         const el = document.getElementById(section);
         if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
+          const top = el.getBoundingClientRect().top + window.scrollY;
+          if (scrollPosition >= top) {
             setActiveSection(section);
             break;
           }
@@ -58,28 +46,17 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Measure track width dynamically
-  useEffect(() => {
-    const updateWidth = () => {
-      if (trackRef.current) {
-        setTrackWidth(trackRef.current.offsetWidth);
-      }
-    };
-    updateWidth();
-    window.addEventListener('resize', updateWidth);
-    return () => window.removeEventListener('resize', updateWidth);
-  }, []);
-
   const handleNavClick = (elementId) => {
+    setActiveSection(elementId);
     ignoreScrollUntilRef.current = Date.now() + 1000;
     const element = document.getElementById(elementId);
     if (element) {
-      const offset = 85;
+      const offset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
       window.scrollTo({
-        top: offsetPosition,
+        top: Math.max(0, offsetPosition),
         behavior: 'smooth'
       });
     }
@@ -92,102 +69,6 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
     { id: 'projects', label: 'Projects', icon: HiOutlineBriefcase, activeIcon: HiBriefcase },
     { id: 'contact', label: 'Contact', icon: HiOutlineEnvelope, activeIcon: HiEnvelope }
   ];
-
-  const activeIndex = Math.max(0, navItems.findIndex(item => item.id === activeSection));
-  // Total padding is 12px (6px left, 6px right from p-1.5)
-  const slotWidth = trackWidth > 12 ? (trackWidth - 12) / 5 : 0;
-
-  // Sync motion value when activeIndex changes from natural page scrolling
-  useEffect(() => {
-    if (!isDragging && slotWidth > 0 && Date.now() >= ignoreScrollUntilRef.current) {
-      animate(pillMotionX, activeIndex * slotWidth, {
-        type: 'spring',
-        stiffness: 450,
-        damping: 34
-      });
-    }
-  }, [activeIndex, slotWidth, isDragging, pillMotionX]);
-
-  // Initial pill position setup on resize or load
-  useEffect(() => {
-    if (slotWidth > 0 && !isDragging) {
-      pillMotionX.set(activeIndex * slotWidth);
-    }
-  }, [slotWidth]);
-
-  // Pointer drag event handlers for slidable/draggable blue pill
-  const handlePointerDown = (e) => {
-    isPointerDownRef.current = true;
-    startXRef.current = e.clientX;
-    hasMovedRef.current = false;
-    e.currentTarget.setPointerCapture?.(e.pointerId);
-  };
-
-  const handlePointerMove = (e) => {
-    if (!isPointerDownRef.current) return;
-    const deltaX = Math.abs(e.clientX - startXRef.current);
-    if (!hasMovedRef.current && deltaX > 5) {
-      hasMovedRef.current = true;
-      setIsDragging(true);
-      ignoreScrollUntilRef.current = Date.now() + 1500;
-    }
-
-    if (hasMovedRef.current && trackRef.current && slotWidth > 0) {
-      const rect = trackRef.current.getBoundingClientRect();
-      // Relative offset inside the inner track (accounting for 6px left padding)
-      const relativeX = e.clientX - rect.left - 6 - slotWidth / 2;
-      const maxX = slotWidth * 4;
-      const clampedX = Math.max(0, Math.min(maxX, relativeX));
-      pillMotionX.set(clampedX);
-      const hoveredIdx = Math.min(4, Math.max(0, Math.round(clampedX / slotWidth)));
-      setDragHoverIndex(hoveredIdx);
-    }
-  };
-
-  const handlePointerUp = (e) => {
-    if (!isPointerDownRef.current) return;
-    isPointerDownRef.current = false;
-
-    if (hasMovedRef.current && slotWidth > 0) {
-      const finalIndex = Math.min(4, Math.max(0, Math.round(pillMotionX.get() / slotWidth)));
-      const targetSection = navItems[finalIndex].id;
-      setActiveSection(targetSection);
-      // Smoothly spring directly from release coordinate into slot - no jumping back!
-      animate(pillMotionX, finalIndex * slotWidth, {
-        type: 'spring',
-        stiffness: 450,
-        damping: 34
-      });
-      handleNavClick(targetSection);
-    }
-
-    setIsDragging(false);
-    setDragHoverIndex(null);
-  };
-
-  const handlePointerCancel = () => {
-    isPointerDownRef.current = false;
-    setIsDragging(false);
-    setDragHoverIndex(null);
-    hasMovedRef.current = false;
-  };
-
-  const handleItemClick = (id, index) => {
-    if (hasMovedRef.current) return;
-    setActiveSection(id);
-    if (slotWidth > 0) {
-      animate(pillMotionX, index * slotWidth, {
-        type: 'spring',
-        stiffness: 450,
-        damping: 34
-      });
-    }
-    handleNavClick(id);
-  };
-
-  const effectiveIndex = isDragging && dragHoverIndex !== null 
-    ? dragHoverIndex 
-    : activeIndex;
 
   return (
     <>
@@ -238,7 +119,7 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
                       <motion.span
                         layoutId="nav-pill"
                         className="absolute inset-0 rounded-full bg-blue-500/15 dark:bg-blue-400/20 border border-blue-500/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8),0_2px_8px_rgba(0,113,227,0.15)] backdrop-blur-sm"
-                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                        transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
                       />
                     )}
                     <span className="relative z-10">{item.label}</span>
@@ -263,7 +144,7 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
                       ? 'bg-blue-600 text-white shadow-sm font-bold'
                       : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                   }`}
-                  title="Switch to Portfolio V1 (Classic)"
+                  title="Switch to Portfolio V1"
                   aria-label="Portfolio version 1"
                 >
                   V1
@@ -276,7 +157,7 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
                       ? 'bg-blue-600 text-white shadow-sm font-bold'
                       : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                   }`}
-                  title="Switch to Portfolio V2 (Modern Glass)"
+                  title="Switch to Portfolio V2"
                   aria-label="Portfolio version 2"
                 >
                   V2
@@ -349,48 +230,42 @@ const Navbar = ({ portfolioVersion = 'v2', setPortfolioVersion }) => {
         </div>
       </aside>
 
-      {/* Mobile Anchored Bottom Navbar with Fluid Draggable/Slidable Blue Indicator Pill */}
+      {/* Mobile Floating Bottom Liquid Glass Navbar */}
       <nav 
         className="fixed bottom-3 sm:bottom-4 left-0 right-0 z-[100] px-3 sm:px-4 pointer-events-none flex justify-center md:hidden"
         aria-label="Mobile Navigation Bar"
       >
         <div 
-          ref={trackRef}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
-          onPointerCancel={handlePointerCancel}
-          className="pointer-events-auto touch-none relative w-full max-w-[360px] xs:max-w-[380px] rounded-full p-1.5 nav-liquid-glass shadow-[0_14px_40px_rgba(15,23,42,0.22)] dark:shadow-[0_18px_45px_rgba(0,0,0,0.8)] backdrop-blur-2xl select-none cursor-grab active:cursor-grabbing"
+          className="pointer-events-auto relative w-full max-w-[360px] xs:max-w-[380px] rounded-full p-1.5 nav-liquid-glass shadow-[0_14px_40px_rgba(15,23,42,0.22)] dark:shadow-[0_18px_45px_rgba(0,0,0,0.8)] backdrop-blur-2xl select-none"
         >
-          {/* Draggable Blue Liquid Glass Indicator Pill */}
-          {slotWidth > 0 && (
-            <motion.div
-              style={{ left: 6, width: `${slotWidth}px`, x: pillMotionX }}
-              className="absolute top-1.5 bottom-1.5 rounded-full bg-blue-500/20 dark:bg-blue-400/25 border border-blue-500/40 dark:border-blue-400/40 shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.85),0_2px_12px_rgba(0,113,227,0.3)] backdrop-blur-md z-0 pointer-events-none"
-            >
-              {/* Subtle tactile grip pip at the top of the pill */}
-              <div className="absolute top-1 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-blue-500/50 dark:bg-white/50" />
-            </motion.div>
-          )}
-
-          {/* Nav Items Grid */}
+          {/* Nav Items Grid with Smooth Animated Shared Indicator Pill */}
           <div className="relative z-10 grid grid-cols-5 items-center">
-            {navItems.map((item, index) => {
-              const isCurrent = effectiveIndex === index;
+            {navItems.map((item) => {
+              const isCurrent = activeSection === item.id;
               const Icon = isCurrent ? item.activeIcon : item.icon;
               return (
                 <button
                   key={item.id}
                   type="button"
-                  onClick={() => handleItemClick(item.id, index)}
-                  className={`relative flex flex-col items-center justify-center py-1.5 px-1 rounded-full transition-colors duration-150 select-none ${
+                  onClick={() => handleNavClick(item.id)}
+                  className={`relative flex flex-col items-center justify-center py-2 px-1 rounded-full transition-colors duration-200 select-none ${
                     isCurrent 
                       ? 'text-blue-600 dark:text-blue-400 font-semibold' 
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
                   aria-label={item.label}
                 >
-                  <span className="flex flex-col items-center gap-0.5 pointer-events-none">
+                  {isCurrent && (
+                    <motion.span
+                      layoutId="mobile-active-pill"
+                      className="absolute inset-0 rounded-full bg-blue-500/20 dark:bg-blue-400/25 border border-blue-500/40 dark:border-blue-400/40 shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.85),0_2px_12px_rgba(0,113,227,0.3)] backdrop-blur-md"
+                      transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                    >
+                      {/* Subtle tactile grip pip at the top of the pill */}
+                      <span className="absolute top-1 left-1/2 -translate-x-1/2 w-3.5 h-0.5 rounded-full bg-blue-500/50 dark:bg-white/50" />
+                    </motion.span>
+                  )}
+                  <span className="relative z-10 flex flex-col items-center gap-0.5 pointer-events-none">
                     <Icon className={`w-5 h-5 transition-transform duration-200 ${isCurrent ? 'scale-110' : ''}`} />
                     <span className="text-[10px] tracking-tight font-medium leading-none">{item.label}</span>
                   </span>

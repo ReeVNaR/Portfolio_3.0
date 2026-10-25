@@ -39,7 +39,7 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
           /* ========================================================= */
           <motion.div 
             key="about-v1"
-            className="flex items-center justify-center py-6 sm:py-8 md:py-12"
+            className="flex items-center justify-center pt-1 pb-4"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
@@ -189,7 +189,7 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
           /* ========================================================= */
           <motion.div 
             key="about-v2"
-            className="w-full py-4 sm:py-6"
+            className="w-full pt-1 pb-4"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
