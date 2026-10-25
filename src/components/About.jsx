@@ -31,7 +31,7 @@ const languagesV2 = [
 ];
 
 /* Dynamic Animated Roll-Up Project Counter */
-const AnimatedProjectCounter = ({ target = 5 }) => {
+const AnimatedProjectCounter = ({ target = 25 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, margin: "-30px" });
   const [count, setCount] = useState(0);
@@ -47,7 +47,7 @@ const AnimatedProjectCounter = ({ target = 5 }) => {
     setIsDone(false);
     const controls = animate(0, target, {
       duration: 1.6,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.12, 0.9, 0.25, 1],
       onUpdate: (latest) => setCount(Math.floor(latest)),
       onComplete: () => setIsDone(true)
     });
@@ -59,8 +59,8 @@ const AnimatedProjectCounter = ({ target = 5 }) => {
     e?.stopPropagation?.();
     setIsDone(false);
     animate(0, target, {
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 1.0,
+      ease: [0.12, 0.9, 0.25, 1],
       onUpdate: (latest) => setCount(Math.floor(latest)),
       onComplete: () => setIsDone(true)
     });
@@ -73,18 +73,18 @@ const AnimatedProjectCounter = ({ target = 5 }) => {
       className="inline-flex items-center gap-1 cursor-pointer select-none group/counter"
       title="Click to replay animation"
     >
-      <span className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white font-display tabular-nums">
+      <span className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white font-display tabular-nums flex items-baseline">
         <motion.span
           key={count}
           initial={{ y: -6, opacity: 0.6 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.12 }}
-          className="inline-block"
+          transition={{ duration: 0.08 }}
+          className="inline-block tabular-nums min-w-[1.4ch] text-right"
         >
           {count}
         </motion.span>
         <motion.span
-          animate={isDone ? { scale: [1, 1.3, 1], color: ['#2563eb', '#38bdf8', '#2563eb'] } : {}}
+          animate={isDone ? { scale: [1, 1.4, 1], color: ['#2563eb', '#38bdf8', '#2563eb'] } : {}}
           transition={{ duration: 0.4 }}
           className="text-blue-600 dark:text-sky-400 font-extrabold ml-0.5 inline-block"
         >
@@ -366,7 +366,7 @@ const About = ({ portfolioVersion = 'v2', scrollTo }) => {
                     whileHover={{ y: -3, scale: 1.04 }} 
                     className="flex flex-col cursor-pointer group/stat"
                   >
-                    <AnimatedProjectCounter target={5} />
+                    <AnimatedProjectCounter target={25} />
                     <span className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium">Projects Built</span>
                   </motion.div>
                   <motion.div whileHover={{ y: -3, scale: 1.04 }} className="flex flex-col cursor-default">
