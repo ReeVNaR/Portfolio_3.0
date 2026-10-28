@@ -102,7 +102,11 @@ export default function App() {
         >
           <div className="container mx-auto px-4 md:px-6 mb-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
+              <span className={
+                portfolioVersion === 'v1'
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400"
+                  : "text-transparent bg-clip-text bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#0055b3] dark:from-sky-400 dark:via-blue-300 dark:to-indigo-300 font-display tracking-tight"
+              }>
                 My Skills
               </span>
             </h2>
