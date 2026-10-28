@@ -304,11 +304,11 @@ const SkillsV2Bento = () => {
         
         {/* CARD 1: Frontend Engineering & Interactive UI (Span 7) */}
         <motion.div 
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
+          viewport={{ once: true }}
           whileHover={{ y: -6, transition: { duration: 0.25 } }}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.45 }}
           className="lg:col-span-7 panel-liquid-glass rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group hover:shadow-2xl transition-shadow duration-300"
         >
           {/* Dynamic Ambient Hover Sheen */}
@@ -395,11 +395,11 @@ const SkillsV2Bento = () => {
 
         {/* CARD 2: Backend Architecture & Scalable APIs (Span 5) */}
         <motion.div 
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
+          viewport={{ once: true }}
           whileHover={{ y: -6, transition: { duration: 0.25 } }}
-          transition={{ duration: 0.55, delay: 0.1 }}
+          transition={{ duration: 0.45, delay: 0.08 }}
           className="lg:col-span-5 panel-liquid-glass rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden group hover:shadow-2xl transition-shadow duration-300"
         >
           <div className="relative z-10">
@@ -472,11 +472,11 @@ const SkillsV2Bento = () => {
 
         {/* CARD 3: Databases & Cloud Infrastructure (Span 4) */}
         <motion.div 
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
+          viewport={{ once: true }}
           whileHover={{ y: -6, transition: { duration: 0.25 } }}
-          transition={{ duration: 0.55, delay: 0.15 }}
+          transition={{ duration: 0.45, delay: 0.12 }}
           className="lg:col-span-4 panel-liquid-glass rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden group hover:shadow-2xl transition-shadow duration-300"
         >
           <div className="relative z-10">
@@ -533,11 +533,11 @@ const SkillsV2Bento = () => {
 
         {/* CARD 4: Computer Science & Algorithmic Rigor (Span 4) */}
         <motion.div 
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
+          viewport={{ once: true }}
           whileHover={{ y: -6, transition: { duration: 0.25 } }}
-          transition={{ duration: 0.55, delay: 0.2 }}
+          transition={{ duration: 0.45, delay: 0.16 }}
           className="lg:col-span-4 panel-liquid-glass rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden group hover:shadow-2xl transition-shadow duration-300"
         >
           <div className="relative z-10">
@@ -594,11 +594,11 @@ const SkillsV2Bento = () => {
 
         {/* CARD 5: Modern Tooling & Developer Workflows (Span 4) */}
         <motion.div 
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
+          viewport={{ once: true }}
           whileHover={{ y: -6, transition: { duration: 0.25 } }}
-          transition={{ duration: 0.55, delay: 0.25 }}
+          transition={{ duration: 0.45, delay: 0.2 }}
           className="lg:col-span-4 panel-liquid-glass rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden group bg-gradient-to-br from-blue-600/[0.06] to-cyan-500/[0.06] dark:from-blue-500/[0.1] dark:to-cyan-400/[0.05] hover:shadow-2xl transition-shadow duration-300"
         >
           <div className="relative z-10">
@@ -664,29 +664,11 @@ const SkillsV2Bento = () => {
 const Skills = ({ portfolioVersion = 'v2' }) => {
   return (
     <div className="w-full relative">
-      <AnimatePresence mode="wait">
-        {portfolioVersion === 'v1' ? (
-          <motion.div
-            key="skills-v1"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.35, ease: 'easeInOut' }}
-          >
-            <SkillsV1Grid />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="skills-v2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <SkillsV2Bento />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {portfolioVersion === 'v1' ? (
+        <SkillsV1Grid />
+      ) : (
+        <SkillsV2Bento />
+      )}
     </div>
   );
 };

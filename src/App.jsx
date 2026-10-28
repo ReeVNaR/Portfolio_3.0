@@ -89,7 +89,7 @@ export default function App() {
       {/* Skills Section */}
       <section 
         id="skills" 
-        className={`scroll-mt-3 md:scroll-mt-20 min-h-[calc(100vh-4.5rem)] md:min-h-screen flex flex-col justify-center py-6 sm:py-8 md:py-10 transition-colors duration-500 relative ${
+        className={`scroll-mt-3 md:scroll-mt-20 py-8 sm:py-12 md:py-16 transition-colors duration-500 relative ${
           portfolioVersion === 'v1' 
             ? 'bg-white dark:bg-black' 
             : 'bg-transparent'
