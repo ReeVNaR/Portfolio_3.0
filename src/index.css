@@ -237,19 +237,16 @@
   /* ========================================================= */
   .hero-v2-bg {
     position: relative;
-    /* Luminous atmospheric backdrop */
-    background-color: #f8fafc;
+    background-color: transparent;
     background-image: 
-      radial-gradient(ellipse 110% 80% at 50% -5%, rgba(14, 165, 233, 0.22) 0%, rgba(56, 189, 248, 0.12) 35%, rgba(240, 249, 255, 0.5) 65%, transparent 100%),
-      linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 45%, #ffffff 100%);
+      radial-gradient(ellipse 110% 80% at 50% -5%, rgba(14, 165, 233, 0.15) 0%, rgba(56, 189, 248, 0.08) 35%, transparent 70%);
     transition: background 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .dark .hero-v2-bg {
-    background-color: #030814;
+    background-color: transparent;
     background-image: 
-      radial-gradient(ellipse 110% 80% at 50% -5%, rgba(14, 165, 233, 0.22) 0%, rgba(2, 132, 199, 0.16) 35%, rgba(6, 24, 56, 0.75) 65%, #020712 100%),
-      linear-gradient(180deg, #071938 0%, #030d20 50%, #01040a 100%);
+      radial-gradient(ellipse 110% 80% at 50% -5%, rgba(14, 165, 233, 0.18) 0%, rgba(2, 132, 199, 0.12) 35%, transparent 70%);
   }
 
   /* ========================================================= */

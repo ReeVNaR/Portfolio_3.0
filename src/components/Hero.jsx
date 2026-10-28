@@ -58,7 +58,7 @@ export default function Hero({ scrollTo, portfolioVersion = 'v2' }) {
       id="home" 
       className={`min-h-screen pt-10 sm:pt-16 md:pt-24 lg:pt-20 pb-4 sm:pb-6 lg:pb-6 px-4 sm:px-6 lg:px-8 flex items-center justify-center relative overflow-hidden transition-colors duration-500 ${
         portfolioVersion === 'v1'
-          ? 'bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50 dark:from-black dark:via-black dark:to-black'
+          ? 'bg-transparent'
           : 'hero-v2-bg'
       }`}
     >
