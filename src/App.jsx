@@ -89,15 +89,30 @@ export default function App() {
       {/* Skills Section */}
       <section 
         id="skills" 
-        className="scroll-mt-3 md:scroll-mt-20 min-h-[calc(100vh-4.5rem)] md:min-h-screen flex flex-col justify-center py-6 sm:py-8 md:py-10 bg-white dark:bg-black"
+        className={`scroll-mt-3 md:scroll-mt-20 min-h-[calc(100vh-4.5rem)] md:min-h-screen flex flex-col justify-center py-6 sm:py-8 md:py-10 transition-colors duration-500 relative ${
+          portfolioVersion === 'v1' 
+            ? 'bg-white dark:bg-black' 
+            : 'bg-transparent'
+        }`}
       >
-        <div className="container mx-auto px-4 md:px-6 mb-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 sm:mb-8">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400">
-              My Skills
-            </span>
-          </h2>
-          <Skills />
+        {portfolioVersion === 'v2' && (
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-64 sm:h-80 bg-gradient-to-r from-cyan-500/5 via-blue-500/5 to-purple-500/5 rounded-full blur-3xl pointer-events-none" />
+        )}
+        <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+          <div className="flex flex-col">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 sm:mb-6">
+              <span className={
+                portfolioVersion === 'v1'
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-400"
+                  : "text-transparent bg-clip-text bg-gradient-to-r from-[#0071e3] via-[#0284c7] to-[#0055b3] dark:from-sky-400 dark:via-blue-300 dark:to-indigo-300 font-display tracking-tight"
+              }>
+                My Skills
+              </span>
+            </h2>
+            <div className="overflow-visible">
+              <Skills portfolioVersion={portfolioVersion} />
+            </div>
+          </div>
         </div>
       </section>
 
